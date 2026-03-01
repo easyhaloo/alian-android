@@ -114,3 +114,5 @@ secrets.properties
 api_keys.properties
 local.properties
 docs/dev
+.vscode
+app/release-keystore.jks

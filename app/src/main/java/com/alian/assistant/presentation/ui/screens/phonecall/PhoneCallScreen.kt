@@ -296,16 +296,17 @@ fun PhoneCallScreen(
                             showPermissionDialog = false
                         }
                         is AgentPermissionCheck.CheckResult.NeedsMultiplePermissions -> {
-                            // 检查是否包含 MediaProjection 权限
-                            val needsMediaProjection = (permissionCheckResult as AgentPermissionCheck.CheckResult.NeedsMultiplePermissions).missingPermissions.any {
-                                it is AgentPermissionCheck.CheckResult.NeedsMediaProjection
+                            // 优先处理非 MediaProjection 权限
+                            val missingPermissions = (permissionCheckResult as AgentPermissionCheck.CheckResult.NeedsMultiplePermissions).missingPermissions
+                            val nonMediaProjectionPermission = missingPermissions.firstOrNull {
+                                it !is AgentPermissionCheck.CheckResult.NeedsMediaProjection
                             }
-                            if (needsMediaProjection) {
-                                // 先请求 MediaProjection 权限
-                                onRequireMediaProjection?.invoke()
+                            if (nonMediaProjectionPermission != null) {
+                                // 先处理其他权限（录音、悬浮窗、无障碍等）
+                                viewModel.openPermissionSettings(nonMediaProjectionPermission)
                             } else {
-                                // 打开第一个缺失权限的设置
-                                viewModel.openPermissionSettings(permissionCheckResult!!)
+                                // 所有缺失权限都是 MediaProjection
+                                onRequireMediaProjection?.invoke()
                             }
                             showPermissionDialog = false
                         }

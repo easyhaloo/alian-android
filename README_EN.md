@@ -68,6 +68,10 @@ Alian is a fully open-source AI phone assistant that supports voice calls, video
 | ⚙️ **Prompt Custom** | Freely customize AI role, personality, speaking style, independent settings per call type |
 
 > 📥 **Try it now**: Download the latest APK from [Releases](../../releases) page
+>
+> 🌐 **Web Demo**: [https://github.com/OA-ai/aliian-samples](https://github.com/OA-ai/aliian-samples)
+>
+> 💡 **Open-source mobile app - experience all features described here without login**
 
 ### Use Cases
 

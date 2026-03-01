@@ -412,78 +412,15 @@ class AccessibilityElementLocator {
         val service = getService() ?: return false
         val TAG = "AccessibilityElementLocator"
 
-        // 先聚焦元素
-        service.focusNode(node)
-        Thread.sleep(100)  // 等待聚焦完成
+        // 直接调用 setText，其内部已包含：
+        // 1. 聚焦元素
+        // 2. ACTION_SET_TEXT（或备选的选中文本+粘贴方案）
+        // 3. 验证结果
+        // 避免多次调用导致重复输入
+        val result = service.setText(node, text)
+        Log.d(TAG, "typeInElement: 设置文本 '$text', 结果: $result")
 
-        // 清空现有文本
-        val clearSuccess = service.setText(node, "")
-        Log.d(TAG, "typeInElement: 清空文本, 结果: $clearSuccess")
-        Thread.sleep(100)  // 等待清空完成
-
-        // 设置新文本
-        val setResult = service.setText(node, text)
-        Log.d(TAG, "typeInElement: 设置文本 '$text', 结果: $setResult")
-
-        // 验证文本是否真正设置成功
-        Thread.sleep(100)  // 等待设置完成
-        val currentText = node.text?.toString() ?: ""
-        val verified = currentText.contains(text)
-
-        if (!verified) {
-            Log.w(TAG, "typeInElement: 文本验证失败! 期望包含: '$text', 实际: '$currentText'")
-            
-            // 尝试使用剪贴板方式作为备选
-            Log.d(TAG, "typeInElement: 尝试使用剪贴板方式")
-            return typeInElementViaClipboard(node, text)
-        }
-
-        Log.d(TAG, "typeInElement: 文本验证成功! 当前文本: '$currentText'")
-        return true
-    }
-
-    /**
-     * 通过剪贴板方式在元素上输入文本（备选方案）
-     */
-    private fun typeInElementViaClipboard(node: AccessibilityNodeInfo, text: String): Boolean {
-        val service = getService() ?: return false
-        val TAG = "AccessibilityElementLocator"
-
-        try {
-            // 获取 ClipboardManager - 从 AlianAccessibilityService 实例获取 Context
-            val context = AlianAccessibilityService.getInstance()
-            val clipboardManager = context?.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as? android.content.ClipboardManager
-            if (clipboardManager == null) {
-                Log.w(TAG, "typeInElementViaClipboard: ClipboardManager 不可用")
-                return false
-            }
-
-            // 设置剪贴板
-            val clip = android.content.ClipData.newPlainText("baozi_input", text)
-            clipboardManager.setPrimaryClip(clip)
-            Log.d(TAG, "typeInElementViaClipboard: 剪贴板已设置: '$text'")
-            Thread.sleep(200)
-
-            // 聚焦元素
-            service.focusNode(node)
-            Thread.sleep(100)
-
-            // 执行粘贴
-            val pasteResult = node.performAction(AccessibilityNodeInfo.ACTION_PASTE)
-            Log.d(TAG, "typeInElementViaClipboard: 粘贴操作, 结果: $pasteResult")
-            Thread.sleep(200)
-
-            // 验证
-            val currentText = node.text?.toString() ?: ""
-            val verified = currentText.contains(text)
-            Log.d(TAG, "typeInElementViaClipboard: 验证结果: $verified, 当前文本: '$currentText'")
-
-            return verified
-        } catch (e: Exception) {
-            Log.e(TAG, "typeInElementViaClipboard: 异常: ${e.message}")
-            e.printStackTrace()
-            return false
-        }
+        return result
     }
 
     /**

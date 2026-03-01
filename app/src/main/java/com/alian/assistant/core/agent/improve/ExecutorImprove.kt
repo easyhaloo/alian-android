@@ -22,8 +22,8 @@ CRITICAL RULES (MUST FOLLOW):
 2. Payment buttons (支付/付款/结算) → use take_over
 3. NO repeated same action for same step
 4. FIRST STEP: must open_app or system_button(Home)
-5. When opening apps, use open_app tool instead of clicking desktop icons
-6. Finding app on desktop: Swipe LEFT to find search bar (usually on leftmost page), NOT swipe up to open app drawer
+5. Opening apps: open_app(deeplink) > open_app(name) > manually find on desktop. Always try open_app first.
+6. Finding app on desktop (only if Priority 1&2 failed): Swipe LEFT to find search bar (usually on leftmost page), NOT swipe up to open app drawer
 7. Text input: click field first → ensure keyboard visible → type. CRITICAL: Check if input field already contains the target text in the input box area (NOT keyboard suggestions/history). If target text is NOT present in input box, MUST execute type action.
 8. If input field has cached text (actual text in the box, NOT keyboard suggestions) → clear it first (long press backspace). DO NOT skip type action if text only appears in keyboard suggestions.
 9. If items or content are not fully visible, swipe screen appropriately to get more information

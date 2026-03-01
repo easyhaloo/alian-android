@@ -289,12 +289,19 @@ class AgentPermissionCheck(
             }
             CheckResult.NeedsMediaProjection -> {
                 // MediaProjection 需要特殊处理，由调用方处理
+                // 这里不做任何操作，调用方应该通过 onRequireMediaProjection 回调处理
+                Log.w(TAG, "MediaProjection 权限需要调用方通过回调处理")
             }
             is CheckResult.NeedsMultiplePermissions -> {
-                // 打开第一个缺失权限的设置
-                val firstMissing = result.missingPermissions.firstOrNull()
-                if (firstMissing != null) {
-                    openPermissionSettings(firstMissing)
+                // 优先处理非 MediaProjection 权限（因为 MediaProjection 需要特殊处理）
+                val nonMediaProjectionPermission = result.missingPermissions.firstOrNull {
+                    it !is CheckResult.NeedsMediaProjection
+                }
+                if (nonMediaProjectionPermission != null) {
+                    openPermissionSettings(nonMediaProjectionPermission)
+                } else {
+                    // 所有缺失权限都是 MediaProjection，由调用方处理
+                    Log.w(TAG, "所有缺失权限都是 MediaProjection，需要调用方通过回调处理")
                 }
             }
             CheckResult.Granted -> {
