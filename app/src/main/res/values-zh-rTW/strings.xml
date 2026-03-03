@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Alian</string>
+
+    <!-- Tab Titles -->
+    <string name="tab_home">Alian</string>
+    <string name="tab_history">記錄</string>
+    <string name="tab_settings">設定</string>
+
+    <!-- Home Screen -->
+    <string name="home_ready">準備就緒，告訴我你想做什麼</string>
+    <string name="home_connect_shizuku">請先連接 Shizuku</string>
+    <string name="home_try_these">試試這些指令</string>
+    <string name="home_input_placeholder">告訴Alian你想做什麼…</string>
+    <string name="home_executing">正在執行 Step %1$d</string>
+    <string name="home_send">發送</string>
+    <string name="home_stop">停止</string>
+
+    <!-- Preset Commands -->
+    <string name="preset_burger">點漢堡</string>
+    <string name="preset_burger_cmd">幫我點個附近好吃的漢堡</string>
+    <string name="preset_weibo">發微博</string>
+    <string name="preset_weibo_cmd">幫我把最後一張照片發送到微博</string>
+    <string name="preset_bilibili">刷B站</string>
+    <string name="preset_bilibili_cmd">打開B站搜索艾蓮，找到第一個視頻點個讚</string>
+    <string name="preset_takeout">點外賣</string>
+    <string name="preset_takeout_cmd">幫我在美團點一份豬腳飯</string>
+    <string name="preset_music">聽音樂</string>
+    <string name="preset_music_cmd">打開網易雲音樂播放每日推薦</string>
+    <string name="preset_message">發消息</string>
+    <string name="preset_message_cmd">幫我給最近聯繫人發一條消息說在忙</string>
+    <string name="preset_xiaohongshu">發小紅書</string>
+    <string name="preset_xiaohongshu_cmd">幫我發一條小紅書，內容是今日份好心情</string>
+    <string name="preset_travel">旅遊攻略</string>
+    <string name="preset_travel_cmd">用小美幫我查一下三亞旅遊攻略</string>
+    <string name="preset_clean_background">清理後台</string>
+    <string name="preset_clean_background_cmd">幫我清理一下後台運行的應用</string>
+    <string name="preset_power_saving">省電模式</string>
+    <string name="preset_power_saving_cmd">幫我開啟省電模式並降低屏幕亮度</string>
+    <string name="preset_night_mode">夜間模式</string>
+    <string name="preset_night_mode_cmd">幫我開啟深色模式</string>
+    <string name="preset_camera">拍照</string>
+    <string name="preset_camera_cmd">幫我打開相機拍照</string>
+    <string name="preset_exercise">運動打卡</string>
+    <string name="preset_exercise_cmd">幫我打開運動記錄開始跑步</string>
+    <string name="preset_coffee">點咖啡</string>
+    <string name="preset_coffee_cmd">幫我點一杯星巴克拿鐵</string>
+    <string name="preset_taxi">打車</string>
+    <string name="preset_taxi_cmd">幫我打一輛車去附近的地鐵站</string>
+    <string name="preset_smart_home">智能家居</string>
+    <string name="preset_smart_home_cmd">幫我打開客廳的燈</string>
+    <string name="preset_schedule">日程提醒</string>
+    <string name="preset_schedule_cmd">幫我設置明天上午9點的會議提醒</string>
+    <string name="preset_alarm">鬧鐘</string>
+    <string name="preset_alarm_cmd">幫我設置明天早上7點的鬧鐘</string>
+    <string name="preset_navigation">導航</string>
+    <string name="preset_navigation_cmd">幫我導航到最近的超市</string>
+    <string name="preset_weather">天氣預報</string>
+    <string name="preset_weather_cmd">幫我查一下明天的天氣</string>
+    <string name="preset_wechat">發微信</string>
+    <string name="preset_wechat_cmd">幫我給媽媽發一條微信說我到家了</string>
+    <string name="preset_notes">記筆記</string>
+    <string name="preset_notes_cmd">幫我記錄今天的待辦事項</string>
+    <string name="preset_reconnect">重新連接</string>
+    <string name="preset_try">試一試</string>
+
+    <!-- History Screen -->
+    <string name="history_title">執行記錄</string>
+    <string name="history_count">共 %1$d 條記錄</string>
+    <string name="history_empty">暫無執行記錄</string>
+    <string name="history_empty_hint">執行任務後記錄會顯示在這裡</string>
+    <string name="history_steps">%1$d 步</string>
+    <string name="history_delete">刪除</string>
+    <string name="history_delete_title">刪除記錄</string>
+    <string name="history_delete_confirm">確定要刪除這條執行記錄嗎？</string>
+    <string name="history_timeline">執行時間線</string>
+    <string name="history_instruction">任務指令</string>
+
+    <!-- Status -->
+    <string name="status_completed">已完成</string>
+    <string name="status_failed">失敗</string>
+    <string name="status_stopped">已停止</string>
+    <string name="status_running">執行中</string>
+    <string name="status_label">狀態</string>
+    <string name="steps_label">步驟數</string>
+    <string name="duration_label">耗時</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">設定</string>
+    <string name="settings_subtitle">配置 API 和應用選項</string>
+
+    <!-- Settings - Appearance -->
+    <string name="settings_appearance">外觀</string>
+    <string name="settings_theme">主題模式</string>
+    <string name="theme_light">淺色模式</string>
+    <string name="theme_dark">深色模式</string>
+    <string name="theme_system">跟隨系統</string>
+    <string name="theme_select">選擇主題</string>
+
+    <!-- Settings - Language -->
+    <string name="settings_language">語言</string>
+    <string name="settings_language_desc">切換應用顯示語言</string>
+    <string name="language_system">跟隨系統</string>
+    <string name="language_zh">簡體中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_select">選擇語言</string>
+    <string name="language_restart_hint">切換語言後需要重啟應用才能生效</string>
+
+    <!-- Settings - API -->
+    <string name="settings_api">API 配置</string>
+    <string name="settings_provider">API 服務商</string>
+    <string name="settings_provider_custom">自定義</string>
+    <string name="settings_model">模型</string>
+    <string name="settings_api_key">API Key</string>
+    <string name="settings_api_key_set">已設置 (%1$s)</string>
+    <string name="settings_api_key_unset">未設置</string>
+    <string name="settings_api_key_hint">請輸入您的 API Key</string>
+    <string name="settings_show">顯示</string>
+    <string name="settings_hide">隱藏</string>
+
+    <!-- Settings - Custom Models -->
+    <string name="settings_custom_models">自定義模型</string>
+    <string name="settings_add_model">添加自定義模型</string>
+    <string name="settings_add_model_hint">添加其他支持的模型</string>
+    <string name="settings_model_name_hint">輸入模型名稱或 ID</string>
+    <string name="settings_model_name_example">例如: gpt-4-vision</string>
+    <string name="settings_select_model">選擇模型</string>
+
+    <!-- Settings - Help -->
+    <string name="settings_help">幫助</string>
+    <string name="settings_shizuku_guide">Shizuku 使用指南</string>
+    <string name="settings_shizuku_guide_desc">了解如何安裝和配置 Shizuku</string>
+    <string name="settings_overlay_help">懸浮窗權限說明</string>
+    <string name="settings_overlay_help_desc">了解為什麼需要懸浮窗權限</string>
+
+    <!-- Settings - About -->
+    <string name="settings_about">關於</string>
+    <string name="settings_version">版本</string>
+    <string name="settings_app_desc">基於視覺語言模型的 Android 自動化工具</string>
+
+    <!-- Shizuku Status -->
+    <string name="shizuku_connected">Shizuku 已連接</string>
+    <string name="shizuku_not_connected">Shizuku 未連接</string>
+    <string name="shizuku_available">設備控制功能可用</string>
+    <string name="shizuku_unavailable">請啟動 Shizuku 並授權</string>
+
+    <!-- Shizuku Help -->
+    <string name="shizuku_help_step1_title">下載 Shizuku</string>
+    <string name="shizuku_help_step1_desc">從 Google Play 或 GitHub 下載 Shizuku 應用\n\n• Google Play: 搜索 \"Shizuku\"\n• GitHub: github.com/RikkaApps/Shizuku</string>
+    <string name="shizuku_help_step2_title">啟動 Shizuku</string>
+    <string name="shizuku_help_step2_desc">打開 Shizuku 應用，根據您的設備選擇啟動方式：\n\n• 無線調試（推薦）：需要 Android 11+，在開發者選項中開啟無線調試\n• 連接電腦：通過 ADB 命令啟動</string>
+    <string name="shizuku_help_step3_title">授權Alian</string>
+    <string name="shizuku_help_step3_desc">在 Shizuku 的「應用管理」中找到Alian Autopilot，點擊授權按鈕</string>
+    <string name="shizuku_help_step4_title">開始使用</string>
+    <string name="shizuku_help_step4_desc">授權完成後，返回Alian應用，狀態卡片會顯示「Shizuku 已連接」</string>
+
+    <!-- Overlay Help -->
+    <string name="overlay_why">為什麼需要懸浮窗權限？</string>
+    <string name="overlay_reason">Alian在執行任務時需要顯示懸浮窗來：</string>
+    <string name="overlay_feature1">顯示當前執行進度</string>
+    <string name="overlay_feature2">提供停止按鈕，隨時中斷任務</string>
+    <string name="overlay_feature3">在其他應用上方顯示狀態信息</string>
+    <string name="overlay_how">如何開啟？</string>
+    <string name="overlay_how_desc">1. 點擊執行任務時會自動提示\n2. 或前往：設定 > 應用 > Alian > 懸浮窗權限\n3. 開啟「允許顯示在其他應用上層」</string>
+    <string name="overlay_privacy">隱私安全</string>
+    <string name="overlay_privacy_desc">懸浮窗僅在任務執行期間顯示，不會收集任何個人信息。任務完成後懸浮窗會自動消失。</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">歡迎使用Alian</string>
+    <string name="onboarding_welcome_desc">Alian是一個智能自動化助手，\n可以幫你操作手機完成各種任務</string>
+    <string name="onboarding_ai">AI 驅動</string>
+    <string name="onboarding_ai_desc">基於先進的視覺語言模型，\nAlian能夠理解屏幕內容並做出智能決策</string>
+    <string name="onboarding_easy">簡單易用</string>
+    <string name="onboarding_easy_desc">只需用自然語言描述你想做的事，\nAlian會自動幫你完成</string>
+    <string name="onboarding_safe">安全可靠</string>
+    <string name="onboarding_safe_desc">遇到敏感頁面（如支付、密碼）會自動停止，\n保護你的賬戶安全</string>
+    <string name="onboarding_skip">跳過</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_start">開始使用</string>
+
+    <!-- Common -->
+    <string name="btn_confirm">確定</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_close">關閉</string>
+    <string name="btn_add">添加</string>
+    <string name="btn_delete">刪除</string>
+    <string name="btn_back">返回</string>
+    <string name="btn_got_it">知道了</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_enter_instruction">請輸入指令</string>
+    <string name="toast_enter_api_key">請輸入 API Key</string>
+    <string name="toast_grant_overlay">請授予懸浮窗權限</string>
+    <string name="toast_shizuku_granted">Shizuku 權限已獲取</string>
+    <string name="toast_start_shizuku">請先啟動 Shizuku App</string>
+    <string name="toast_shizuku_old">Shizuku 版本過低</string>
+    <string name="toast_task_complete">任務完成</string>
+    <string name="toast_user_stopped">用戶停止</string>
+    <string name="toast_sensitive_page">檢測到敏感頁面（支付/密碼），已安全停止</string>
+    <string name="toast_max_steps">達到最大步數限制</string>
+    <string name="toast_error">錯誤: %1$s</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">Alian無障礙服務，用於獲取屏幕元素信息和執行自動化操作</string>
+
+    <!-- Overlay Service -->
+    <string name="overlay_channel_name">艾蓮狀態</string>
+    <string name="overlay_channel_desc">顯示艾蓮執行狀態</string>
+    <string name="overlay_notification_title">艾蓮運行中</string>
+    <string name="overlay_notification_text">正在執行自動化任務...</string>
+    <string name="overlay_app_name">艾蓮</string>
+    <string name="overlay_stop">停止</string>
+    <string name="overlay_cancel">取消</string>
+    <string name="overlay_continue">繼續</string>
+    <string name="overlay_confirm">確認</string>
+    <string name="overlay_chat_mode">💬 問答模式</string>
+    <string name="overlay_chat">問答</string>
+
+    <!-- Call Features -->
+    <string name="call_video">視頻通話</string>
+    <string name="call_voice">語音通話</string>
+    <string name="call_phone">手機通話</string>
+    <string name="call_mic">麥克風</string>
+
+    <!-- Menu Items -->
+    <string name="menu_login">登錄</string>
+    <string name="menu_logout">登出</string>
+    <string name="menu_settings">設定</string>
+    <string name="menu_new_session">創建新會話</string>
+
+    <!-- Chat History -->
+    <string name="chat_history_title">對話歷史</string>
+    <string name="chat_history_count">%1$d 個對話</string>
+    <string name="chat_history_empty">暫無對話歷史</string>
+    <string name="chat_history_empty_hint">開始新的對話後記錄會顯示在這裡</string>
+    <string name="chat_new_session">創建新對話</string>
+    <string name="chat_new_session_hint">開始一個新的對話會話</string>
+    <string name="chat_delete_title">確認刪除</string>
+    <string name="chat_delete_confirm">確定要刪除這條對話嗎？</string>
+
+    <!-- Time Format -->
+    <string name="time_just_now">剛剛</string>
+    <string name="time_minutes_ago">%1$d 分鐘前</string>
+    <string name="time_hours_ago">%1$d 小時前</string>
+    <string name="time_days_ago">%1$d 天前</string>
+    <string name="time_unknown">未知時間</string>
+
+    <!-- Voice Input -->
+    <string name="voice_recording">正在錄音</string>
+    <string name="voice_hold_to_speak">按住說話</string>
+    <string name="voice_release_to_send">鬆開發送</string>
+    <string name="voice_processing">處理中...</string>
+    <string name="voice_permission_title">需要錄音權限</string>
+    <string name="voice_permission_desc">語音輸入功能需要錄音權限才能正常工作。</string>
+    <string name="voice_go_authorize">去授權</string>
+    <string name="voice_switch_keyboard">切換到鍵盤輸入</string>
+    <string name="voice_switch_voice">切換到語音輸入</string>
+    <string name="voice_say_something">說點什麼吧...</string>
+
+    <!-- Chat Components -->
+    <string name="chat_ready_title">隨時準備，為您服務</string>
+    <string name="chat_ready_hint">輸入消息或使用語音開始對話</string>
+    <string name="chat_alian_avatar">Alian頭像</string>
+    <string name="chat_user_avatar">用戶頭像</string>
+    <string name="chat_unknown_file">未知文件</string>
+    <string name="chat_preview">預覽</string>
+    <string name="chat_play">播放</string>
+    <string name="chat_stop_play">停止播放</string>
+
+    <!-- Content Description -->
+    <string name="cd_close">關閉</string>
+    <string name="cd_delete">刪除</string>
+    <string name="cd_back">返回</string>
+    <string name="cd_stop">停止</string>
+    <string name="cd_send">發送</string>
+
+    <!-- Alian Local Screen -->
+    <string name="local_title">Alian Local</string>
+    <string name="local_ready">準備就緒</string>
+    <string name="local_shizuku_connected">Shizuku 已連接</string>
+    <string name="local_shizuku_disconnected">Shizuku 未連接</string>
+
+    <!-- Local History Drawer -->
+    <string name="local_history_title">執行記錄</string>
+    <string name="local_history_count">%1$d 條記錄</string>
+    <string name="local_history_empty">暫無執行記錄</string>
+    <string name="local_history_delete_title">確認刪除</string>
+    <string name="local_history_delete_confirm">確定要刪除這條執行記錄嗎？</string>
+    <string name="local_status_completed">已完成</string>
+    <string name="local_status_failed">失敗</string>
+    <string name="local_status_stopped">已停止</string>
+    <string name="local_status_running">執行中</string>
+
+    <!-- Settings Screen Sections -->
+    <string name="settings_section_appearance">🎨 外觀與個性化</string>
+    <string name="settings_section_ai">🧠 AI 模型配置</string>
+    <string name="settings_section_execution">⚙️ 執行與控制</string>
+    <string name="settings_section_permission">🔐 權限與安全</string>
+    <string name="settings_section_extension">🔌 擴展能力</string>
+    <string name="settings_section_help">❓ 幫助與反饋</string>
+
+    <!-- Settings Screen Items -->
+    <string name="settings_item_theme">主題模式</string>
+    <string name="settings_item_alian">Alian</string>
+    <string name="settings_item_alian_subtitle">頭像、音色、語速</string>
+    <string name="settings_item_language">語言</string>
+    <string name="settings_item_model_config">模型配置</string>
+    <string name="settings_item_model_config_subtitle">LLM/VLM 服務商</string>
+    <string name="settings_item_speech_provider">語音服務商</string>
+    <string name="settings_item_speech_provider_subtitle">ASR/TTS 配置</string>
+    <string name="settings_item_api_config">API 配置</string>
+    <string name="settings_item_api_config_subtitle">Backend 設置</string>
+    <string name="settings_item_execution">執行設置</string>
+    <string name="settings_item_execution_subtitle">批量執行、優化模式</string>
+    <string name="settings_item_voice_interaction">語音交互</string>
+    <string name="settings_item_voice_interaction_subtitle">TTS、打斷、流式</string>
+    <string name="settings_item_device_controller">設備控制器</string>
+    <string name="settings_item_device_controller_subtitle">執行策略、延遲</string>
+    <string name="settings_item_permission">權限管理</string>
+    <string name="settings_item_permission_subtitle">基礎與核心權限</string>
+    <string name="settings_item_shizuku">Shizuku</string>
+    <string name="settings_item_shizuku_subtitle">Root 模式設置</string>
+    <string name="settings_item_mcp">MCP</string>
+    <string name="settings_item_mcp_subtitle">模型上下文協議</string>
+    <string name="settings_item_capabilities">能力</string>
+    <string name="settings_item_capabilities_subtitle">Skills 技能管理</string>
+    <string name="settings_item_help">幫助</string>
+    <string name="settings_item_feedback">反饋</string>
+    <string name="settings_item_about">關於</string>
+
+    <!-- Settings Dialogs -->
+    <string name="dialog_select_theme">選擇主題</string>
+    <string name="dialog_select_language">選擇語言</string>
+    <string name="dialog_select_model">選擇模型</string>
+    <string name="dialog_api_key_title">API Key</string>
+    <string name="dialog_api_key_hint">請輸入您的 API Key</string>
+    <string name="dialog_text_model_title">文本模型</string>
+    <string name="dialog_text_model_hint">輸入文本模型名稱（用於純文本對話）</string>
+    <string name="dialog_text_model_common">常用模型: qwen-max, qwen-plus, qwen-turbo</string>
+    <string name="dialog_backend_url_title">Backend 服務端地址</string>
+    <string name="dialog_backend_url_hint">請輸入 Backend 服務器的完整地址</string>
+    <string name="dialog_max_steps_title">最大執行步數</string>
+    <string name="dialog_max_steps_desc">設置 Agent 單次任務的最大執行步數。步數越多，能完成的任務越複雜，但消耗的 token 也越多。</string>
+    <string name="dialog_max_steps_unit">%1$d 步</string>
+    <string name="dialog_provider_title">API 服務商</string>
+    <string name="dialog_provider_hint">選擇 API 服務商（支持 OpenAI 兼容接口）</string>
+    <string name="dialog_custom_url_hint">輸入自定義 API 端點地址</string>
+    <string name="dialog_custom_url_mai_hint">留空使用默認地址 (localhost:8000)</string>
+    <string name="dialog_recommended_model">推薦模型</string>
+    <string name="dialog_custom_model">自定義模型</string>
+    <string name="dialog_custom_model_hint">輸入模型名稱，如 gpt-4o</string>
+    <string name="dialog_fetch_models">從 API 獲取可用模型</string>
+    <string name="dialog_fetching">獲取中...</string>
+    <string name="dialog_api_model_list">API 模型列表 (%1$d)</string>
+    <string name="dialog_search_model">搜索模型...</string>
+    <string name="dialog_no_match">沒有匹配「%1$s」的模型</string>
+    <string name="dialog_found_models">找到 %1$d 個模型</string>
+    <string name="dialog_fetch_api_key_first">請先設置 API Key</string>
+    <string name="dialog_fetch_success">獲取到 %1$d 個模型</string>
+    <string name="dialog_fetch_failed">獲取失敗: %1$s</string>
+    <string name="dialog_click_fetch">點擊「從 API 獲取」加載模型列表</string>
+
+    <!-- Warning Dialogs -->
+    <string name="dialog_root_mode_title">啟用 Root 模式</string>
+    <string name="dialog_root_mode_desc">Root 模式將允許應用使用更高級的系統權限。</string>
+    <string name="dialog_root_mode_warning">警告：</string>
+    <string name="dialog_root_mode_risk1">Root 權限可能導致系統不穩定</string>
+    <string name="dialog_root_mode_risk2">不當操作可能損壞設備數據</string>
+    <string name="dialog_root_mode_risk3">請確保您了解 Root 權限的風險</string>
+    <string name="dialog_root_mode_hint">僅在您完全了解風險並需要高級功能時才啟用此選項。</string>
+    <string name="dialog_root_mode_confirm">我了解風險，啟用</string>
+    <string name="dialog_su_command_title">允許 su -c 命令</string>
+    <string name="dialog_su_command_desc">此選項將允許 AI 執行 su -c 命令，這意味著 AI 可以以 Root 權限執行任意 Shell 命令。</string>
+    <string name="dialog_su_command_extreme_danger">極度危險：</string>
+    <string name="dialog_su_command_risk1">AI 可能執行危險的系統命令</string>
+    <string name="dialog_su_command_risk2">可能導致數據丟失或系統損壞</string>
+    <string name="dialog_su_command_risk3">可能被惡意指令利用</string>
+    <string name="dialog_su_command_risk4">不建議在日常使用中啟用</string>
+    <string name="dialog_su_command_hint">強烈建議：僅在完全可控的測試環境中使用，並在使用完畢後立即關閉。</string>
+
+    <!-- Voice Call Screen -->
+    <string name="voice_call_title">語音通話</string>
+    <string name="voice_call_start_hint">點擊下方按鈕開始</string>
+    <string name="voice_call_recording">正在錄音</string>
+    <string name="voice_call_speak">請說話</string>
+    <string name="voice_call_thinking">正在思考</string>
+    <string name="voice_call_playing">正在播放</string>
+    <string name="voice_call_error">發生錯誤</string>
+    <string name="voice_call_retry">重試</string>
+    <string name="voice_call_end">結束通話</string>
+    <string name="voice_call_start">開始通話</string>
+
+    <!-- Video Call Screen -->
+    <string name="video_call_title">視頻通話</string>
+    <string name="video_call_start_hint">點擊下方按鈕開始</string>
+    <string name="video_call_recording">正在錄音</string>
+    <string name="video_call_speak">請說話</string>
+    <string name="video_call_thinking">正在思考</string>
+    <string name="video_call_playing">正在播放</string>
+    <string name="video_call_error">發生錯誤</string>
+    <string name="video_call_retry">重試</string>
+    <string name="video_call_end">結束通話</string>
+    <string name="video_call_start">開始通話</string>
+
+    <!-- VLM Only Video Call Screen -->
+    <string name="vlm_video_call_title">視覺大模型視頻通話</string>
+    <string name="vlm_video_call_recording">正在錄音</string>
+    <string name="vlm_video_call_thinking">正在思考</string>
+    <string name="vlm_video_call_playing">正在播放</string>
+    <string name="vlm_video_call_error">錯誤</string>
+    <string name="vlm_video_call_retry">重試</string>
+    <string name="vlm_video_call_start_hint">點擊下方按鈕開始</string>
+    <string name="vlm_video_call_speak">請說話</string>
+    <string name="vlm_video_call_thinking_hint">AI 正在思考中...</string>
+    <string name="vlm_video_call_playing_hint">AI 正在回答</string>
+    <string name="vlm_video_call_error_hint">發生錯誤，請重試</string>
+    <string name="vlm_video_call_recording_status">錄音中</string>
+    <string name="vlm_video_call_thinking_status">思考中</string>
+    <string name="vlm_video_call_playing_status">播放中</string>
+    <string name="vlm_video_call_frames_captured">已捕獲 %1$d/%2$d 幀</string>
+    <string name="vlm_video_call_feature_capture">智能捕獲</string>
+    <string name="vlm_video_call_feature_capture_desc">說話時立即捕獲畫面</string>
+    <string name="vlm_video_call_feature_vision">視覺理解</string>
+    <string name="vlm_video_call_feature_vision_desc">AI 理解你的視覺環境</string>
+    <string name="vlm_video_call_feature_realtime">實時響應</string>
+    <string name="vlm_video_call_feature_realtime_desc">流式對話體驗</string>
+    <string name="vlm_video_call_close">關閉</string>
+
+    <!-- Phone Call Screen -->
+    <string name="phone_call_title">手機通話</string>
+    <string name="phone_call_start_hint">點擊下方按鈕開始</string>
+    <string name="phone_call_active">通話中</string>
+    <string name="phone_call_error">發生錯誤</string>
+    <string name="phone_call_retry">重試</string>
+    <string name="phone_call_end">結束通話</string>
+    <string name="phone_call_start">開始通話</string>
+    <string name="phone_call_screen_preview">屏幕預覽</string>
+    <string name="phone_call_fullscreen_mode">全屏模式</string>
+    <string name="phone_call_minimize">最小化</string>
+    <string name="phone_call_expand">展開</string>
+    <string name="phone_call_close">關閉</string>
+    <string name="phone_call_permission_title">需要權限</string>
+    <string name="phone_call_permission_hint">請在設定頁面授予屏幕錄製權限，然後返回重試。</string>
+    <string name="phone_call_go_settings">去設定</string>
+    <string name="phone_call_cancel">取消</string>
+
+    <!-- TTS Voice Selection -->
+    <string name="tts_voice_title">選擇音色</string>
+    <string name="tts_voice_longxiaochun">龍曉春（女聲）</string>
+    <string name="tts_voice_longyingtao">龍應桃（女聲）</string>
+    <string name="tts_voice_longanwen">龍安溫（女聲）</string>
+    <string name="tts_voice_longyingmu">龍應沐（女聲）</string>
+
+    <!-- Login/Logout -->
+    <string name="login_click_to_login">點擊登錄</string>
+    <string name="login_logout">登出</string>
+    <string name="login_logout_confirm_title">確認登出</string>
+    <string name="login_logout_confirm_desc">確定要登出嗎？登出後需要重新登錄才能使用 Alian 功能。</string>
+
+    <!-- Overlay Help Dialog -->
+    <string name="overlay_help_title">懸浮窗權限說明</string>
+    <string name="overlay_help_why">為什麼需要懸浮窗權限？</string>
+    <string name="overlay_help_reason">艾蓮在執行任務時需要顯示懸浮窗來：</string>
+    <string name="overlay_help_feature1">顯示當前執行進度</string>
+    <string name="overlay_help_feature2">提供停止按鈕，隨時中斷任務</string>
+    <string name="overlay_help_feature3">在其他應用上方顯示狀態信息</string>
+    <string name="overlay_help_how">如何開啟？</string>
+    <string name="overlay_help_how_desc">1. 點擊執行任務時會自動提示\n2. 或前往：設定 > 應用 > 艾蓮 > 懸浮窗權限\n3. 開啟「允許顯示在其他應用上層」</string>
+    <string name="overlay_help_privacy">隱私安全</string>
+    <string name="overlay_help_privacy_desc">懸浮窗僅在任務執行期間顯示，不會收集任何個人信息。任務完成後懸浮窗會自動消失。</string>
+
+    <!-- Format Strings -->
+    <string name="format_time_minutes_ago">%1$d分鐘前</string>
+    <string name="format_time_hours_ago">%1$d小時前</string>
+    <string name="format_time_days_ago">%1$d天前</string>
+    <string name="format_time_just_now">剛剛</string>
+    <string name="format_time_unknown">未知時間</string>
+    <string name="format_date_month_day">%1$d月%2$d日</string>
+
+    <!-- Time-based Greetings -->
+    <string name="greeting_morning">早上好</string>
+    <string name="greeting_forenoon">上午好</string>
+    <string name="greeting_noon">中午好</string>
+    <string name="greeting_afternoon">下午好</string>
+    <string name="greeting_evening">晚上好</string>
+    <string name="greeting_night">夜深了</string>
+    <string name="greeting_prompt">今天想讓我幫你做點什麼？</string>
+
+    <!-- Permission Dialogs -->
+    <string name="permission_title_record_audio">需要錄音權限</string>
+    <string name="permission_title_camera">需要相機權限</string>
+    <string name="permission_title_post_notifications">需要通知權限</string>
+    <string name="permission_title_system_alert_window">需要懸浮窗權限</string>
+    <string name="permission_title_accessibility_service">需要無障礙服務權限</string>
+    <string name="permission_title_media_projection">需要屏幕錄製權限</string>
+    <string name="permission_title_shizuku">需要 Shizuku 權限</string>
+    
+    <string name="permission_desc_record_audio">語音輸入和語音通話功能需要錄音權限才能正常工作。</string>
+    <string name="permission_desc_camera">視頻通話功能需要相機權限才能正常工作。</string>
+    <string name="permission_desc_post_notifications">顯示後台運行通知，防止應用被系統回收。</string>
+    <string name="permission_desc_system_alert_window">懸浮窗界面需要懸浮窗權限才能正常顯示。</string>
+    <string name="permission_desc_accessibility_service">自動化功能需要無障礙服務權限才能控制其他應用。</string>
+    <string name="permission_desc_media_projection">自動化功能需要屏幕錄製權限才能截取屏幕內容進行視覺識別。\n\n注意：此權限僅用於截圖，不會錄製視頻或音頻。</string>
+    <string name="permission_desc_shizuku">Shizuku 是一個高效的設備控制工具，需要安裝並授權 Shizuku App。\n\n授權方式：\n1. 確保已安裝 Shizuku App\n2. 通過 ADB 授權（推薦）或 Root 授權\n3. 在 Shizuku App 中授予艾蓮權限</string>
+    
+    <string name="permission_name_record_audio">錄音權限</string>
+    <string name="permission_name_camera">相機權限</string>
+    <string name="permission_name_post_notifications">通知權限</string>
+    <string name="permission_name_system_alert_window">懸浮窗權限</string>
+    <string name="permission_name_accessibility_service">無障礙服務</string>
+    <string name="permission_name_media_projection">屏幕錄製權限</string>
+    <string name="permission_name_shizuku">Shizuku 權限</string>
+    
+    <string name="permission_go_authorize">去授權</string>
+
+    <!-- Execution Prompt -->
+    <string name="execution_prompt_ready_title">準備就緒</string>
+    <string name="execution_prompt_ready_desc">告訴我你想做什麼</string>
+    <string name="execution_prompt_shizuku_title">需要連接 Shizuku</string>
+    <string name="execution_prompt_shizuku_desc">請先連接 Shizuku</string>
+    <string name="execution_prompt_accessibility_title">需要無障礙服務</string>
+    <string name="execution_prompt_accessibility_desc">請先啟用無障礙服務</string>
+    <string name="execution_prompt_media_projection_title">需要屏幕錄製權限</string>
+    <string name="execution_prompt_media_projection_desc">請先授予屏幕錄製權限</string>
+    <string name="execution_prompt_shizuku_or_accessibility_title">需要連接 Shizuku 或無障礙服務</string>
+    <string name="execution_prompt_shizuku_or_accessibility_desc">請先連接 Shizuku 或啟用無障礙服務</string>
+    <string name="execution_prompt_shizuku_unavailable_title">Shizuku 不可用</string>
+    <string name="execution_prompt_shizuku_unavailable_desc">已降級到無障礙模式</string>
+
+    <!-- Settings SubScreen Titles -->
+    <string name="settings_subscreen_theme">主題模式</string>
+    <string name="settings_subscreen_alian">Alian 設定</string>
+    <string name="settings_subscreen_model_config">模型配置</string>
+    <string name="settings_subscreen_speech_provider">語音服務商</string>
+    <string name="settings_subscreen_api">API 配置</string>
+    <string name="settings_subscreen_execution">執行設定</string>
+    <string name="settings_subscreen_voice_interaction">語音交互</string>
+    <string name="settings_subscreen_device_controller">設備控制器</string>
+    <string name="settings_subscreen_permission_management">權限管理</string>
+    <string name="settings_subscreen_shizuku">Shizuku 設定</string>
+    <string name="settings_subscreen_mcp">MCP 管理</string>
+    <string name="settings_subscreen_help">幫助</string>
+    <string name="settings_subscreen_feedback">反饋與調試</string>
+    <string name="settings_subscreen_about">關於</string>
+
+    <!-- TTS Realtime -->
+    <string name="tts_realtime_off">關閉實時語音播放</string>
+    <string name="tts_realtime_on">開啟實時語音播放</string>
+
+    <!-- Voice Call Top Bar States -->
+    <string name="voice_call_state_idle">語音通話</string>
+    <string name="voice_call_state_recording">正在錄音</string>
+    <string name="voice_call_state_processing">正在思考</string>
+    <string name="voice_call_state_playing">正在播放</string>
+    <string name="voice_call_state_error">連接錯誤</string>
+
+    <!-- Voice Call Components -->
+    <string name="voice_call_empty_hint">點擊下方按鈕開始語音通話</string>
+    <string name="voice_call_loading_text">正在思考...</string>
+    <string name="voice_call_recording_text">錄音中</string>
+
+    <!-- Login Status Card -->
+    <string name="login_status_logged_in">已登錄</string>
+    <string name="login_status_not_logged_in">未登錄</string>
+    <string name="login_status_backend_logged_in">Backend 模式已登錄</string>
+    <string name="login_status_please_login">請先登錄 Alian 賬號</string>
+    <string name="login_status_use_openai_api">使用 OpenAI 兼容 API</string>
+
+    <!-- Execution Settings -->
+    <string name="execution_device_controller">設備控制器</string>
+    <string name="execution_device_controller_desc">配置設備控制器的執行策略和性能設置</string>
+    <string name="execution_optimize_mode">優化模式</string>
+    <string name="execution_optimize_mode_enabled">已啟用（減少 60% VLM 調用，速度提升 2.5x）</string>
+    <string name="execution_optimize_mode_disabled">已禁用（使用標準模式）</string>
+    <string name="execution_batch_mode">多步執行模式</string>
+    <string name="execution_batch_mode_enabled">已啟用（批量執行不衝突的操作）</string>
+    <string name="execution_batch_mode_disabled">已禁用（逐個執行）</string>
+    <string name="execution_react_only_mode">ReactOnly 模式</string>
+    <string name="execution_react_only_enabled">已啟用（Manager 僅規劃一次，後續全靠 Executor 執行）</string>
+    <string name="execution_react_only_disabled">已禁用（標準模式）</string>
+    <string name="execution_chat_agent_mode">ChatAgent 模式</string>
+    <string name="execution_chat_agent_enabled">已啟用（支持語音打斷和實時交互）</string>
+    <string name="execution_chat_agent_disabled">已禁用（標準執行模式）</string>
+    <string name="execution_max_steps">最大執行步數</string>
+    <string name="execution_max_steps_value">%1$d 步</string>
+    <string name="execution_info_title">說明</string>
+    <string name="execution_info_desc">• 優化模式：智能跳過不必要的 Manager/Reflector 調用，減少 VLM 調用次數，提升執行速度\n• 多步執行模式：AI 可一次性返回多個不衝突的操作，減少 VLM 調用次數，提升執行效率\n• ReactOnly 模式：Manager 僅在開始時規劃一次，後續全靠 Executor 執行，大幅減少 VLM 調用次數\n• ChatAgent 模式：支持語音打斷和實時交互，可在執行過程中通過語音與 AI 對話\n• 最大執行步數：決定 Agent 單次任務能夠執行的操作數量上限</string>
+
+    <!-- Shizuku Settings -->
+    <string name="shizuku_privilege_level">當前權限級別</string>
+    <string name="shizuku_root_mode">Root 模式</string>
+    <string name="shizuku_root_mode_uid">Root 模式 (UID 0)</string>
+    <string name="shizuku_adb_mode_uid">ADB 模式 (UID 2000)</string>
+    <string name="shizuku_status_not_connected">未連接</string>
+    <string name="shizuku_root_requires">需要 Shizuku 以 Root 權限運行</string>
+    <string name="shizuku_root_enabled">已啟用高級權限</string>
+    <string name="shizuku_root_disabled">啟用後可使用 Root 功能</string>
+    <string name="shizuku_su_command">允許 su -c 命令</string>
+    <string name="shizuku_su_enabled">AI 可執行 Root 命令</string>
+    <string name="shizuku_su_disabled">禁止執行 su -c</string>
+
+    <!-- TTS Settings -->
+    <string name="tts_enable">啟用語音播放</string>
+    <string name="tts_enable_enabled">已開啟，機器人回覆將支持語音播放</string>
+    <string name="tts_enable_disabled">已關閉</string>
+    <string name="tts_realtime_playback">實時播放</string>
+    <string name="tts_realtime_enabled">機器人輸出時立即播放</string>
+    <string name="tts_realtime_disabled">點擊消息旁的喇叭圖標播放</string>
+    <string name="tts_interrupt">實時語音打斷</string>
+    <string name="tts_interrupt_enabled">TTS播放時檢測到用戶說話自動停止</string>
+    <string name="tts_interrupt_disabled">不檢測用戶語音</string>
+    <string name="tts_aec">回聲消除（AEC）</string>
+    <string name="tts_aec_enabled">啟用 AEC 技術實現更精準的語音打斷</string>
+    <string name="tts_aec_disabled">不使用回聲消除</string>
+    <string name="tts_streaming">流式播放</string>
+    <string name="tts_streaming_enabled">啟用流式 LLM + 流式 TTS，降低延遲</string>
+    <string name="tts_streaming_disabled">使用傳統播放模式</string>
+
+    <!-- API Settings -->
+    <string name="api_backend_mode">Backend 模式</string>
+    <string name="api_backend_enabled">已啟用 - 使用後端服務</string>
+    <string name="api_backend_disabled">未啟用 - 使用本地 API</string>
+    <string name="api_backend_url">Backend 服務端地址</string>
+
+    <!-- Model Config Settings -->
+    <string name="model_provider">API 服務商</string>
+    <string name="model_api_key_set">已設置 (%1$s)</string>
+    <string name="model_api_key_not_set">未設置</string>
+    <string name="model_text_model">文本模型</string>
+    <string name="model_vision_model">視覺模型</string>
+
+    <!-- Feedback Settings -->
+    <string name="feedback_crash_report">雲端崩潰上報</string>
+    <string name="feedback_crash_report_enabled">已開啟，幫助我們改進應用</string>
+    <string name="feedback_crash_report_disabled">已關閉</string>
+    <string name="feedback_export_logs">導出日誌</string>
+    <string name="feedback_clear_logs">清除日誌</string>
+    <string name="feedback_clear_logs_desc">刪除所有本地日誌文件</string>
+    <string name="feedback_clear_confirm_title">確認清除</string>
+    <string name="feedback_clear_confirm_desc">確定要刪除所有日誌文件嗎？</string>
+    <string name="feedback_logs_cleared">日誌已清除</string>
+
+    <!-- Help Settings -->
+    <string name="help_shizuku_guide">Shizuku 使用指南</string>
+    <string name="help_shizuku_guide_desc">了解如何安裝和配置 Shizuku</string>
+    <string name="help_overlay_permission">懸浮窗權限說明</string>
+    <string name="help_overlay_permission_desc">了解為什麼需要懸浮窗權限</string>
+
+    <!-- About Settings -->
+    <string name="about_version">版本</string>
+    <string name="about_app_name">艾蓮 Autopilot</string>
+    <string name="about_app_desc">基於視覺語言模型的 Android 自動化工具</string>
+
+    <!-- Login Screen -->
+    <string name="login_welcome_back">歡迎回來，請登錄您的賬號</string>
+    <string name="login_email_label">郵箱地址</string>
+    <string name="login_password_label">密碼</string>
+    <string name="login_show_password">顯示密碼</string>
+    <string name="login_hide_password">隱藏密碼</string>
+    <string name="login_forgot_password">忘記密碼？</string>
+    <string name="login_button">登錄</string>
+    <string name="login_loading">登錄中...</string>
+    <string name="login_or">或</string>
+    <string name="login_no_account">還沒有賬號？</string>
+    <string name="login_register_now">立即註冊</string>
+    <string name="login_back">返回</string>
+
+    <!-- Permission Management -->
+    <string name="permission_basic">基礎權限</string>
+    <string name="permission_core">核心權限</string>
+    <string name="permission_other">其他權限</string>
+    <string name="permission_granted">已授予</string>
+    <string name="permission_denied">已拒絕</string>
+    <string name="permission_not_requested">未授權</string>
+
+    <!-- Device Controller Settings -->
+    <string name="device_execution_strategy">執行策略</string>
+    <string name="device_execution_strategy_desc">選擇設備控制器的執行方式</string>
+    <string name="device_strategy_auto">自動</string>
+    <string name="device_strategy_shizuku_only">僅 Shizuku</string>
+    <string name="device_strategy_accessibility_only">僅無障礙</string>
+    <string name="device_strategy_hybrid">混合模式</string>
+    <string name="device_fallback_strategy">降級策略</string>
+    <string name="device_fallback_strategy_desc">當首選方式不可用時的降級方式</string>
+    <string name="device_fallback_auto">自動</string>
+    <string name="device_fallback_shizuku_first">優先 Shizuku</string>
+    <string name="device_fallback_accessibility_first">優先無障礙</string>
+    <string name="device_performance_settings">性能設置</string>
+    <string name="device_screenshot_cache">截圖緩存</string>
+    <string name="device_screenshot_cache_desc">啟用截圖緩存以提升性能</string>
+    <string name="device_gesture_delay">手勢延遲</string>
+    <string name="device_input_delay">輸入延遲</string>
+    <string name="device_mediaprojection_title">屏幕錄製權限</string>
+    <string name="device_mediaprojection_desc">無障礙控制器需要屏幕錄製權限才能截圖</string>
+    <string name="device_mediaprojection_request">請求屏幕錄製權限</string>
+    <string name="device_mediaprojection_hint">提示: Shizuku 控制器不需要此權限</string>
+    <string name="device_accessibility_required_title">需要無障礙服務權限</string>
+    <string name="device_accessibility_required_desc">您選擇的執行策略需要啟用無障礙服務才能正常工作。</string>
+    <string name="device_accessibility_required_hint">請前往系統設定中開啟「艾蓮」無障礙服務。</string>
+    <string name="device_mediaprojection_required_title">需要屏幕錄製權限</string>
+    <string name="device_mediaprojection_required_desc">您選擇的執行策略需要屏幕錄製權限才能進行截圖操作。</string>
+    <string name="device_mediaprojection_required_hint">授予此權限後，無障礙控制器可以截取屏幕內容以進行視覺識別。</string>
+    <string name="device_shizuku_required_title">需要 Shizuku 權限</string>
+    <string name="device_shizuku_required_desc">您選擇的執行策略需要 Shizuku 權限才能正常工作。</string>
+    <string name="device_shizuku_required_hint">Shizuku 是一個高效的設備控制工具，需要您安裝並授權 Shizuku App。</string>
+    <string name="device_shizuku_required_steps">授權方式：\n1. 確保已安裝 Shizuku App\n2. 通過 ADB 授權（推薦）或 Root 授權\n3. 在 Shizuku App 中授予艾蓮權限</string>
+    <string name="device_accessibility_not_enabled">無障礙服務未啟用，請前往設定開啟</string>
+    <string name="device_go_authorize">去授權</string>
+    <string name="device_authorize_guide">授權引導</string>
+    <string name="device_later">稍後</string>
+
+    <!-- Alian Settings -->
+    <string name="alian_avatar_section">頭像設置</string>
+    <string name="alian_avatar_upload">上傳自定義頭像</string>
+    <string name="alian_avatar_saving">保存中...</string>
+    <string name="alian_avatar_change_hint">點擊頭像或按鈕更換</string>
+    <string name="alian_avatar_default_hint">默認使用語音音色頭像</string>
+    <string name="alian_voice_settings">語音設置</string>
+    <string name="alian_voice_select">音色</string>
+    <string name="alian_speed">語速</string>
+    <string name="alian_speed_slow">慢速 - 適合詳細講解</string>
+    <string name="alian_speed_normal">標準 - 正常語速</string>
+    <string name="alian_speed_fast">快速 - 適合快速交流</string>
+    <string name="alian_speed_very_fast">極快 - 適合快速瀏覽</string>
+    <string name="alian_volume">音量</string>
+    <string name="alian_volume_mute">靜音</string>
+    <string name="alian_volume_low">低音量</string>
+    <string name="alian_volume_normal">標準音量</string>
+    <string name="alian_volume_high">高音量</string>
+    <string name="alian_prompt_settings">提示詞設置</string>
+    <string name="alian_voice_call_prompt">語音通話提示詞</string>
+    <string name="alian_voice_call_prompt_desc">設置語音通話時的系統提示詞，用於定義 AI 的角色和行為。</string>
+    <string name="alian_voice_call_prompt_hint">輸入語音通話的系統提示詞...</string>
+    <string name="alian_video_call_prompt">視頻通話提示詞</string>
+    <string name="alian_video_call_prompt_desc">設置視頻通話時的系統提示詞，用於定義 AI 的角色和行為。</string>
+    <string name="alian_video_call_prompt_hint">輸入視頻通話的系統提示詞...</string>
+    <string name="alian_not_set">未設置</string>
+    <string name="alian_stop">停止</string>
+    <string name="alian_audition">試聽</string>
+    <string name="alian_save">保存</string>
+
+    <!-- Voice Selection Screen -->
+    <string name="voice_selection_title">音色選擇</string>
+    <string name="voice_selection_all">全部</string>
+    <string name="voice_selection_stop">停止</string>
+    <string name="voice_selection_audition">試聽</string>
+
+    <!-- Common Dialog -->
+    <string name="dialog_unit_ms">%1$d ms</string>
+    <string name="dialog_current_value">當前值: %1$d %2$s</string>
+</resources>

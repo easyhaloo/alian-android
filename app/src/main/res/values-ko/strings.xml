@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Alian</string>
+
+    <!-- Tab Titles -->
+    <string name="tab_home">Alian</string>
+    <string name="tab_history">기록</string>
+    <string name="tab_settings">설정</string>
+
+    <!-- Home Screen -->
+    <string name="home_ready">준비 완료, 원하는 작업을 말씀해 주세요</string>
+    <string name="home_connect_shizuku">먼저 Shizuku를 연결해 주세요</string>
+    <string name="home_try_these">이 명령어들을 사용해 보세요</string>
+    <string name="home_input_placeholder">Alian에게 원하는 작업을 말씀하세요…</string>
+    <string name="home_executing">단계 %1$d 실행 중</string>
+    <string name="home_send">전송</string>
+    <string name="home_stop">중지</string>
+
+    <!-- Preset Commands -->
+    <string name="preset_burger">버거 주문</string>
+    <string name="preset_burger_cmd">근처 맛있는 버거 주문해 줘</string>
+    <string name="preset_weibo">웨이보 게시</string>
+    <string name="preset_weibo_cmd">마지막 사진을 웨이보에 보내 줘</string>
+    <string name="preset_bilibili">빌리빌리 시청</string>
+    <string name="preset_bilibili_cmd">빌리빌리 열어서艾莲 검색하고 첫 번째 동영상에 좋아요 눌러 줘</string>
+    <string name="preset_takeout">배달 주문</string>
+    <string name="preset_takeout_cmd">메이퇀에서 족발밥 주문해 줘</string>
+    <string name="preset_music">음악 듣기</string>
+    <string name="preset_music_cmd">네이버 클라우드 뮤직 열어서 일일 추천 재생해 줘</string>
+    <string name="preset_message">메시지 보내기</string>
+    <string name="preset_message_cmd">최근 연락처에 바쁘다고 메시지 보내 줘</string>
+    <string name="preset_xiaohongshu">샤오홍슈 게시</string>
+    <string name="preset_xiaohongshu_cmd">샤오홍슈에 오늘 좋은 기분으로 게시해 줘</string>
+    <string name="preset_travel">여행 가이드</string>
+    <string name="preset_travel_cmd">샤오메이로 싼야 여행 가이드 찾아 줘</string>
+    <string name="preset_clean_background">백그라운드 정리</string>
+    <string name="preset_clean_background_cmd">백그라운드 실행 중인 앱 정리해 줘</string>
+    <string name="preset_power_saving">절전 모드</string>
+    <string name="preset_power_saving_cmd">절전 모드 켜고 화면 밝기 낮춰 줘</string>
+    <string name="preset_night_mode">야간 모드</string>
+    <string name="preset_night_mode_cmd">다크 모드 켜 줘</string>
+    <string name="preset_camera">사진 촬영</string>
+    <string name="preset_camera_cmd">카메라 열어서 사진 찍어 줘</string>
+    <string name="preset_exercise">운동 체크인</string>
+    <string name="preset_exercise_cmd">운동 기록 열어서 달리기 시작해 줘</string>
+    <string name="preset_coffee">커피 주문</string>
+    <string name="preset_coffee_cmd">스타벅스 라떼 주문해 줘</string>
+    <string name="preset_taxi">택시 호출</string>
+    <string name="preset_taxi_cmd">근처 지하철역으로 택시 불러 줘</string>
+    <string name="preset_smart_home">스마트 홈</string>
+    <string name="preset_smart_home_cmd">거실 불 켜 줘</string>
+    <string name="preset_schedule">일정 알림</string>
+    <string name="preset_schedule_cmd">내일 오전 9시 회의 알림 설정해 줘</string>
+    <string name="preset_alarm">알람</string>
+    <string name="preset_alarm_cmd">내일 아침 7시 알람 설정해 줘</string>
+    <string name="preset_navigation">내비게이션</string>
+    <string name="preset_navigation_cmd">근처 슈퍼마켓으로 내비게이션해 줘</string>
+    <string name="preset_weather">날씨 예보</string>
+    <string name="preset_weather_cmd">내일 날씨 확인해 줘</string>
+    <string name="preset_wechat">위챗 보내기</string>
+    <string name="preset_wechat_cmd">엄마에게 집에 왔다고 위챗 메시지 보내 줘</string>
+    <string name="preset_notes">메모하기</string>
+    <string name="preset_notes_cmd">오늘 할 일 목록 기록해 줘</string>
+    <string name="preset_reconnect">다시 연결</string>
+    <string name="preset_try">시도하기</string>
+
+    <!-- History Screen -->
+    <string name="history_title">실행 기록</string>
+    <string name="history_count">총 %1$d개 기록</string>
+    <string name="history_empty">실행 기록 없음</string>
+    <string name="history_empty_hint">작업 실행 후 기록이 여기에 표시됩니다</string>
+    <string name="history_steps">%1$d 단계</string>
+    <string name="history_delete">삭제</string>
+    <string name="history_delete_title">기록 삭제</string>
+    <string name="history_delete_confirm">이 실행 기록을 삭제하시겠습니까?</string>
+    <string name="history_timeline">실행 타임라인</string>
+    <string name="history_instruction">작업 지시</string>
+
+    <!-- Status -->
+    <string name="status_completed">완료</string>
+    <string name="status_failed">실패</string>
+    <string name="status_stopped">중지됨</string>
+    <string name="status_running">실행 중</string>
+    <string name="status_label">상태</string>
+    <string name="steps_label">단계 수</string>
+    <string name="duration_label">소요 시간</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">설정</string>
+    <string name="settings_subtitle">API 및 앱 옵션 구성</string>
+
+    <!-- Settings - Appearance -->
+    <string name="settings_appearance">외관</string>
+    <string name="settings_theme">테마 모드</string>
+    <string name="theme_light">라이트 모드</string>
+    <string name="theme_dark">다크 모드</string>
+    <string name="theme_system">시스템 따르기</string>
+    <string name="theme_select">테마 선택</string>
+
+    <!-- Settings - Language -->
+    <string name="settings_language">언어</string>
+    <string name="settings_language_desc">앱 표시 언어 전환</string>
+    <string name="language_system">시스템 따르기</string>
+    <string name="language_zh">간체 중국어</string>
+    <string name="language_zh_tw">번체 중국어</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_select">언어 선택</string>
+    <string name="language_restart_hint">언어 변경을 적용하려면 앱을 재시작해야 합니다</string>
+
+    <!-- Settings - API -->
+    <string name="settings_api">API 설정</string>
+    <string name="settings_provider">API 제공자</string>
+    <string name="settings_provider_custom">사용자 정의</string>
+    <string name="settings_model">모델</string>
+    <string name="settings_api_key">API Key</string>
+    <string name="settings_api_key_set">설정됨 (%1$s)</string>
+    <string name="settings_api_key_unset">미설정</string>
+    <string name="settings_api_key_hint">API Key를 입력하세요</string>
+    <string name="settings_show">표시</string>
+    <string name="settings_hide">숨기기</string>
+
+    <!-- Settings - Custom Models -->
+    <string name="settings_custom_models">사용자 정의 모델</string>
+    <string name="settings_add_model">사용자 정의 모델 추가</string>
+    <string name="settings_add_model_hint">다른 지원 모델 추가</string>
+    <string name="settings_model_name_hint">모델 이름 또는 ID 입력</string>
+    <string name="settings_model_name_example">예: gpt-4-vision</string>
+    <string name="settings_select_model">모델 선택</string>
+
+    <!-- Settings - Help -->
+    <string name="settings_help">도움말</string>
+    <string name="settings_shizuku_guide">Shizuku 가이드</string>
+    <string name="settings_shizuku_guide_desc">Shizuku 설치 및 구성 방법</string>
+    <string name="settings_overlay_help">오버레이 권한</string>
+    <string name="settings_overlay_help_desc">오버레이 권한이 필요한 이유</string>
+
+    <!-- Settings - About -->
+    <string name="settings_about">정보</string>
+    <string name="settings_version">버전</string>
+    <string name="settings_app_desc">시각 언어 모델 기반 Android 자동화 도구</string>
+
+    <!-- Shizuku Status -->
+    <string name="shizuku_connected">Shizuku 연결됨</string>
+    <string name="shizuku_not_connected">Shizuku 연결 안 됨</string>
+    <string name="shizuku_available">기기 제어 기능 사용 가능</string>
+    <string name="shizuku_unavailable">Shizuku를 시작하고 권한을 부여하세요</string>
+
+    <!-- Shizuku Help -->
+    <string name="shizuku_help_step1_title">Shizuku 다운로드</string>
+    <string name="shizuku_help_step1_desc">Google Play 또는 GitHub에서 Shizuku 다운로드\n\n• Google Play: \"Shizuku\" 검색\n• GitHub: github.com/RikkaApps/Shizuku</string>
+    <string name="shizuku_help_step2_title">Shizuku 시작</string>
+    <string name="shizuku_help_step2_desc">Shizuku 앱을 열고 시작 방법 선택:\n\n• 무선 디버깅 (권장): Android 11 이상 필요, 개발자 옵션에서 무선 디버깅 활성화\n• 컴퓨터 연결: ADB 명령으로 시작</string>
+    <string name="shizuku_help_step3_title">Alian 권한 부여</string>
+    <string name="shizuku_help_step3_desc">Shizuku의 \"앱 관리\"에서 Alian Autopilot 찾아서 권한 부여 버튼 클릭</string>
+    <string name="shizuku_help_step4_title">사용 시작</string>
+    <string name="shizuku_help_step4_desc">권한 부여 완료 후, Alian 앱으로 돌아가면 상태 카드에 \"Shizuku 연결됨\"이 표시됩니다</string>
+
+    <!-- Overlay Help -->
+    <string name="overlay_why">오버레이 권한이 필요한 이유는?</string>
+    <string name="overlay_reason">Alian은 작업 실행 시 오버레이를 표시해야 합니다:</string>
+    <string name="overlay_feature1">현재 실행 진행 상황 표시</string>
+    <string name="overlay_feature2">중지 버튼 제공, 언제든지 작업 중단 가능</string>
+    <string name="overlay_feature3">다른 앱 위에 상태 정보 표시</string>
+    <string name="overlay_how">활성화 방법?</string>
+    <string name="overlay_how_desc">1. 작업 실행 시 자동으로 프롬프트가 표시됩니다\n2. 또는 이동: 설정 > 앱 > Alian > 오버레이 권한\n3. \"다른 앱 위에 표시 허용\" 활성화</string>
+    <string name="overlay_privacy">개인정보 및 보안</string>
+    <string name="overlay_privacy_desc">오버레이는 작업 실행 중에만 표시되며, 개인정보를 수집하지 않습니다. 작업 완료 후 오버레이는 자동으로 사라집니다.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Alian에 오신 것을 환영합니다</string>
+    <string name="onboarding_welcome_desc">Alian은 지능형 자동화 어시스턴트로,\n스마트폰을 조작하여 다양한 작업을 완료합니다</string>
+    <string name="onboarding_ai">AI 구동</string>
+    <string name="onboarding_ai_desc">첨단 시각 언어 모델을 기반으로,\nAlian은 화면 내용을 이해하고 지능적인 결정을 내립니다</string>
+    <string name="onboarding_easy">사용하기 쉬움</string>
+    <string name="onboarding_easy_desc">자연어로 원하는 작업을 설명하면,\nAlian이 자동으로 완료합니다</string>
+    <string name="onboarding_safe">안전하고 신뢰할 수 있음</string>
+    <string name="onboarding_safe_desc">민감한 페이지(결제, 비밀번호 등) 감지 시 자동으로 중지하여,\n계정을 보호합니다</string>
+    <string name="onboarding_skip">건너뛰기</string>
+    <string name="onboarding_next">다음</string>
+    <string name="onboarding_start">시작하기</string>
+
+    <!-- Common -->
+    <string name="btn_confirm">확인</string>
+    <string name="btn_cancel">취소</string>
+    <string name="btn_close">닫기</string>
+    <string name="btn_add">추가</string>
+    <string name="btn_delete">삭제</string>
+    <string name="btn_back">뒤로</string>
+    <string name="btn_got_it">알겠습니다</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_enter_instruction">지시를 입력하세요</string>
+    <string name="toast_enter_api_key">API Key를 입력하세요</string>
+    <string name="toast_grant_overlay">오버레이 권한을 부여하세요</string>
+    <string name="toast_shizuku_granted">Shizuku 권한이 부여됨</string>
+    <string name="toast_start_shizuku">먼저 Shizuku 앱을 시작하세요</string>
+    <string name="toast_shizuku_old">Shizuku 버전이 너무 오래됨</string>
+    <string name="toast_task_complete">작업 완료</string>
+    <string name="toast_user_stopped">사용자 중지</string>
+    <string name="toast_sensitive_page">민감한 페이지(결제/비밀번호) 감지, 안전하게 중지함</string>
+    <string name="toast_max_steps">최대 단계 수에 도달함</string>
+    <string name="toast_error">오류: %1$s</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">Alian 접근성 서비스, 화면 요소 정보 획득 및 자동화 작업 수행에 사용</string>
+
+    <!-- Overlay Service -->
+    <string name="overlay_channel_name">Alian 상태</string>
+    <string name="overlay_channel_desc">Alian 실행 상태 표시</string>
+    <string name="overlay_notification_title">Alian 실행 중</string>
+    <string name="overlay_notification_text">자동화 작업 실행 중...</string>
+    <string name="overlay_app_name">Alian</string>
+    <string name="overlay_stop">중지</string>
+    <string name="overlay_cancel">취소</string>
+    <string name="overlay_continue">계속</string>
+    <string name="overlay_confirm">확인</string>
+    <string name="overlay_chat_mode">💬 Q&amp;A 모드</string>
+    <string name="overlay_chat">Q&amp;A</string>
+
+    <!-- Call Features -->
+    <string name="call_video">영상 통화</string>
+    <string name="call_voice">음성 통화</string>
+    <string name="call_phone">전화 통화</string>
+    <string name="call_mic">마이크</string>
+
+    <!-- Menu Items -->
+    <string name="menu_login">로그인</string>
+    <string name="menu_logout">로그아웃</string>
+    <string name="menu_settings">설정</string>
+    <string name="menu_new_session">새 세션</string>
+
+    <!-- Chat History -->
+    <string name="chat_history_title">채팅 기록</string>
+    <string name="chat_history_count">%1$d개 대화</string>
+    <string name="chat_history_empty">채팅 기록 없음</string>
+    <string name="chat_history_empty_hint">대화 시작 후 기록이 여기에 표시됩니다</string>
+    <string name="chat_new_session">새 대화</string>
+    <string name="chat_new_session_hint">새 대화 세션 시작</string>
+    <string name="chat_delete_title">삭제 확인</string>
+    <string name="chat_delete_confirm">이 대화를 삭제하시겠습니까?</string>
+
+    <!-- Time Format -->
+    <string name="time_just_now">방금</string>
+    <string name="time_minutes_ago">%1$d분 전</string>
+    <string name="time_hours_ago">%1$d시간 전</string>
+    <string name="time_days_ago">%1$d일 전</string>
+    <string name="time_unknown">알 수 없는 시간</string>
+
+    <!-- Voice Input -->
+    <string name="voice_recording">녹음 중</string>
+    <string name="voice_hold_to_speak">누르고 말하기</string>
+    <string name="voice_release_to_send">놓으면 전송</string>
+    <string name="voice_processing">처리 중...</string>
+    <string name="voice_permission_title">마이크 권한 필요</string>
+    <string name="voice_permission_desc">음성 입력 기능을 사용하려면 마이크 권한이 필요합니다.</string>
+    <string name="voice_go_authorize">권한 부여</string>
+    <string name="voice_switch_keyboard">키보드 입력으로 전환</string>
+    <string name="voice_switch_voice">음성 입력으로 전환</string>
+    <string name="voice_say_something">말씀해 주세요...</string>
+
+    <!-- Chat Components -->
+    <string name="chat_ready_title">도와드릴 준비가 되었습니다</string>
+    <string name="chat_ready_hint">메시지를 입력하거나 음성으로 대화 시작</string>
+    <string name="chat_alian_avatar">Alian 아바타</string>
+    <string name="chat_user_avatar">사용자 아바타</string>
+    <string name="chat_unknown_file">알 수 없는 파일</string>
+    <string name="chat_preview">미리보기</string>
+    <string name="chat_play">재생</string>
+    <string name="chat_stop_play">재생 중지</string>
+
+    <!-- Content Description -->
+    <string name="cd_close">닫기</string>
+    <string name="cd_delete">삭제</string>
+    <string name="cd_back">뒤로</string>
+    <string name="cd_stop">중지</string>
+    <string name="cd_send">전송</string>
+
+    <!-- Alian Local Screen -->
+    <string name="local_title">Alian Local</string>
+    <string name="local_ready">준비 완료</string>
+    <string name="local_shizuku_connected">Shizuku 연결됨</string>
+    <string name="local_shizuku_disconnected">Shizuku 연결 안 됨</string>
+
+    <!-- Local History Drawer -->
+    <string name="local_history_title">실행 기록</string>
+    <string name="local_history_count">%1$d개 기록</string>
+    <string name="local_history_empty">실행 기록 없음</string>
+    <string name="local_history_delete_title">삭제 확인</string>
+    <string name="local_history_delete_confirm">이 실행 기록을 삭제하시겠습니까?</string>
+    <string name="local_status_completed">완료</string>
+    <string name="local_status_failed">실패</string>
+    <string name="local_status_stopped">중지됨</string>
+    <string name="local_status_running">실행 중</string>
+
+    <!-- Settings Screen Sections -->
+    <string name="settings_section_appearance">🎨 외관 및 개인화</string>
+    <string name="settings_section_ai">🧠 AI 모델 설정</string>
+    <string name="settings_section_execution">⚙️ 실행 및 제어</string>
+    <string name="settings_section_permission">🔐 권한 및 보안</string>
+    <string name="settings_section_extension">🔌 확장 기능</string>
+    <string name="settings_section_help">❓ 도움말 및 피드백</string>
+
+    <!-- Settings Screen Items -->
+    <string name="settings_item_theme">테마 모드</string>
+    <string name="settings_item_alian">Alian</string>
+    <string name="settings_item_alian_subtitle">아바타, 음색, 말하기 속도</string>
+    <string name="settings_item_language">언어</string>
+    <string name="settings_item_model_config">모델 설정</string>
+    <string name="settings_item_model_config_subtitle">LLM/VLM 제공자</string>
+    <string name="settings_item_speech_provider">음성 제공자</string>
+    <string name="settings_item_speech_provider_subtitle">ASR/TTS 설정</string>
+    <string name="settings_item_api_config">API 설정</string>
+    <string name="settings_item_api_config_subtitle">Backend 설정</string>
+    <string name="settings_item_execution">실행 설정</string>
+    <string name="settings_item_execution_subtitle">배치 실행, 최적화 모드</string>
+    <string name="settings_item_voice_interaction">음성 상호작용</string>
+    <string name="settings_item_voice_interaction_subtitle">TTS, 중단, 스트리밍</string>
+    <string name="settings_item_device_controller">기기 컨트롤러</string>
+    <string name="settings_item_device_controller_subtitle">실행 전략, 지연</string>
+    <string name="settings_item_permission">권한 관리</string>
+    <string name="settings_item_permission_subtitle">기본 및 핵심 권한</string>
+    <string name="settings_item_shizuku">Shizuku</string>
+    <string name="settings_item_shizuku_subtitle">Root 모드 설정</string>
+    <string name="settings_item_mcp">MCP</string>
+    <string name="settings_item_mcp_subtitle">모델 컨텍스트 프로토콜</string>
+    <string name="settings_item_capabilities">기능</string>
+    <string name="settings_item_capabilities_subtitle">스킬 관리</string>
+    <string name="settings_item_help">도움말</string>
+    <string name="settings_item_feedback">피드백</string>
+    <string name="settings_item_about">정보</string>
+
+    <!-- Settings Dialogs -->
+    <string name="dialog_select_theme">테마 선택</string>
+    <string name="dialog_select_language">언어 선택</string>
+    <string name="dialog_select_model">모델 선택</string>
+    <string name="dialog_api_key_title">API Key</string>
+    <string name="dialog_api_key_hint">API Key를 입력하세요</string>
+    <string name="dialog_text_model_title">텍스트 모델</string>
+    <string name="dialog_text_model_hint">텍스트 모델 이름 입력 (텍스트 전용 채팅용)</string>
+    <string name="dialog_text_model_common">일반 모델: qwen-max, qwen-plus, qwen-turbo</string>
+    <string name="dialog_backend_url_title">Backend 서버 URL</string>
+    <string name="dialog_backend_url_hint">Backend 서버의 전체 주소 입력</string>
+    <string name="dialog_max_steps_title">최대 실행 단계 수</string>
+    <string name="dialog_max_steps_desc">Agent의 단일 작업 최대 실행 단계 수를 설정합니다. 단계 수가 많을수록 복잡한 작업이 가능하지만 더 많은 토큰을 소모합니다.</string>
+    <string name="dialog_max_steps_unit">%1$d 단계</string>
+    <string name="dialog_provider_title">API 제공자</string>
+    <string name="dialog_provider_hint">API 제공자 선택 (OpenAI 호환)</string>
+    <string name="dialog_custom_url_hint">사용자 정의 API 엔드포인트 입력</string>
+    <string name="dialog_custom_url_mai_hint">기본값을 사용하려면 비워두세요 (localhost:8000)</string>
+    <string name="dialog_recommended_model">추천 모델</string>
+    <string name="dialog_custom_model">사용자 정의 모델</string>
+    <string name="dialog_custom_model_hint">모델 이름 입력, 예: gpt-4o</string>
+    <string name="dialog_fetch_models">API에서 사용 가능한 모델 가져오기</string>
+    <string name="dialog_fetching">가져오는 중...</string>
+    <string name="dialog_api_model_list">API 모델 (%1$d)</string>
+    <string name="dialog_search_model">모델 검색...</string>
+    <string name="dialog_no_match">\"%1$s\"와(과) 일치하는 모델 없음</string>
+    <string name="dialog_found_models">%1$d개 모델 찾음</string>
+    <string name="dialog_fetch_api_key_first">먼저 API Key를 설정하세요</string>
+    <string name="dialog_fetch_success">%1$d개 모델 가져옴</string>
+    <string name="dialog_fetch_failed">가져오기 실패: %1$s</string>
+    <string name="dialog_click_fetch">\"API에서 가져오기\" 클릭하여 모델 목록 로드</string>
+
+    <!-- Warning Dialogs -->
+    <string name="dialog_root_mode_title">Root 모드 활성화</string>
+    <string name="dialog_root_mode_desc">Root 모드를 사용하면 앱이 고급 시스템 권한을 사용할 수 있습니다.</string>
+    <string name="dialog_root_mode_warning">경고:</string>
+    <string name="dialog_root_mode_risk1">Root 권한은 시스템 불안정을 초래할 수 있습니다</string>
+    <string name="dialog_root_mode_risk2">잘못된 작업은 기기 데이터를 손상시킬 수 있습니다</string>
+    <string name="dialog_root_mode_risk3">Root 권한의 위험을 이해하고 있는지 확인하세요</string>
+    <string name="dialog_root_mode_hint">위험을 완전히 이해하고 고급 기능이 필요한 경우에만 이 옵션을 활성화하세요.</string>
+    <string name="dialog_root_mode_confirm">위험을 이해하고 활성화</string>
+    <string name="dialog_su_command_title">su -c 명령 허용</string>
+    <string name="dialog_su_command_desc">이 옵션을 사용하면 AI가 su -c 명령을 실행할 수 있으며, AI가 Root 권한으로 임의의 셸 명령을 실행할 수 있음을 의미합니다.</string>
+    <string name="dialog_su_command_extreme_danger">매우 위험:</string>
+    <string name="dialog_su_command_risk1">AI가 위험한 시스템 명령을 실행할 수 있습니다</string>
+    <string name="dialog_su_command_risk2">데이터 손실 또는 시스템 손상을 초래할 수 있습니다</string>
+    <string name="dialog_su_command_risk3">악의적인 지시에 악용될 수 있습니다</string>
+    <string name="dialog_su_command_risk4">일상적인 사용에는 권장하지 않습니다</string>
+    <string name="dialog_su_command_hint">강력히 권장: 완전히 제어된 테스트 환경에서만 사용하고 사용 후 즉시 비활성화하세요.</string>
+
+    <!-- Voice Call Screen -->
+    <string name="voice_call_title">음성 통화</string>
+    <string name="voice_call_start_hint">아래 버튼을 클릭하여 시작</string>
+    <string name="voice_call_recording">녹음 중</string>
+    <string name="voice_call_speak">말씀해 주세요</string>
+    <string name="voice_call_thinking">생각 중</string>
+    <string name="voice_call_playing">재생 중</string>
+    <string name="voice_call_error">오류 발생</string>
+    <string name="voice_call_retry">재시도</string>
+    <string name="voice_call_end">통화 종료</string>
+    <string name="voice_call_start">통화 시작</string>
+
+    <!-- Video Call Screen -->
+    <string name="video_call_title">영상 통화</string>
+    <string name="video_call_start_hint">아래 버튼을 클릭하여 시작</string>
+    <string name="video_call_recording">녹음 중</string>
+    <string name="video_call_speak">말씀해 주세요</string>
+    <string name="video_call_thinking">생각 중</string>
+    <string name="video_call_playing">재생 중</string>
+    <string name="video_call_error">오류 발생</string>
+    <string name="video_call_retry">재시도</string>
+    <string name="video_call_end">통화 종료</string>
+    <string name="video_call_start">통화 시작</string>
+
+    <!-- VLM Only Video Call Screen -->
+    <string name="vlm_video_call_title">VLM 영상 통화</string>
+    <string name="vlm_video_call_recording">녹음 중</string>
+    <string name="vlm_video_call_thinking">생각 중</string>
+    <string name="vlm_video_call_playing">재생 중</string>
+    <string name="vlm_video_call_error">오류</string>
+    <string name="vlm_video_call_retry">재시도</string>
+    <string name="vlm_video_call_start_hint">아래 버튼을 클릭하여 시작</string>
+    <string name="vlm_video_call_speak">말씀해 주세요</string>
+    <string name="vlm_video_call_thinking_hint">AI가 생각 중...</string>
+    <string name="vlm_video_call_playing_hint">AI가 응답 중</string>
+    <string name="vlm_video_call_error_hint">오류 발생, 다시 시도하세요</string>
+    <string name="vlm_video_call_recording_status">녹음 중</string>
+    <string name="vlm_video_call_thinking_status">생각 중</string>
+    <string name="vlm_video_call_playing_status">재생 중</string>
+    <string name="vlm_video_call_frames_captured">%1$d/%2$d 프레임 캡처</string>
+    <string name="vlm_video_call_feature_capture">스마트 캡처</string>
+    <string name="vlm_video_call_feature_capture_desc">말할 때 즉시 캡처</string>
+    <string name="vlm_video_call_feature_vision">시각 이해</string>
+    <string name="vlm_video_call_feature_vision_desc">AI가 당신의 환경을 이해</string>
+    <string name="vlm_video_call_feature_realtime">실시간 응답</string>
+    <string name="vlm_video_call_feature_realtime_desc">스트리밍 대화</string>
+    <string name="vlm_video_call_close">닫기</string>
+
+    <!-- Phone Call Screen -->
+    <string name="phone_call_title">전화 통화</string>
+    <string name="phone_call_start_hint">아래 버튼을 클릭하여 시작</string>
+    <string name="phone_call_active">통화 중</string>
+    <string name="phone_call_error">오류 발생</string>
+    <string name="phone_call_retry">재시도</string>
+    <string name="phone_call_end">통화 종료</string>
+    <string name="phone_call_start">통화 시작</string>
+    <string name="phone_call_screen_preview">화면 미리보기</string>
+    <string name="phone_call_fullscreen_mode">전체 화면</string>
+    <string name="phone_call_minimize">최소화</string>
+    <string name="phone_call_expand">확장</string>
+    <string name="phone_call_close">닫기</string>
+    <string name="phone_call_permission_title">권한 필요</string>
+    <string name="phone_call_permission_hint">설정 페이지에서 화면 녹화 권한을 부여한 후 다시 시도하세요.</string>
+    <string name="phone_call_go_settings">설정으로</string>
+    <string name="phone_call_cancel">취소</string>
+
+    <!-- TTS Voice Selection -->
+    <string name="tts_voice_title">음색 선택</string>
+    <string name="tts_voice_longxiaochun">룡샤오춘(여성)</string>
+    <string name="tts_voice_longyingtao">룡잉타오(여성)</string>
+    <string name="tts_voice_longanwen">룡안원(여성)</string>
+    <string name="tts_voice_longyingmu">룡잉무(여성)</string>
+
+    <!-- Login/Logout -->
+    <string name="login_click_to_login">클릭하여 로그인</string>
+    <string name="login_logout">로그아웃</string>
+    <string name="login_logout_confirm_title">로그아웃 확인</string>
+    <string name="login_logout_confirm_desc">로그아웃하시겠습니까? Alian 기능을 사용하려면 다시 로그인해야 합니다.</string>
+
+    <!-- Overlay Help Dialog -->
+    <string name="overlay_help_title">오버레이 권한 설명</string>
+    <string name="overlay_help_why">오버레이 권한이 필요한 이유는?</string>
+    <string name="overlay_help_reason">Alian은 작업 실행 시 오버레이를 표시해야 합니다:</string>
+    <string name="overlay_help_feature1">현재 실행 진행 상황 표시</string>
+    <string name="overlay_help_feature2">중지 버튼 제공, 언제든지 작업 중단 가능</string>
+    <string name="overlay_help_feature3">다른 앱 위에 상태 정보 표시</string>
+    <string name="overlay_help_how">활성화 방법?</string>
+    <string name="overlay_help_how_desc">1. 작업 실행 시 자동으로 프롬프트가 표시됩니다\n2. 또는 이동: 설정 > 앱 > Alian > 오버레이 권한\n3. \"다른 앱 위에 표시 허용\" 활성화</string>
+    <string name="overlay_help_privacy">개인정보 및 보안</string>
+    <string name="overlay_help_privacy_desc">오버레이는 작업 실행 중에만 표시되며, 개인정보를 수집하지 않습니다. 작업 완료 후 오버레이는 자동으로 사라집니다.</string>
+
+    <!-- Format Strings -->
+    <string name="format_time_minutes_ago">%1$d분 전</string>
+    <string name="format_time_hours_ago">%1$d시간 전</string>
+    <string name="format_time_days_ago">%1$d일 전</string>
+    <string name="format_time_just_now">방금</string>
+    <string name="format_time_unknown">알 수 없는 시간</string>
+    <string name="format_date_month_day">%1$d월 %2$d일</string>
+
+    <!-- Time-based Greetings -->
+    <string name="greeting_morning">좋은 아침이에요</string>
+    <string name="greeting_forenoon">좋은 아침이에요</string>
+    <string name="greeting_noon">좋은 오후예요</string>
+    <string name="greeting_afternoon">좋은 오후예요</string>
+    <string name="greeting_evening">좋은 저녁이에요</string>
+    <string name="greeting_night">늦은 밤이에요</string>
+    <string name="greeting_prompt">오늘 무엇을 도와드릴까요?</string>
+
+    <!-- Permission Dialogs -->
+    <string name="permission_title_record_audio">마이크 권한 필요</string>
+    <string name="permission_title_camera">카메라 권한 필요</string>
+    <string name="permission_title_post_notifications">알림 권한 필요</string>
+    <string name="permission_title_system_alert_window">오버레이 권한 필요</string>
+    <string name="permission_title_accessibility_service">접근성 서비스 필요</string>
+    <string name="permission_title_media_projection">화면 녹화 권한 필요</string>
+    <string name="permission_title_shizuku">Shizuku 권한 필요</string>
+    
+    <string name="permission_desc_record_audio">음성 입력 및 음성 통화 기능을 사용하려면 마이크 권한이 필요합니다.</string>
+    <string name="permission_desc_camera">영상 통화 기능을 사용하려면 카메라 권한이 필요합니다.</string>
+    <string name="permission_desc_post_notifications">백그라운드 실행 알림을 표시하여 앱이 시스템에 의해 종료되는 것을 방지합니다.</string>
+    <string name="permission_desc_system_alert_window">오버레이 인터페이스를 정상적으로 표시하려면 오버레이 권한이 필요합니다.</string>
+    <string name="permission_desc_accessibility_service">자동화 기능이 다른 앱을 제어하려면 접근성 서비스 권한이 필요합니다.</string>
+    <string name="permission_desc_media_projection">자동화 기능이 시각 인식을 위해 화면 내용을 캡처하려면 화면 녹화 권한이 필요합니다.\n\n참고: 이 권한은 스크린샷에만 사용되며, 비디오나 오디오를 녹화하지 않습니다.</string>
+    <string name="permission_desc_shizuku">Shizuku는 효율적인 기기 제어 도구로, Shizuku 앱 설치 및 권한 부여가 필요합니다.\n\n권한 부여 방법:\n1. Shizuku 앱이 설치되어 있는지 확인\n2. ADB 권한 부여(권장) 또는 Root 권한 부여\n3. Shizuku 앱에서 Alian 권한 부여</string>
+    
+    <string name="permission_name_record_audio">마이크 권한</string>
+    <string name="permission_name_camera">카메라 권한</string>
+    <string name="permission_name_post_notifications">알림 권한</string>
+    <string name="permission_name_system_alert_window">오버레이 권한</string>
+    <string name="permission_name_accessibility_service">접근성 서비스</string>
+    <string name="permission_name_media_projection">화면 녹화 권한</string>
+    <string name="permission_name_shizuku">Shizuku 권한</string>
+    
+    <string name="permission_go_authorize">권한 부여</string>
+
+    <!-- Execution Prompt -->
+    <string name="execution_prompt_ready_title">준비 완료</string>
+    <string name="execution_prompt_ready_desc">원하는 작업을 말씀해 주세요</string>
+    <string name="execution_prompt_shizuku_title">Shizuku 연결 필요</string>
+    <string name="execution_prompt_shizuku_desc">먼저 Shizuku를 연결하세요</string>
+    <string name="execution_prompt_accessibility_title">접근성 서비스 필요</string>
+    <string name="execution_prompt_accessibility_desc">먼저 접근성 서비스를 활성화하세요</string>
+    <string name="execution_prompt_media_projection_title">화면 녹화 권한 필요</string>
+    <string name="execution_prompt_media_projection_desc">먼저 화면 녹화 권한을 부여하세요</string>
+    <string name="execution_prompt_shizuku_or_accessibility_title">Shizuku 또는 접근성 서비스 필요</string>
+    <string name="execution_prompt_shizuku_or_accessibility_desc">먼저 Shizuku를 연결하거나 접근성 서비스를 활성화하세요</string>
+    <string name="execution_prompt_shizuku_unavailable_title">Shizuku 사용 불가</string>
+    <string name="execution_prompt_shizuku_unavailable_desc">접근성 모드로 전환됨</string>
+
+    <!-- Settings SubScreen Titles -->
+    <string name="settings_subscreen_theme">테마 모드</string>
+    <string name="settings_subscreen_alian">Alian 설정</string>
+    <string name="settings_subscreen_model_config">모델 설정</string>
+    <string name="settings_subscreen_speech_provider">음성 제공자</string>
+    <string name="settings_subscreen_api">API 설정</string>
+    <string name="settings_subscreen_execution">실행 설정</string>
+    <string name="settings_subscreen_voice_interaction">음성 상호작용</string>
+    <string name="settings_subscreen_device_controller">기기 컨트롤러</string>
+    <string name="settings_subscreen_permission_management">권한 관리</string>
+    <string name="settings_subscreen_shizuku">Shizuku 설정</string>
+    <string name="settings_subscreen_mcp">MCP 관리</string>
+    <string name="settings_subscreen_help">도움말</string>
+    <string name="settings_subscreen_feedback">피드백 및 디버그</string>
+    <string name="settings_subscreen_about">정보</string>
+
+    <!-- TTS Realtime -->
+    <string name="tts_realtime_off">실시간 음성 재생 끄기</string>
+    <string name="tts_realtime_on">실시간 음성 재생 켜기</string>
+
+    <!-- Voice Call Top Bar States -->
+    <string name="voice_call_state_idle">음성 통화</string>
+    <string name="voice_call_state_recording">녹음 중</string>
+    <string name="voice_call_state_processing">생각 중</string>
+    <string name="voice_call_state_playing">재생 중</string>
+    <string name="voice_call_state_error">연결 오류</string>
+
+    <!-- Voice Call Components -->
+    <string name="voice_call_empty_hint">아래 버튼을 클릭하여 음성 통화 시작</string>
+    <string name="voice_call_loading_text">생각 중...</string>
+    <string name="voice_call_recording_text">녹음 중</string>
+
+    <!-- Login Status Card -->
+    <string name="login_status_logged_in">로그인됨</string>
+    <string name="login_status_not_logged_in">로그인 안 됨</string>
+    <string name="login_status_backend_logged_in">Backend 모드 로그인됨</string>
+    <string name="login_status_please_login">먼저 Alian 계정에 로그인하세요</string>
+    <string name="login_status_use_openai_api">OpenAI 호환 API 사용</string>
+
+    <!-- Execution Settings -->
+    <string name="execution_device_controller">기기 컨트롤러</string>
+    <string name="execution_device_controller_desc">기기 컨트롤러의 실행 전략 및 성능 설정</string>
+    <string name="execution_optimize_mode">최적화 모드</string>
+    <string name="execution_optimize_mode_enabled">활성화됨 (VLM 호출 60% 감소, 2.5배 빠름)</string>
+    <string name="execution_optimize_mode_disabled">비활성화됨 (표준 모드)</string>
+    <string name="execution_batch_mode">배치 실행 모드</string>
+    <string name="execution_batch_mode_enabled">활성화됨 (충돌하지 않는 작업 배치 실행)</string>
+    <string name="execution_batch_mode_disabled">비활성화됨 (순차 실행)</string>
+    <string name="execution_react_only_mode">ReactOnly 모드</string>
+    <string name="execution_react_only_enabled">활성화됨 (Manager는 처음에 한 번만 계획, 이후 Executor가 실행)</string>
+    <string name="execution_react_only_disabled">비활성화됨 (표준 모드)</string>
+    <string name="execution_chat_agent_mode">ChatAgent 모드</string>
+    <string name="execution_chat_agent_enabled">활성화됨 (음성 중단 및 실시간 상호작용 지원)</string>
+    <string name="execution_chat_agent_disabled">비활성화됨 (표준 실행 모드)</string>
+    <string name="execution_max_steps">최대 실행 단계 수</string>
+    <string name="execution_max_steps_value">%1$d 단계</string>
+    <string name="execution_info_title">설명</string>
+    <string name="execution_info_desc">• 최적화 모드: 불필요한 Manager/Reflector 호출을 건너뛰어 VLM 호출을 줄이고 실행 속도 향상\n• 배치 실행 모드: AI가 한 번에 여러 충돌하지 않는 작업을 반환하여 VLM 호출 감소\n• ReactOnly 모드: Manager는 시작할 때만 계획, 이후 Executor가 실행하여 VLM 호출 대폭 감소\n• ChatAgent 모드: 실행 중 음성 중단 및 실시간 상호작용 지원\n• 최대 단계 수: Agent의 단일 작업에서 실행 가능한 작업의 상한 설정</string>
+
+    <!-- Shizuku Settings -->
+    <string name="shizuku_privilege_level">현재 권한 수준</string>
+    <string name="shizuku_root_mode">Root 모드</string>
+    <string name="shizuku_root_mode_uid">Root 모드 (UID 0)</string>
+    <string name="shizuku_adb_mode_uid">ADB 모드 (UID 2000)</string>
+    <string name="shizuku_status_not_connected">연결 안 됨</string>
+    <string name="shizuku_root_requires">Shizuku가 Root 권한으로 실행되어야 합니다</string>
+    <string name="shizuku_root_enabled">고급 권한 활성화됨</string>
+    <string name="shizuku_root_disabled">활성화하면 Root 기능 사용 가능</string>
+    <string name="shizuku_su_command">su -c 명령 허용</string>
+    <string name="shizuku_su_enabled">AI가 Root 명령 실행 가능</string>
+    <string name="shizuku_su_disabled">su -c 실행 차단</string>
+
+    <!-- TTS Settings -->
+    <string name="tts_enable">음성 재생 활성화</string>
+    <string name="tts_enable_enabled">활성화됨, 봇 응답이 음성 재생 지원</string>
+    <string name="tts_enable_disabled">비활성화됨</string>
+    <string name="tts_realtime_playback">실시간 재생</string>
+    <string name="tts_realtime_enabled">봇 출력 시 즉시 재생</string>
+    <string name="tts_realtime_disabled">메시지 옆 스피커 아이콘 클릭하여 재생</string>
+    <string name="tts_interrupt">실시간 음성 중단</string>
+    <string name="tts_interrupt_enabled">TTS 재생 중 사용자 발화 감지 시 자동 중지</string>
+    <string name="tts_interrupt_disabled">사용자 음성 감지 안 함</string>
+    <string name="tts_aec">에코 제거 (AEC)</string>
+    <string name="tts_aec_enabled">더 정확한 음성 중단을 위해 AEC 활성화</string>
+    <string name="tts_aec_disabled">에코 제거 없음</string>
+    <string name="tts_streaming">스트리밍 재생</string>
+    <string name="tts_streaming_enabled">스트리밍 LLM + 스트리밍 TTS 활성화, 지연 시간 단축</string>
+    <string name="tts_streaming_disabled">기존 재생 모드 사용</string>
+
+    <!-- API Settings -->
+    <string name="api_backend_mode">Backend 모드</string>
+    <string name="api_backend_enabled">활성화됨 - 백엔드 서비스 사용</string>
+    <string name="api_backend_disabled">비활성화됨 - 로컬 API 사용</string>
+    <string name="api_backend_url">Backend 서버 URL</string>
+
+    <!-- Model Config Settings -->
+    <string name="model_provider">API 제공자</string>
+    <string name="model_api_key_set">설정됨 (%1$s)</string>
+    <string name="model_api_key_not_set">미설정</string>
+    <string name="model_text_model">텍스트 모델</string>
+    <string name="model_vision_model">시각 모델</string>
+
+    <!-- Feedback Settings -->
+    <string name="feedback_crash_report">클라우드 충돌 보고</string>
+    <string name="feedback_crash_report_enabled">활성화됨, 앱 개선에 도움</string>
+    <string name="feedback_crash_report_disabled">비활성화됨</string>
+    <string name="feedback_export_logs">로그 내보내기</string>
+    <string name="feedback_clear_logs">로그 지우기</string>
+    <string name="feedback_clear_logs_desc">모든 로컬 로그 파일 삭제</string>
+    <string name="feedback_clear_confirm_title">지우기 확인</string>
+    <string name="feedback_clear_confirm_desc">모든 로그 파일을 삭제하시겠습니까?</string>
+    <string name="feedback_logs_cleared">로그 지워짐</string>
+
+    <!-- Help Settings -->
+    <string name="help_shizuku_guide">Shizuku 가이드</string>
+    <string name="help_shizuku_guide_desc">Shizuku 설치 및 구성 방법</string>
+    <string name="help_overlay_permission">오버레이 권한</string>
+    <string name="help_overlay_permission_desc">오버레이 권한이 필요한 이유</string>
+
+    <!-- About Settings -->
+    <string name="about_version">버전</string>
+    <string name="about_app_name">Alian Autopilot</string>
+    <string name="about_app_desc">시각 언어 모델 기반 Android 자동화 도구</string>
+
+    <!-- Login Screen -->
+    <string name="login_welcome_back">다시 오셨군요, 계정에 로그인하세요</string>
+    <string name="login_email_label">이메일 주소</string>
+    <string name="login_password_label">비밀번호</string>
+    <string name="login_show_password">비밀번호 표시</string>
+    <string name="login_hide_password">비밀번호 숨기기</string>
+    <string name="login_forgot_password">비밀번호를 잊으셨나요?</string>
+    <string name="login_button">로그인</string>
+    <string name="login_loading">로그인 중...</string>
+    <string name="login_or">또는</string>
+    <string name="login_no_account">계정이 없으신가요?</string>
+    <string name="login_register_now">지금 등록</string>
+    <string name="login_back">뒤로</string>
+
+    <!-- Permission Management -->
+    <string name="permission_basic">기본 권한</string>
+    <string name="permission_core">핵심 권한</string>
+    <string name="permission_other">기타 권한</string>
+    <string name="permission_granted">부여됨</string>
+    <string name="permission_denied">거부됨</string>
+    <string name="permission_not_requested">요청되지 않음</string>
+
+    <!-- Device Controller Settings -->
+    <string name="device_execution_strategy">실행 전략</string>
+    <string name="device_execution_strategy_desc">기기 컨트롤러의 실행 방법 선택</string>
+    <string name="device_strategy_auto">자동</string>
+    <string name="device_strategy_shizuku_only">Shizuku만</string>
+    <string name="device_strategy_accessibility_only">접근성만</string>
+    <string name="device_strategy_hybrid">하이브리드 모드</string>
+    <string name="device_fallback_strategy">폴백 전략</string>
+    <string name="device_fallback_strategy_desc">우선 방식을 사용할 수 없을 때의 폴백 방법</string>
+    <string name="device_fallback_auto">자동</string>
+    <string name="device_fallback_shizuku_first">Shizuku 우선</string>
+    <string name="device_fallback_accessibility_first">접근성 우선</string>
+    <string name="device_performance_settings">성능 설정</string>
+    <string name="device_screenshot_cache">스크린샷 캐시</string>
+    <string name="device_screenshot_cache_desc">성능 향상을 위해 스크린샷 캐시 활성화</string>
+    <string name="device_gesture_delay">제스처 지연</string>
+    <string name="device_input_delay">입력 지연</string>
+    <string name="device_mediaprojection_title">화면 녹화 권한</string>
+    <string name="device_mediaprojection_desc">접근성 컨트롤러가 스크린샷을 찍으려면 화면 녹화 권한 필요</string>
+    <string name="device_mediaprojection_request">화면 녹화 권한 요청</string>
+    <string name="device_mediaprojection_hint">참고: Shizuku 컨트롤러는 이 권한이 필요하지 않습니다</string>
+    <string name="device_accessibility_required_title">접근성 서비스 필요</string>
+    <string name="device_accessibility_required_desc">선택한 실행 전략은 접근성 서비스가 활성화되어야 합니다.</string>
+    <string name="device_accessibility_required_hint">시스템 설정에서 \"Alian\" 접근성 서비스를 활성화하세요.</string>
+    <string name="device_mediaprojection_required_title">화면 녹화 권한 필요</string>
+    <string name="device_mediaprojection_required_desc">선택한 실행 전략은 스크린샷을 찍기 위해 화면 녹화 권한이 필요합니다.</string>
+    <string name="device_mediaprojection_required_hint">이 권한을 부여하면 접근성 컨트롤러가 시각 인식을 위해 화면 내용을 캡처할 수 있습니다.</string>
+    <string name="device_shizuku_required_title">Shizuku 권한 필요</string>
+    <string name="device_shizuku_required_desc">선택한 실행 전략은 Shizuku 권한이 필요합니다.</string>
+    <string name="device_shizuku_required_hint">Shizuku는 효율적인 기기 제어 도구로, Shizuku 앱 설치 및 권한 부여가 필요합니다.</string>
+    <string name="device_shizuku_required_steps">권한 부여 방법:\n1. Shizuku 앱이 설치되어 있는지 확인\n2. ADB 권한 부여(권장) 또는 Root 권한 부여\n3. Shizuku 앱에서 Alian 권한 부여</string>
+    <string name="device_accessibility_not_enabled">접근성 서비스가 활성화되지 않음, 설정에서 활성화하세요</string>
+    <string name="device_go_authorize">권한 부여</string>
+    <string name="device_authorize_guide">권한 부여 가이드</string>
+    <string name="device_later">나중에</string>
+
+    <!-- Alian Settings -->
+    <string name="alian_avatar_section">아바타 설정</string>
+    <string name="alian_avatar_upload">사용자 정의 아바타 업로드</string>
+    <string name="alian_avatar_saving">저장 중...</string>
+    <string name="alian_avatar_change_hint">아바타 또는 버튼 클릭하여 변경</string>
+    <string name="alian_avatar_default_hint">기본 음색 아바타 사용</string>
+    <string name="alian_voice_settings">음성 설정</string>
+    <string name="alian_voice_select">음색</string>
+    <string name="alian_speed">말하기 속도</string>
+    <string name="alian_speed_slow">느림 - 자세한 설명에 적합</string>
+    <string name="alian_speed_normal">표준 - 일반 말하기 속도</string>
+    <string name="alian_speed_fast">빠름 - 빠른 의사소통에 적합</string>
+    <string name="alian_speed_very_fast">매우 빠름 - 빠른 둘러보기에 적합</string>
+    <string name="alian_volume">볼륨</string>
+    <string name="alian_volume_mute">음소거</string>
+    <string name="alian_volume_low">낮은 볼륨</string>
+    <string name="alian_volume_normal">표준 볼륨</string>
+    <string name="alian_volume_high">높은 볼륨</string>
+    <string name="alian_prompt_settings">프롬프트 설정</string>
+    <string name="alian_voice_call_prompt">음성 통화 프롬프트</string>
+    <string name="alian_voice_call_prompt_desc">음성 통화 시 시스템 프롬프트를 설정하여 AI의 역할과 동작을 정의합니다.</string>
+    <string name="alian_voice_call_prompt_hint">음성 통화 시스템 프롬프트 입력...</string>
+    <string name="alian_video_call_prompt">영상 통화 프롬프트</string>
+    <string name="alian_video_call_prompt_desc">영상 통화 시 시스템 프롬프트를 설정하여 AI의 역할과 동작을 정의합니다.</string>
+    <string name="alian_video_call_prompt_hint">영상 통화 시스템 프롬프트 입력...</string>
+    <string name="alian_not_set">미설정</string>
+    <string name="alian_stop">중지</string>
+    <string name="alian_audition">미리 듣기</string>
+    <string name="alian_save">저장</string>
+
+    <!-- Voice Selection Screen -->
+    <string name="voice_selection_title">음색 선택</string>
+    <string name="voice_selection_all">전체</string>
+    <string name="voice_selection_stop">중지</string>
+    <string name="voice_selection_audition">미리 듣기</string>
+
+    <!-- Common Dialog -->
+    <string name="dialog_unit_ms">%1$d ms</string>
+    <string name="dialog_current_value">현재 값: %1$d %2$s</string>
+</resources>

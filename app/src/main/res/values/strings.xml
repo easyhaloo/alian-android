@@ -743,6 +743,12 @@
     <string name="alian_audition">试听</string>
     <string name="alian_save">保存</string>
 
+    <!-- Voice Selection Screen -->
+    <string name="voice_selection_title">音色选择</string>
+    <string name="voice_selection_all">全部</string>
+    <string name="voice_selection_stop">停止</string>
+    <string name="voice_selection_audition">试听</string>
+
     <!-- Common Dialog -->
     <string name="dialog_unit_ms">%1$d ms</string>
     <string name="dialog_current_value">当前值: %1$d %2$s</string>

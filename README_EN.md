@@ -36,9 +36,6 @@
   <img src="docs/screenshots/dark8.jpg" width="180" alt="Screenshot 8">
   <img src="docs/screenshots/dark9.jpg" width="180" alt="Screenshot 9">
   <img src="docs/screenshots/dark10.jpg" width="180" alt="Screenshot 10">
-</p>
-
-<p align="center">
   <img src="docs/images/phone-demo.gif" width="320" alt="Phone Demo">
   <img src="docs/images/navigation.gif" width="320" alt="Navigation Demo">
 </p>

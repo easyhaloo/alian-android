@@ -29,12 +29,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.alian.assistant.R
 import com.alian.assistant.data.AppSettings
 import com.alian.assistant.data.VoicePreset
 import com.alian.assistant.presentation.ui.theme.BaoziTheme
@@ -170,7 +172,7 @@ fun AlianSettingsContent(
                         // 用户自定义头像
                         AsyncImage(
                             model = avatarUri,
-                            contentDescription = "艾莲头像",
+                            contentDescription = stringResource(R.string.alian_avatar_section),
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
                         )
@@ -178,14 +180,14 @@ fun AlianSettingsContent(
                         // 使用语音音色的默认头像
                         AsyncImage(
                             model = voiceAvatarUrl,
-                            contentDescription = "艾莲头像",
+                            contentDescription = stringResource(R.string.alian_avatar_section),
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
                         )
                     } else {
                         Icon(
                             imageVector = Icons.Default.Image,
-                            contentDescription = "上传头像",
+                            contentDescription = stringResource(R.string.alian_avatar_upload),
                             tint = colors.primary,
                             modifier = Modifier.size(40.dp)
                         )
@@ -215,14 +217,14 @@ fun AlianSettingsContent(
                     } else {
                         Icon(
                             imageVector = Icons.Default.CameraAlt,
-                            contentDescription = "上传头像",
+                            contentDescription = stringResource(R.string.alian_avatar_upload),
                             tint = Color.White,
                             modifier = Modifier.size(18.dp)
                         )
                     }
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = if (isSavingAvatar) "保存中..." else "上传自定义头像",
+                        text = if (isSavingAvatar) stringResource(R.string.alian_avatar_saving) else stringResource(R.string.alian_avatar_upload),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
                         color = Color.White
@@ -232,7 +234,7 @@ fun AlianSettingsContent(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = if (avatarUri != null) "点击头像或按钮更换" else "默认使用语音音色头像",
+                    text = if (avatarUri != null) stringResource(R.string.alian_avatar_change_hint) else stringResource(R.string.alian_avatar_default_hint),
                     fontSize = 12.sp,
                     color = colors.textSecondary
                 )
@@ -243,7 +245,7 @@ fun AlianSettingsContent(
 
         // 语音设置区域
         Box(modifier = Modifier.staggeredFadeIn(1)) {
-            SettingsSection(title = "语音设置", modifier = Modifier.padding(horizontal = 16.dp))
+            SettingsSection(title = stringResource(R.string.alian_voice_settings), modifier = Modifier.padding(horizontal = 16.dp))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -292,7 +294,7 @@ fun AlianSettingsContent(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = "音色",
+                            text = stringResource(R.string.alian_voice_select),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = colors.textPrimary
@@ -333,7 +335,7 @@ fun AlianSettingsContent(
                                 // 播放中显示停止图标
                                 Icon(
                                     imageVector = Icons.Default.Close,
-                                    contentDescription = "停止",
+                                    contentDescription = stringResource(R.string.alian_stop),
                                     tint = Color.White,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -341,7 +343,7 @@ fun AlianSettingsContent(
                                 // 未播放显示音量图标
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.VolumeUp,
-                                    contentDescription = "试听",
+                                    contentDescription = stringResource(R.string.alian_audition),
                                     tint = colors.primary,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -365,7 +367,7 @@ fun AlianSettingsContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "语速",
+                        text = stringResource(R.string.alian_speed),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
                         color = colors.textPrimary
@@ -390,10 +392,10 @@ fun AlianSettingsContent(
                 )
                 Text(
                     text = when {
-                        settings.ttsSpeed < 0.8f -> "慢速 - 适合详细讲解"
-                        settings.ttsSpeed < 1.2f -> "标准 - 正常语速"
-                        settings.ttsSpeed < 1.6f -> "快速 - 适合快速交流"
-                        else -> "极快 - 适合快速浏览"
+                        settings.ttsSpeed < 0.8f -> stringResource(R.string.alian_speed_slow)
+                        settings.ttsSpeed < 1.2f -> stringResource(R.string.alian_speed_normal)
+                        settings.ttsSpeed < 1.6f -> stringResource(R.string.alian_speed_fast)
+                        else -> stringResource(R.string.alian_speed_very_fast)
                     },
                     fontSize = 12.sp,
                     color = colors.textSecondary,
@@ -415,7 +417,7 @@ fun AlianSettingsContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "音量",
+                        text = stringResource(R.string.alian_volume),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
                         color = colors.textPrimary
@@ -440,10 +442,10 @@ fun AlianSettingsContent(
                 )
                 Text(
                     text = when {
-                        settings.volume == 0 -> "静音"
-                        settings.volume < 30 -> "低音量"
-                        settings.volume < 70 -> "标准音量"
-                        else -> "高音量"
+                        settings.volume == 0 -> stringResource(R.string.alian_volume_mute)
+                        settings.volume < 30 -> stringResource(R.string.alian_volume_low)
+                        settings.volume < 70 -> stringResource(R.string.alian_volume_normal)
+                        else -> stringResource(R.string.alian_volume_high)
                     },
                     fontSize = 12.sp,
                     color = colors.textSecondary,
@@ -456,7 +458,7 @@ fun AlianSettingsContent(
 
         // 提示词设置区域
         Box(modifier = Modifier.staggeredFadeIn(5)) {
-            SettingsSection(title = "提示词设置", modifier = Modifier.padding(horizontal = 16.dp))
+            SettingsSection(title = stringResource(R.string.alian_prompt_settings), modifier = Modifier.padding(horizontal = 16.dp))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -495,7 +497,7 @@ fun AlianSettingsContent(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = "语音通话提示词",
+                            text = stringResource(R.string.alian_voice_call_prompt),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = colors.textPrimary
@@ -507,7 +509,7 @@ fun AlianSettingsContent(
                             } else if (settings.voiceCallSystemPrompt.isNotEmpty()) {
                                 settings.voiceCallSystemPrompt
                             } else {
-                                "未设置"
+                                stringResource(R.string.alian_not_set)
                             },
                             fontSize = 14.sp,
                             color = colors.textSecondary,
@@ -553,7 +555,7 @@ fun AlianSettingsContent(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = "视频通话提示词",
+                            text = stringResource(R.string.alian_video_call_prompt),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = colors.textPrimary
@@ -565,7 +567,7 @@ fun AlianSettingsContent(
                             } else if (settings.videoCallSystemPrompt.isNotEmpty()) {
                                 settings.videoCallSystemPrompt
                             } else {
-                                "未设置"
+                                stringResource(R.string.alian_not_set)
                             },
                             fontSize = 14.sp,
                             color = colors.textSecondary,
@@ -588,12 +590,12 @@ fun AlianSettingsContent(
             onDismissRequest = { showVoiceCallPromptDialog = false },
             containerColor = colors.backgroundCard,
             title = {
-                Text("语音通话系统提示词", color = colors.textPrimary)
+                Text(stringResource(R.string.alian_voice_call_prompt), color = colors.textPrimary)
             },
             text = {
                 Column {
                     Text(
-                        text = "设置语音通话时的系统提示词，用于定义 AI 的角色和行为。",
+                        text = stringResource(R.string.alian_voice_call_prompt_desc),
                         fontSize = 14.sp,
                         color = colors.textSecondary,
                         modifier = Modifier.padding(bottom = 12.dp)
@@ -606,7 +608,7 @@ fun AlianSettingsContent(
                             .height(200.dp),
                         placeholder = {
                             Text(
-                                text = "输入语音通话的系统提示词...",
+                                text = stringResource(R.string.alian_voice_call_prompt_hint),
                                 fontSize = 14.sp,
                                 color = colors.textSecondary
                             )
@@ -632,12 +634,12 @@ fun AlianSettingsContent(
                         showVoiceCallPromptDialog = false
                     }
                 ) {
-                    Text("保存", color = colors.primary)
+                    Text(stringResource(R.string.alian_save), color = colors.primary)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showVoiceCallPromptDialog = false }) {
-                    Text("取消", color = colors.textSecondary)
+                    Text(stringResource(R.string.btn_cancel), color = colors.textSecondary)
                 }
             }
         )
@@ -651,12 +653,12 @@ fun AlianSettingsContent(
             onDismissRequest = { showVideoCallPromptDialog = false },
             containerColor = colors.backgroundCard,
             title = {
-                Text("视频通话系统提示词", color = colors.textPrimary)
+                Text(stringResource(R.string.alian_video_call_prompt), color = colors.textPrimary)
             },
             text = {
                 Column {
                     Text(
-                        text = "设置视频通话时的系统提示词，用于定义 AI 的角色和行为。",
+                        text = stringResource(R.string.alian_video_call_prompt_desc),
                         fontSize = 14.sp,
                         color = colors.textSecondary,
                         modifier = Modifier.padding(bottom = 12.dp)
@@ -669,7 +671,7 @@ fun AlianSettingsContent(
                             .height(200.dp),
                         placeholder = {
                             Text(
-                                text = "输入视频通话的系统提示词...",
+                                text = stringResource(R.string.alian_video_call_prompt_hint),
                                 fontSize = 14.sp,
                                 color = colors.textSecondary
                             )
@@ -695,12 +697,12 @@ fun AlianSettingsContent(
                         showVideoCallPromptDialog = false
                     }
                 ) {
-                    Text("保存", color = colors.primary)
+                    Text(stringResource(R.string.alian_save), color = colors.primary)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showVideoCallPromptDialog = false }) {
-                    Text("取消", color = colors.textSecondary)
+                    Text(stringResource(R.string.btn_cancel), color = colors.textSecondary)
                 }
             }
         )

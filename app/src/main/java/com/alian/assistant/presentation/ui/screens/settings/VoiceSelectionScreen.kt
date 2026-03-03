@@ -28,10 +28,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.alian.assistant.R
 import com.alian.assistant.data.VoiceCategory
 import com.alian.assistant.data.VoicePreset
 import com.alian.assistant.data.model.SpeechProvider
@@ -140,7 +142,7 @@ fun VoiceSelectionScreen(
             }
             // 顶部导航栏 - 使用与 AlianLocalScreen 一致的 AlianAppBar
             AlianAppBar(
-                title = "音色选择",
+                title = stringResource(R.string.voice_selection_title),
                 onMenuClick = onBack,
                 menuIcon = Icons.Default.KeyboardArrowLeft,
                 showMoreMenu = false
@@ -156,7 +158,7 @@ fun VoiceSelectionScreen(
                 // 全部选项
                 item {
                     CategoryChip(
-                        text = "全部",
+                        text = stringResource(R.string.voice_selection_all),
                         isSelected = selectedCategory == null,
                         onClick = {
                             performLightHaptic(context)
@@ -342,7 +344,7 @@ private fun VoiceItem(
             ) {
                 Icon(
                     imageVector = if (isPlaying) Icons.Default.Check else Icons.Default.PlayArrow,
-                    contentDescription = if (isPlaying) "停止" else "试听",
+                    contentDescription = if (isPlaying) stringResource(R.string.voice_selection_stop) else stringResource(R.string.voice_selection_audition),
                     tint = if (isPlaying) Color.White else colors.primary,
                     modifier = Modifier.size(20.dp)
                 )

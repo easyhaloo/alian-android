@@ -743,6 +743,12 @@
     <string name="alian_audition">Audition</string>
     <string name="alian_save">Save</string>
 
+    <!-- Voice Selection Screen -->
+    <string name="voice_selection_title">Voice Selection</string>
+    <string name="voice_selection_all">All</string>
+    <string name="voice_selection_stop">Stop</string>
+    <string name="voice_selection_audition">Audition</string>
+
     <!-- Common Dialog -->
     <string name="dialog_unit_ms">%1$d ms</string>
     <string name="dialog_current_value">Current value: %1$d %2$s</string>

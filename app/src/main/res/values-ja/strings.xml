@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Alian</string>
+
+    <!-- Tab Titles -->
+    <string name="tab_home">Alian</string>
+    <string name="tab_history">履歴</string>
+    <string name="tab_settings">設定</string>
+
+    <!-- Home Screen -->
+    <string name="home_ready">準備完了、やりたいことを教えてください</string>
+    <string name="home_connect_shizuku">先にShizukuを接続してください</string>
+    <string name="home_try_these">これらのコマンドを試す</string>
+    <string name="home_input_placeholder">Alianにやりたいことを教えて…</string>
+    <string name="home_executing">ステップ %1$d を実行中</string>
+    <string name="home_send">送信</string>
+    <string name="home_stop">停止</string>
+
+    <!-- Preset Commands -->
+    <string name="preset_burger">バーガーを注文</string>
+    <string name="preset_burger_cmd">近くの美味しいバーガーを注文して</string>
+    <string name="preset_weibo">Weiboに投稿</string>
+    <string name="preset_weibo_cmd">最後の写真をWeiboに送って</string>
+    <string name="preset_bilibili">Bilibiliを見る</string>
+    <string name="preset_bilibili_cmd">Bilibiliを開いて艾莲を検索し、最初の動画にいいねして</string>
+    <string name="preset_takeout">デリバリーを注文</string>
+    <string name="preset_takeout_cmd">Meituanで豚足飯を注文して</string>
+    <string name="preset_music">音楽を聴く</string>
+    <string name="preset_music_cmd">NetEaseクラウド音楽を開いてデイリーレコメンドを再生して</string>
+    <string name="preset_message">メッセージを送信</string>
+    <string name="preset_message_cmd">最近の連絡先に忙しいとメッセージを送って</string>
+    <string name="preset_xiaohongshu">小紅書に投稿</string>
+    <string name="preset_xiaohongshu_cmd">小紅書に今日の良い気分と投稿して</string>
+    <string name="preset_travel">旅行ガイド</string>
+    <string name="preset_travel_cmd">小美で三亜旅行ガイドを調べて</string>
+    <string name="preset_clean_background">バックグラウンドをクリア</string>
+    <string name="preset_clean_background_cmd">バックグラウンドで実行中のアプリをクリーンアップして</string>
+    <string name="preset_power_saving">省電力モード</string>
+    <string name="preset_power_saving_cmd">省電力モードをオンにして画面の明るさを下げて</string>
+    <string name="preset_night_mode">ナイトモード</string>
+    <string name="preset_night_mode_cmd">ダークモードをオンにして</string>
+    <string name="preset_camera">写真を撮る</string>
+    <string name="preset_camera_cmd">カメラを開いて写真を撮って</string>
+    <string name="preset_exercise">運動チェックイン</string>
+    <string name="preset_exercise_cmd">運動記録を開いてランニングを開始して</string>
+    <string name="preset_coffee">コーヒーを注文</string>
+    <string name="preset_coffee_cmd">スターバックスラテを注文して</string>
+    <string name="preset_taxi">タクシーを呼ぶ</string>
+    <string name="preset_taxi_cmd">近くの地下鉄駅までタクシーを呼んで</string>
+    <string name="preset_smart_home">スマートホーム</string>
+    <string name="preset_smart_home_cmd">リビングの電気をつけて</string>
+    <string name="preset_schedule">スケジュールリマインダー</string>
+    <string name="preset_schedule_cmd">明日の午前9時に会議リマインダーを設定して</string>
+    <string name="preset_alarm">アラーム</string>
+    <string name="preset_alarm_cmd">明日の朝7時にアラームを設定して</string>
+    <string name="preset_navigation">ナビゲーション</string>
+    <string name="preset_navigation_cmd">近くのスーパーマーケットまでナビゲートして</string>
+    <string name="preset_weather">天気予報</string>
+    <string name="preset_weather_cmd">明日の天気を調べて</string>
+    <string name="preset_wechat">WeChatを送信</string>
+    <string name="preset_wechat_cmd">お母さんに家に着いたとWeChatメッセージを送って</string>
+    <string name="preset_notes">メモを取る</string>
+    <string name="preset_notes_cmd">今日のやることリストを記録して</string>
+    <string name="preset_reconnect">再接続</string>
+    <string name="preset_try">試してみる</string>
+
+    <!-- History Screen -->
+    <string name="history_title">実行履歴</string>
+    <string name="history_count">合計 %1$d 件の記録</string>
+    <string name="history_empty">実行履歴がありません</string>
+    <string name="history_empty_hint">タスク実行後、記録がここに表示されます</string>
+    <string name="history_steps">%1$d ステップ</string>
+    <string name="history_delete">削除</string>
+    <string name="history_delete_title">記録を削除</string>
+    <string name="history_delete_confirm">この実行記録を削除してもよろしいですか？</string>
+    <string name="history_timeline">実行タイムライン</string>
+    <string name="history_instruction">タスク指示</string>
+
+    <!-- Status -->
+    <string name="status_completed">完了</string>
+    <string name="status_failed">失敗</string>
+    <string name="status_stopped">停止済み</string>
+    <string name="status_running">実行中</string>
+    <string name="status_label">ステータス</string>
+    <string name="steps_label">ステップ数</string>
+    <string name="duration_label">所要時間</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">設定</string>
+    <string name="settings_subtitle">APIとアプリオプションを設定</string>
+
+    <!-- Settings - Appearance -->
+    <string name="settings_appearance">外観</string>
+    <string name="settings_theme">テーマモード</string>
+    <string name="theme_light">ライトモード</string>
+    <string name="theme_dark">ダークモード</string>
+    <string name="theme_system">システムに従う</string>
+    <string name="theme_select">テーマを選択</string>
+
+    <!-- Settings - Language -->
+    <string name="settings_language">言語</string>
+    <string name="settings_language_desc">アプリの表示言語を切り替え</string>
+    <string name="language_system">システムに従う</string>
+    <string name="language_zh">簡体字中国語</string>
+    <string name="language_zh_tw">繁体字中国語</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_select">言語を選択</string>
+    <string name="language_restart_hint">言語変更を有効にするにはアプリの再起動が必要です</string>
+
+    <!-- Settings - API -->
+    <string name="settings_api">API設定</string>
+    <string name="settings_provider">APIプロバイダー</string>
+    <string name="settings_provider_custom">カスタム</string>
+    <string name="settings_model">モデル</string>
+    <string name="settings_api_key">API Key</string>
+    <string name="settings_api_key_set">設定済み (%1$s)</string>
+    <string name="settings_api_key_unset">未設定</string>
+    <string name="settings_api_key_hint">API Keyを入力してください</string>
+    <string name="settings_show">表示</string>
+    <string name="settings_hide">非表示</string>
+
+    <!-- Settings - Custom Models -->
+    <string name="settings_custom_models">カスタムモデル</string>
+    <string name="settings_add_model">カスタムモデルを追加</string>
+    <string name="settings_add_model_hint">他のサポートされているモデルを追加</string>
+    <string name="settings_model_name_hint">モデル名またはIDを入力</string>
+    <string name="settings_model_name_example">例: gpt-4-vision</string>
+    <string name="settings_select_model">モデルを選択</string>
+
+    <!-- Settings - Help -->
+    <string name="settings_help">ヘルプ</string>
+    <string name="settings_shizuku_guide">Shizukuガイド</string>
+    <string name="settings_shizuku_guide_desc">Shizukuのインストールと設定方法</string>
+    <string name="settings_overlay_help">オーバーレイ権限</string>
+    <string name="settings_overlay_help_desc">オーバーレイ権限が必要な理由</string>
+
+    <!-- Settings - About -->
+    <string name="settings_about">アプリについて</string>
+    <string name="settings_version">バージョン</string>
+    <string name="settings_app_desc">視覚言語モデルベースのAndroid自動化ツール</string>
+
+    <!-- Shizuku Status -->
+    <string name="shizuku_connected">Shizuku接続済み</string>
+    <string name="shizuku_not_connected">Shizuku未接続</string>
+    <string name="shizuku_available">デバイス制御機能が利用可能</string>
+    <string name="shizuku_unavailable">Shizukuを起動して権限を付与してください</string>
+
+    <!-- Shizuku Help -->
+    <string name="shizuku_help_step1_title">Shizukuをダウンロード</string>
+    <string name="shizuku_help_step1_desc">Google PlayまたはGitHubからShizukuをダウンロード\n\n• Google Play: \"Shizuku\"を検索\n• GitHub: github.com/RikkaApps/Shizuku</string>
+    <string name="shizuku_help_step2_title">Shizukuを起動</string>
+    <string name="shizuku_help_step2_desc">Shizukuアプリを開き、起動方法を選択：\n\n• ワイヤレスデバッグ（推奨）: Android 11以上が必要、開発者オプションでワイヤレスデバッグを有効化\n• パソコン接続: ADBコマンドで起動</string>
+    <string name="shizuku_help_step3_title">Alianを認証</string>
+    <string name="shizuku_help_step3_desc">Shizukuの「アプリ管理」でAlian Autopilotを見つけ、認証ボタンをクリック</string>
+    <string name="shizuku_help_step4_title">使用開始</string>
+    <string name="shizuku_help_step4_desc">認証完了後、Alianアプリに戻ると、ステータスカードに「Shizuku接続済み」と表示されます</string>
+
+    <!-- Overlay Help -->
+    <string name="overlay_why">なぜオーバーレイ権限が必要ですか？</string>
+    <string name="overlay_reason">Alianはタスク実行時にオーバーレイを表示する必要があります：</string>
+    <string name="overlay_feature1">現在の実行状況を表示</string>
+    <string name="overlay_feature2">停止ボタンを提供、いつでもタスクを中断可能</string>
+    <string name="overlay_feature3">他のアプリの上にステータス情報を表示</string>
+    <string name="overlay_how">有効にする方法は？</string>
+    <string name="overlay_how_desc">1. タスク実行時に自動的にプロンプトが表示されます\n2. または設定へ：設定 > アプリ > Alian > オーバーレイ権限\n3. 「他のアプリの上に表示を許可」を有効化</string>
+    <string name="overlay_privacy">プライバシーとセキュリティ</string>
+    <string name="overlay_privacy_desc">オーバーレイはタスク実行中のみ表示され、個人情報は一切収集しません。タスク完了後、オーバーレイは自動的に消えます。</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Alianへようこそ</string>
+    <string name="onboarding_welcome_desc">Alianはインテリジェント自動化アシスタント、\nスマホを操作して様々なタスクを完了します</string>
+    <string name="onboarding_ai">AI駆動</string>
+    <string name="onboarding_ai_desc">先進の視覚言語モデルに基づき、\nAlianは画面内容を理解し、インテリジェントな判断を行います</string>
+    <string name="onboarding_easy">簡単に使える</string>
+    <string name="onboarding_easy_desc">自然言語でやりたいことを説明するだけで、\nAlianが自動的に完了します</string>
+    <string name="onboarding_safe">安全で信頼性</string>
+    <string name="onboarding_safe_desc">敏感なページ（決済、パスワードなど）を検出すると自動的に停止し、\nアカウントを保護します</string>
+    <string name="onboarding_skip">スキップ</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_start">始める</string>
+
+    <!-- Common -->
+    <string name="btn_confirm">確認</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="btn_close">閉じる</string>
+    <string name="btn_add">追加</string>
+    <string name="btn_delete">削除</string>
+    <string name="btn_back">戻る</string>
+    <string name="btn_got_it">了解</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_enter_instruction">指示を入力してください</string>
+    <string name="toast_enter_api_key">API Keyを入力してください</string>
+    <string name="toast_grant_overlay">オーバーレイ権限を付与してください</string>
+    <string name="toast_shizuku_granted">Shizuku権限が付与されました</string>
+    <string name="toast_start_shizuku">先にShizukuアプリを起動してください</string>
+    <string name="toast_shizuku_old">Shizukuのバージョンが古いです</string>
+    <string name="toast_task_complete">タスク完了</string>
+    <string name="toast_user_stopped">ユーザーが停止</string>
+    <string name="toast_sensitive_page">敏感なページ（決済/パスワード）を検出、安全に停止しました</string>
+    <string name="toast_max_steps">最大ステップ数に達しました</string>
+    <string name="toast_error">エラー: %1$s</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">Alianアクセシビリティサービス、画面要素情報の取得と自動化操作の実行に使用</string>
+
+    <!-- Overlay Service -->
+    <string name="overlay_channel_name">Alianステータス</string>
+    <string name="overlay_channel_desc">Alianの実行ステータスを表示</string>
+    <string name="overlay_notification_title">Alian実行中</string>
+    <string name="overlay_notification_text">自動化タスクを実行中...</string>
+    <string name="overlay_app_name">Alian</string>
+    <string name="overlay_stop">停止</string>
+    <string name="overlay_cancel">キャンセル</string>
+    <string name="overlay_continue">続行</string>
+    <string name="overlay_confirm">確認</string>
+    <string name="overlay_chat_mode">💬 Q&amp;Aモード</string>
+    <string name="overlay_chat">Q&amp;A</string>
+
+    <!-- Call Features -->
+    <string name="call_video">ビデオ通話</string>
+    <string name="call_voice">音声通話</string>
+    <string name="call_phone">電話通話</string>
+    <string name="call_mic">マイク</string>
+
+    <!-- Menu Items -->
+    <string name="menu_login">ログイン</string>
+    <string name="menu_logout">ログアウト</string>
+    <string name="menu_settings">設定</string>
+    <string name="menu_new_session">新規セッション</string>
+
+    <!-- Chat History -->
+    <string name="chat_history_title">チャット履歴</string>
+    <string name="chat_history_count">%1$d 件の会話</string>
+    <string name="chat_history_empty">チャット履歴がありません</string>
+    <string name="chat_history_empty_hint">会話を開始すると履歴がここに表示されます</string>
+    <string name="chat_new_session">新規会話</string>
+    <string name="chat_new_session_hint">新しい会話セッションを開始</string>
+    <string name="chat_delete_title">削除の確認</string>
+    <string name="chat_delete_confirm">この会話を削除してもよろしいですか？</string>
+
+    <!-- Time Format -->
+    <string name="time_just_now">たった今</string>
+    <string name="time_minutes_ago">%1$d 分前</string>
+    <string name="time_hours_ago">%1$d 時間前</string>
+    <string name="time_days_ago">%1$d 日前</string>
+    <string name="time_unknown">不明な時間</string>
+
+    <!-- Voice Input -->
+    <string name="voice_recording">録音中</string>
+    <string name="voice_hold_to_speak">長押しで話す</string>
+    <string name="voice_release_to_send">離すと送信</string>
+    <string name="voice_processing">処理中...</string>
+    <string name="voice_permission_title">マイク権限が必要です</string>
+    <string name="voice_permission_desc">音声入力機能を使用するにはマイク権限が必要です。</string>
+    <string name="voice_go_authorize">許可する</string>
+    <string name="voice_switch_keyboard">キーボード入力に切り替え</string>
+    <string name="voice_switch_voice">音声入力に切り替え</string>
+    <string name="voice_say_something">何か話してください...</string>
+
+    <!-- Chat Components -->
+    <string name="chat_ready_title">お手伝いいたします</string>
+    <string name="chat_ready_hint">メッセージを入力するか、音声で会話を開始</string>
+    <string name="chat_alian_avatar">Alianアバター</string>
+    <string name="chat_user_avatar">ユーザーアバター</string>
+    <string name="chat_unknown_file">不明なファイル</string>
+    <string name="chat_preview">プレビュー</string>
+    <string name="chat_play">再生</string>
+    <string name="chat_stop_play">再生停止</string>
+
+    <!-- Content Description -->
+    <string name="cd_close">閉じる</string>
+    <string name="cd_delete">削除</string>
+    <string name="cd_back">戻る</string>
+    <string name="cd_stop">停止</string>
+    <string name="cd_send">送信</string>
+
+    <!-- Alian Local Screen -->
+    <string name="local_title">Alian Local</string>
+    <string name="local_ready">準備完了</string>
+    <string name="local_shizuku_connected">Shizuku接続済み</string>
+    <string name="local_shizuku_disconnected">Shizuku未接続</string>
+
+    <!-- Local History Drawer -->
+    <string name="local_history_title">実行履歴</string>
+    <string name="local_history_count">%1$d 件の記録</string>
+    <string name="local_history_empty">実行記録がありません</string>
+    <string name="local_history_delete_title">削除の確認</string>
+    <string name="local_history_delete_confirm">この実行記録を削除してもよろしいですか？</string>
+    <string name="local_status_completed">完了</string>
+    <string name="local_status_failed">失敗</string>
+    <string name="local_status_stopped">停止済み</string>
+    <string name="local_status_running">実行中</string>
+
+    <!-- Settings Screen Sections -->
+    <string name="settings_section_appearance">🎨 外観とパーソナライズ</string>
+    <string name="settings_section_ai">🧠 AIモデル設定</string>
+    <string name="settings_section_execution">⚙️ 実行と制御</string>
+    <string name="settings_section_permission">🔐 権限とセキュリティ</string>
+    <string name="settings_section_extension">🔌 拡張機能</string>
+    <string name="settings_section_help">❓ ヘルプとフィードバック</string>
+
+    <!-- Settings Screen Items -->
+    <string name="settings_item_theme">テーマモード</string>
+    <string name="settings_item_alian">Alian</string>
+    <string name="settings_item_alian_subtitle">アバター、音色、話速</string>
+    <string name="settings_item_language">言語</string>
+    <string name="settings_item_model_config">モデル設定</string>
+    <string name="settings_item_model_config_subtitle">LLM/VLMプロバイダー</string>
+    <string name="settings_item_speech_provider">音声プロバイダー</string>
+    <string name="settings_item_speech_provider_subtitle">ASR/TTS設定</string>
+    <string name="settings_item_api_config">API設定</string>
+    <string name="settings_item_api_config_subtitle">Backend設定</string>
+    <string name="settings_item_execution">実行設定</string>
+    <string name="settings_item_execution_subtitle">バッチ実行、最適化モード</string>
+    <string name="settings_item_voice_interaction">音声インタラクション</string>
+    <string name="settings_item_voice_interaction_subtitle">TTS、中断、ストリーミング</string>
+    <string name="settings_item_device_controller">デバイスコントローラー</string>
+    <string name="settings_item_device_controller_subtitle">実行戦略、遅延</string>
+    <string name="settings_item_permission">権限管理</string>
+    <string name="settings_item_permission_subtitle">基本とコア権限</string>
+    <string name="settings_item_shizuku">Shizuku</string>
+    <string name="settings_item_shizuku_subtitle">Rootモード設定</string>
+    <string name="settings_item_mcp">MCP</string>
+    <string name="settings_item_mcp_subtitle">モデルコンテキストプロトコル</string>
+    <string name="settings_item_capabilities">機能</string>
+    <string name="settings_item_capabilities_subtitle">スキル管理</string>
+    <string name="settings_item_help">ヘルプ</string>
+    <string name="settings_item_feedback">フィードバック</string>
+    <string name="settings_item_about">アプリについて</string>
+
+    <!-- Settings Dialogs -->
+    <string name="dialog_select_theme">テーマを選択</string>
+    <string name="dialog_select_language">言語を選択</string>
+    <string name="dialog_select_model">モデルを選択</string>
+    <string name="dialog_api_key_title">API Key</string>
+    <string name="dialog_api_key_hint">API Keyを入力してください</string>
+    <string name="dialog_text_model_title">テキストモデル</string>
+    <string name="dialog_text_model_hint">テキストモデル名を入力（テキストのみのチャット用）</string>
+    <string name="dialog_text_model_common">一般的なモデル: qwen-max, qwen-plus, qwen-turbo</string>
+    <string name="dialog_backend_url_title">BackendサーバーURL</string>
+    <string name="dialog_backend_url_hint">Backendサーバーの完全なアドレスを入力</string>
+    <string name="dialog_max_steps_title">最大実行ステップ数</string>
+    <string name="dialog_max_steps_desc">Agentの単一タスクの最大実行ステップ数を設定。ステップ数が多いほど複雑なタスクが可能ですが、より多くのトークンを消費します。</string>
+    <string name="dialog_max_steps_unit">%1$d ステップ</string>
+    <string name="dialog_provider_title">APIプロバイダー</string>
+    <string name="dialog_provider_hint">APIプロバイダーを選択（OpenAI互換）</string>
+    <string name="dialog_custom_url_hint">カスタムAPIエンドポイントを入力</string>
+    <string name="dialog_custom_url_mai_hint">デフォルトを使用する場合は空欄（localhost:8000）</string>
+    <string name="dialog_recommended_model">推奨モデル</string>
+    <string name="dialog_custom_model">カスタムモデル</string>
+    <string name="dialog_custom_model_hint">モデル名を入力、例: gpt-4o</string>
+    <string name="dialog_fetch_models">APIから利用可能なモデルを取得</string>
+    <string name="dialog_fetching">取得中...</string>
+    <string name="dialog_api_model_list">APIモデル (%1$d)</string>
+    <string name="dialog_search_model">モデルを検索...</string>
+    <string name="dialog_no_match">「%1$s」に一致するモデルがありません</string>
+    <string name="dialog_found_models">%1$d 個のモデルが見つかりました</string>
+    <string name="dialog_fetch_api_key_first">先にAPI Keyを設定してください</string>
+    <string name="dialog_fetch_success">%1$d 個のモデルを取得しました</string>
+    <string name="dialog_fetch_failed">取得失敗: %1$s</string>
+    <string name="dialog_click_fetch">「APIから取得」をクリックしてモデルリストを読み込み</string>
+
+    <!-- Warning Dialogs -->
+    <string name="dialog_root_mode_title">Rootモードを有効化</string>
+    <string name="dialog_root_mode_desc">Rootモードにより、アプリは高度なシステム権限を使用できます。</string>
+    <string name="dialog_root_mode_warning">警告：</string>
+    <string name="dialog_root_mode_risk1">Root権限はシステムの不安定性を引き起こす可能性があります</string>
+    <string name="dialog_root_mode_risk2">不適切な操作はデバイスデータを破損する可能性があります</string>
+    <string name="dialog_root_mode_risk3">Root権限のリスクを理解していることを確認してください</string>
+    <string name="dialog_root_mode_hint">リスクを完全に理解し、高度な機能が必要な場合にのみこのオプションを有効にしてください。</string>
+    <string name="dialog_root_mode_confirm">リスクを理解し、有効化</string>
+    <string name="dialog_su_command_title">su -cコマンドを許可</string>
+    <string name="dialog_su_command_desc">このオプションにより、AIはsu -cコマンドを実行でき、AIがRoot権限で任意のシェルコマンドを実行できることを意味します。</string>
+    <string name="dialog_su_command_extreme_danger">極めて危険：</string>
+    <string name="dialog_su_command_risk1">AIは危険なシステムコマンドを実行する可能性があります</string>
+    <string name="dialog_su_command_risk2">データ損失やシステム損傷を引き起こす可能性があります</string>
+    <string name="dialog_su_command_risk3">悪意のある指示に悪用される可能性があります</string>
+    <string name="dialog_su_command_risk4">日常使用では推奨されません</string>
+    <string name="dialog_su_command_hint">強く推奨：完全に制御されたテスト環境でのみ使用し、使用後はすぐに無効にしてください。</string>
+
+    <!-- Voice Call Screen -->
+    <string name="voice_call_title">音声通話</string>
+    <string name="voice_call_start_hint">下のボタンをクリックして開始</string>
+    <string name="voice_call_recording">録音中</string>
+    <string name="voice_call_speak">話してください</string>
+    <string name="voice_call_thinking">思考中</string>
+    <string name="voice_call_playing">再生中</string>
+    <string name="voice_call_error">エラーが発生しました</string>
+    <string name="voice_call_retry">再試行</string>
+    <string name="voice_call_end">通話終了</string>
+    <string name="voice_call_start">通話開始</string>
+
+    <!-- Video Call Screen -->
+    <string name="video_call_title">ビデオ通話</string>
+    <string name="video_call_start_hint">下のボタンをクリックして開始</string>
+    <string name="video_call_recording">録音中</string>
+    <string name="video_call_speak">話してください</string>
+    <string name="video_call_thinking">思考中</string>
+    <string name="video_call_playing">再生中</string>
+    <string name="video_call_error">エラーが発生しました</string>
+    <string name="video_call_retry">再試行</string>
+    <string name="video_call_end">通話終了</string>
+    <string name="video_call_start">通話開始</string>
+
+    <!-- VLM Only Video Call Screen -->
+    <string name="vlm_video_call_title">VLMビデオ通話</string>
+    <string name="vlm_video_call_recording">録音中</string>
+    <string name="vlm_video_call_thinking">思考中</string>
+    <string name="vlm_video_call_playing">再生中</string>
+    <string name="vlm_video_call_error">エラー</string>
+    <string name="vlm_video_call_retry">再試行</string>
+    <string name="vlm_video_call_start_hint">下のボタンをクリックして開始</string>
+    <string name="vlm_video_call_speak">話してください</string>
+    <string name="vlm_video_call_thinking_hint">AIが思考中...</string>
+    <string name="vlm_video_call_playing_hint">AIが回答中</string>
+    <string name="vlm_video_call_error_hint">エラーが発生しました、再試行してください</string>
+    <string name="vlm_video_call_recording_status">録音中</string>
+    <string name="vlm_video_call_thinking_status">思考中</string>
+    <string name="vlm_video_call_playing_status">再生中</string>
+    <string name="vlm_video_call_frames_captured">%1$d/%2$d フレームをキャプチャ</string>
+    <string name="vlm_video_call_feature_capture">スマートキャプチャ</string>
+    <string name="vlm_video_call_feature_capture_desc">話すと即座にキャプチャ</string>
+    <string name="vlm_video_call_feature_vision">視覚理解</string>
+    <string name="vlm_video_call_feature_vision_desc">AIがあなたの環境を理解</string>
+    <string name="vlm_video_call_feature_realtime">リアルタイム応答</string>
+    <string name="vlm_video_call_feature_realtime_desc">ストリーミング会話</string>
+    <string name="vlm_video_call_close">閉じる</string>
+
+    <!-- Phone Call Screen -->
+    <string name="phone_call_title">電話通話</string>
+    <string name="phone_call_start_hint">下のボタンをクリックして開始</string>
+    <string name="phone_call_active">通話中</string>
+    <string name="phone_call_error">エラーが発生しました</string>
+    <string name="phone_call_retry">再試行</string>
+    <string name="phone_call_end">通話終了</string>
+    <string name="phone_call_start">通話開始</string>
+    <string name="phone_call_screen_preview">画面プレビュー</string>
+    <string name="phone_call_fullscreen_mode">フルスクリーン</string>
+    <string name="phone_call_minimize">最小化</string>
+    <string name="phone_call_expand">展開</string>
+    <string name="phone_call_close">閉じる</string>
+    <string name="phone_call_permission_title">権限が必要です</string>
+    <string name="phone_call_permission_hint">設定ページで画面録画権限を付与してから、戻って再試行してください。</string>
+    <string name="phone_call_go_settings">設定へ</string>
+    <string name="phone_call_cancel">キャンセル</string>
+
+    <!-- TTS Voice Selection -->
+    <string name="tts_voice_title">音色を選択</string>
+    <string name="tts_voice_longxiaochun">龍暁春（女性）</string>
+    <string name="tts_voice_longyingtao">龍桜桃（女性）</string>
+    <string name="tts_voice_longanwen">龍安温（女性）</string>
+    <string name="tts_voice_longyingmu">龍応沐（女性）</string>
+
+    <!-- Login/Logout -->
+    <string name="login_click_to_login">クリックしてログイン</string>
+    <string name="login_logout">ログアウト</string>
+    <string name="login_logout_confirm_title">ログアウトの確認</string>
+    <string name="login_logout_confirm_desc">ログアウトしてもよろしいですか？Alian機能を使用するには再度ログインが必要です。</string>
+
+    <!-- Overlay Help Dialog -->
+    <string name="overlay_help_title">オーバーレイ権限の説明</string>
+    <string name="overlay_help_why">なぜオーバーレイ権限が必要ですか？</string>
+    <string name="overlay_help_reason">Alianはタスク実行時にオーバーレイを表示する必要があります：</string>
+    <string name="overlay_help_feature1">現在の実行状況を表示</string>
+    <string name="overlay_help_feature2">停止ボタンを提供、いつでもタスクを中断可能</string>
+    <string name="overlay_help_feature3">他のアプリの上にステータス情報を表示</string>
+    <string name="overlay_help_how">有効にする方法は？</string>
+    <string name="overlay_help_how_desc">1. タスク実行時に自動的にプロンプトが表示されます\n2. または設定へ：設定 > アプリ > Alian > オーバーレイ権限\n3. 「他のアプリの上に表示を許可」を有効化</string>
+    <string name="overlay_help_privacy">プライバシーとセキュリティ</string>
+    <string name="overlay_help_privacy_desc">オーバーレイはタスク実行中のみ表示され、個人情報は一切収集しません。タスク完了後、オーバーレイは自動的に消えます。</string>
+
+    <!-- Format Strings -->
+    <string name="format_time_minutes_ago">%1$d分前</string>
+    <string name="format_time_hours_ago">%1$d時間前</string>
+    <string name="format_time_days_ago">%1$d日前</string>
+    <string name="format_time_just_now">たった今</string>
+    <string name="format_time_unknown">不明な時間</string>
+    <string name="format_date_month_day">%1$d月%2$d日</string>
+
+    <!-- Time-based Greetings -->
+    <string name="greeting_morning">おはようございます</string>
+    <string name="greeting_forenoon">おはようございます</string>
+    <string name="greeting_noon">こんにちは</string>
+    <string name="greeting_afternoon">こんにちは</string>
+    <string name="greeting_evening">こんばんは</string>
+    <string name="greeting_night">夜遅くまで</string>
+    <string name="greeting_prompt">今日は何をお手伝いしましょうか？</string>
+
+    <!-- Permission Dialogs -->
+    <string name="permission_title_record_audio">マイク権限が必要です</string>
+    <string name="permission_title_camera">カメラ権限が必要です</string>
+    <string name="permission_title_post_notifications">通知権限が必要です</string>
+    <string name="permission_title_system_alert_window">オーバーレイ権限が必要です</string>
+    <string name="permission_title_accessibility_service">アクセシビリティサービスが必要です</string>
+    <string name="permission_title_media_projection">画面録画権限が必要です</string>
+    <string name="permission_title_shizuku">Shizuku権限が必要です</string>
+    
+    <string name="permission_desc_record_audio">音声入力と音声通話機能を使用するにはマイク権限が必要です。</string>
+    <string name="permission_desc_camera">ビデオ通話機能を使用するにはカメラ権限が必要です。</string>
+    <string name="permission_desc_post_notifications">バックグラウンド実行通知を表示し、アプリがシステムによって終了されるのを防ぎます。</string>
+    <string name="permission_desc_system_alert_window">オーバーレイインターフェースを正常に表示するにはオーバーレイ権限が必要です。</string>
+    <string name="permission_desc_accessibility_service">自動化機能が他のアプリを制御するにはアクセシビリティサービス権限が必要です。</string>
+    <string name="permission_desc_media_projection">自動化機能が視覚認識のために画面コンテンツをキャプチャするには画面録画権限が必要です。\n\n注意：この権限はスクリーンショットのみに使用され、ビデオやオーディオは録画しません。</string>
+    <string name="permission_desc_shizuku">Shizukuは効率的なデバイス制御ツールで、Shizukuアプリのインストールと認証が必要です。\n\n認証方法：\n1. Shizukuアプリがインストールされていることを確認\n2. ADB認証（推奨）またはRoot認証を通じて\n3. ShizukuアプリでAlianに権限を付与</string>
+    
+    <string name="permission_name_record_audio">マイク権限</string>
+    <string name="permission_name_camera">カメラ権限</string>
+    <string name="permission_name_post_notifications">通知権限</string>
+    <string name="permission_name_system_alert_window">オーバーレイ権限</string>
+    <string name="permission_name_accessibility_service">アクセシビリティサービス</string>
+    <string name="permission_name_media_projection">画面録画権限</string>
+    <string name="permission_name_shizuku">Shizuku権限</string>
+    
+    <string name="permission_go_authorize">許可する</string>
+
+    <!-- Execution Prompt -->
+    <string name="execution_prompt_ready_title">準備完了</string>
+    <string name="execution_prompt_ready_desc">やりたいことを教えてください</string>
+    <string name="execution_prompt_shizuku_title">Shizuku接続が必要です</string>
+    <string name="execution_prompt_shizuku_desc">先にShizukuを接続してください</string>
+    <string name="execution_prompt_accessibility_title">アクセシビリティサービスが必要です</string>
+    <string name="execution_prompt_accessibility_desc">先にアクセシビリティサービスを有効にしてください</string>
+    <string name="execution_prompt_media_projection_title">画面録画権限が必要です</string>
+    <string name="execution_prompt_media_projection_desc">先に画面録画権限を付与してください</string>
+    <string name="execution_prompt_shizuku_or_accessibility_title">Shizukuまたはアクセシビリティサービスが必要です</string>
+    <string name="execution_prompt_shizuku_or_accessibility_desc">先にShizukuを接続するか、アクセシビリティサービスを有効にしてください</string>
+    <string name="execution_prompt_shizuku_unavailable_title">Shizukuが利用できません</string>
+    <string name="execution_prompt_shizuku_unavailable_desc">アクセシビリティモードに切り替えました</string>
+
+    <!-- Settings SubScreen Titles -->
+    <string name="settings_subscreen_theme">テーマモード</string>
+    <string name="settings_subscreen_alian">Alian設定</string>
+    <string name="settings_subscreen_model_config">モデル設定</string>
+    <string name="settings_subscreen_speech_provider">音声プロバイダー</string>
+    <string name="settings_subscreen_api">API設定</string>
+    <string name="settings_subscreen_execution">実行設定</string>
+    <string name="settings_subscreen_voice_interaction">音声インタラクション</string>
+    <string name="settings_subscreen_device_controller">デバイスコントローラー</string>
+    <string name="settings_subscreen_permission_management">権限管理</string>
+    <string name="settings_subscreen_shizuku">Shizuku設定</string>
+    <string name="settings_subscreen_mcp">MCP管理</string>
+    <string name="settings_subscreen_help">ヘルプ</string>
+    <string name="settings_subscreen_feedback">フィードバックとデバッグ</string>
+    <string name="settings_subscreen_about">アプリについて</string>
+
+    <!-- TTS Realtime -->
+    <string name="tts_realtime_off">リアルタイム音声再生をオフ</string>
+    <string name="tts_realtime_on">リアルタイム音声再生をオン</string>
+
+    <!-- Voice Call Top Bar States -->
+    <string name="voice_call_state_idle">音声通話</string>
+    <string name="voice_call_state_recording">録音中</string>
+    <string name="voice_call_state_processing">思考中</string>
+    <string name="voice_call_state_playing">再生中</string>
+    <string name="voice_call_state_error">接続エラー</string>
+
+    <!-- Voice Call Components -->
+    <string name="voice_call_empty_hint">下のボタンをクリックして音声通話を開始</string>
+    <string name="voice_call_loading_text">思考中...</string>
+    <string name="voice_call_recording_text">録音中</string>
+
+    <!-- Login Status Card -->
+    <string name="login_status_logged_in">ログイン済み</string>
+    <string name="login_status_not_logged_in">未ログイン</string>
+    <string name="login_status_backend_logged_in">Backendモードでログイン済み</string>
+    <string name="login_status_please_login">先にAlianアカウントにログインしてください</string>
+    <string name="login_status_use_openai_api">OpenAI互換APIを使用</string>
+
+    <!-- Execution Settings -->
+    <string name="execution_device_controller">デバイスコントローラー</string>
+    <string name="execution_device_controller_desc">デバイスコントローラーの実行戦略とパフォーマンスを設定</string>
+    <string name="execution_optimize_mode">最適化モード</string>
+    <string name="execution_optimize_mode_enabled">有効（VLM呼び出し60%削減、2.5倍高速化）</string>
+    <string name="execution_optimize_mode_disabled">無効（標準モード）</string>
+    <string name="execution_batch_mode">バッチ実行モード</string>
+    <string name="execution_batch_mode_enabled">有効（競合しない操作をバッチ実行）</string>
+    <string name="execution_batch_mode_disabled">無効（順次実行）</string>
+    <string name="execution_react_only_mode">ReactOnlyモード</string>
+    <string name="execution_react_only_enabled">有効（Managerは最初に一度だけ計画、以降はExecutorが実行）</string>
+    <string name="execution_react_only_disabled">無効（標準モード）</string>
+    <string name="execution_chat_agent_mode">ChatAgentモード</string>
+    <string name="execution_chat_agent_enabled">有効（音声中断とリアルタイムインタラクション対応）</string>
+    <string name="execution_chat_agent_disabled">無効（標準実行モード）</string>
+    <string name="execution_max_steps">最大実行ステップ数</string>
+    <string name="execution_max_steps_value">%1$d ステップ</string>
+    <string name="execution_info_title">説明</string>
+    <string name="execution_info_desc">• 最適化モード：不要なManager/Reflector呼び出しをスキップし、VLM呼び出しを削減して実行速度を向上\n• バッチ実行モード：AIが一度に複数の競合しない操作を返し、VLM呼び出しを削減\n• ReactOnlyモード：Managerは開始時に一度だけ計画、以降はExecutorが実行し、VLM呼び出しを大幅に削減\n• ChatAgentモード：音声中断とリアルタイムインタラクションをサポート\n• 最大ステップ数：Agentの単一タスクで実行できる操作の上限を設定</string>
+
+    <!-- Shizuku Settings -->
+    <string name="shizuku_privilege_level">現在の権限レベル</string>
+    <string name="shizuku_root_mode">Rootモード</string>
+    <string name="shizuku_root_mode_uid">Rootモード (UID 0)</string>
+    <string name="shizuku_adb_mode_uid">ADBモード (UID 2000)</string>
+    <string name="shizuku_status_not_connected">未接続</string>
+    <string name="shizuku_root_requires">ShizukuがRoot権限で実行されている必要があります</string>
+    <string name="shizuku_root_enabled">高度な権限が有効</string>
+    <string name="shizuku_root_disabled">有効にするとRoot機能を使用可能</string>
+    <string name="shizuku_su_command">su -cコマンドを許可</string>
+    <string name="shizuku_su_enabled">AIがRootコマンドを実行可能</string>
+    <string name="shizuku_su_disabled">su -cの実行をブロック</string>
+
+    <!-- TTS Settings -->
+    <string name="tts_enable">音声再生を有効化</string>
+    <string name="tts_enable_enabled">有効、ボットの応答が音声再生をサポート</string>
+    <string name="tts_enable_disabled">無効</string>
+    <string name="tts_realtime_playback">リアルタイム再生</string>
+    <string name="tts_realtime_enabled">ボット出力時に即座に再生</string>
+    <string name="tts_realtime_disabled">メッセージ横のスピーカーアイコンをクリックして再生</string>
+    <string name="tts_interrupt">リアルタイム音声中断</string>
+    <string name="tts_interrupt_enabled">TTS再生中にユーザーの発話を検出すると自動停止</string>
+    <string name="tts_interrupt_disabled">ユーザーの音声を検出しない</string>
+    <string name="tts_aec">エコーキャンセリング（AEC）</string>
+    <string name="tts_aec_enabled">より正確な音声中断のためにAECを有効化</string>
+    <string name="tts_aec_disabled">エコーキャンセリングなし</string>
+    <string name="tts_streaming">ストリーミング再生</string>
+    <string name="tts_streaming_enabled">ストリーミングLLM + ストリーミングTTSを有効化、レイテンシを低減</string>
+    <string name="tts_streaming_disabled">従来の再生モードを使用</string>
+
+    <!-- API Settings -->
+    <string name="api_backend_mode">Backendモード</string>
+    <string name="api_backend_enabled">有効 - バックエンドサービスを使用</string>
+    <string name="api_backend_disabled">無効 - ローカルAPIを使用</string>
+    <string name="api_backend_url">BackendサーバーURL</string>
+
+    <!-- Model Config Settings -->
+    <string name="model_provider">APIプロバイダー</string>
+    <string name="model_api_key_set">設定済み (%1$s)</string>
+    <string name="model_api_key_not_set">未設定</string>
+    <string name="model_text_model">テキストモデル</string>
+    <string name="model_vision_model">視覚モデル</string>
+
+    <!-- Feedback Settings -->
+    <string name="feedback_crash_report">クラウドクラッシュレポート</string>
+    <string name="feedback_crash_report_enabled">有効、アプリの改善に協力</string>
+    <string name="feedback_crash_report_disabled">無効</string>
+    <string name="feedback_export_logs">ログをエクスポート</string>
+    <string name="feedback_clear_logs">ログをクリア</string>
+    <string name="feedback_clear_logs_desc">すべてのローカルログファイルを削除</string>
+    <string name="feedback_clear_confirm_title">クリアの確認</string>
+    <string name="feedback_clear_confirm_desc">すべてのログファイルを削除してもよろしいですか？</string>
+    <string name="feedback_logs_cleared">ログをクリアしました</string>
+
+    <!-- Help Settings -->
+    <string name="help_shizuku_guide">Shizukuガイド</string>
+    <string name="help_shizuku_guide_desc">Shizukuのインストールと設定方法</string>
+    <string name="help_overlay_permission">オーバーレイ権限</string>
+    <string name="help_overlay_permission_desc">オーバーレイ権限が必要な理由</string>
+
+    <!-- About Settings -->
+    <string name="about_version">バージョン</string>
+    <string name="about_app_name">Alian Autopilot</string>
+    <string name="about_app_desc">視覚言語モデルベースのAndroid自動化ツール</string>
+
+    <!-- Login Screen -->
+    <string name="login_welcome_back">お帰りなさい、アカウントにログインしてください</string>
+    <string name="login_email_label">メールアドレス</string>
+    <string name="login_password_label">パスワード</string>
+    <string name="login_show_password">パスワードを表示</string>
+    <string name="login_hide_password">パスワードを非表示</string>
+    <string name="login_forgot_password">パスワードを忘れた？</string>
+    <string name="login_button">ログイン</string>
+    <string name="login_loading">ログイン中...</string>
+    <string name="login_or">または</string>
+    <string name="login_no_account">アカウントをお持ちでないですか？</string>
+    <string name="login_register_now">今すぐ登録</string>
+    <string name="login_back">戻る</string>
+
+    <!-- Permission Management -->
+    <string name="permission_basic">基本権限</string>
+    <string name="permission_core">コア権限</string>
+    <string name="permission_other">その他の権限</string>
+    <string name="permission_granted">付与済み</string>
+    <string name="permission_denied">拒否済み</string>
+    <string name="permission_not_requested">未要求</string>
+
+    <!-- Device Controller Settings -->
+    <string name="device_execution_strategy">実行戦略</string>
+    <string name="device_execution_strategy_desc">デバイスコントローラーの実行方法を選択</string>
+    <string name="device_strategy_auto">自動</string>
+    <string name="device_strategy_shizuku_only">Shizukuのみ</string>
+    <string name="device_strategy_accessibility_only">アクセシビリティのみ</string>
+    <string name="device_strategy_hybrid">ハイブリッドモード</string>
+    <string name="device_fallback_strategy">フォールバック戦略</string>
+    <string name="device_fallback_strategy_desc">優先方式が利用できない場合のフォールバック方法</string>
+    <string name="device_fallback_auto">自動</string>
+    <string name="device_fallback_shizuku_first">Shizuku優先</string>
+    <string name="device_fallback_accessibility_first">アクセシビリティ優先</string>
+    <string name="device_performance_settings">パフォーマンス設定</string>
+    <string name="device_screenshot_cache">スクリーンショットキャッシュ</string>
+    <string name="device_screenshot_cache_desc">パフォーマンス向上のためスクリーンショットキャッシュを有効化</string>
+    <string name="device_gesture_delay">ジェスチャー遅延</string>
+    <string name="device_input_delay">入力遅延</string>
+    <string name="device_mediaprojection_title">画面録画権限</string>
+    <string name="device_mediaprojection_desc">アクセシビリティコントローラーがスクリーンショットを撮るには画面録画権限が必要</string>
+    <string name="device_mediaprojection_request">画面録画権限をリクエスト</string>
+    <string name="device_mediaprojection_hint">注意：Shizukuコントローラーはこの権限を必要としません</string>
+    <string name="device_accessibility_required_title">アクセシビリティサービスが必要です</string>
+    <string name="device_accessibility_required_desc">選択した実行戦略はアクセシビリティサービスが有効である必要があります。</string>
+    <string name="device_accessibility_required_hint">システム設定で「Alian」アクセシビリティサービスを有効にしてください。</string>
+    <string name="device_mediaprojection_required_title">画面録画権限が必要です</string>
+    <string name="device_mediaprojection_required_desc">選択した実行戦略はスクリーンショットを撮るために画面録画権限が必要です。</string>
+    <string name="device_mediaprojection_required_hint">この権限を付与すると、アクセシビリティコントローラーは視覚認識のために画面コンテンツをキャプチャできます。</string>
+    <string name="device_shizuku_required_title">Shizuku権限が必要です</string>
+    <string name="device_shizuku_required_desc">選択した実行戦略はShizuku権限が必要です。</string>
+    <string name="device_shizuku_required_hint">Shizukuは効率的なデバイス制御ツールで、Shizukuアプリのインストールと認証が必要です。</string>
+    <string name="device_shizuku_required_steps">認証方法：\n1. Shizukuアプリがインストールされていることを確認\n2. ADB認証（推奨）またはRoot認証を通じて\n3. ShizukuアプリでAlianに権限を付与</string>
+    <string name="device_accessibility_not_enabled">アクセシビリティサービスが有効ではありません、設定で有効にしてください</string>
+    <string name="device_go_authorize">許可する</string>
+    <string name="device_authorize_guide">認証ガイド</string>
+    <string name="device_later">後で</string>
+
+    <!-- Alian Settings -->
+    <string name="alian_avatar_section">アバター設定</string>
+    <string name="alian_avatar_upload">カスタムアバターをアップロード</string>
+    <string name="alian_avatar_saving">保存中...</string>
+    <string name="alian_avatar_change_hint">アバターまたはボタンをクリックして変更</string>
+    <string name="alian_avatar_default_hint">デフォルトは音色アバターを使用</string>
+    <string name="alian_voice_settings">音声設定</string>
+    <string name="alian_voice_select">音色</string>
+    <string name="alian_speed">話速</string>
+    <string name="alian_speed_slow">ゆっくり - 詳細な説明に適している</string>
+    <string name="alian_speed_normal">標準 - 通常の話速</string>
+    <string name="alian_speed_fast">速い - クイックコミュニケーションに適している</string>
+    <string name="alian_speed_very_fast">とても速い - クイックブラウジングに適している</string>
+    <string name="alian_volume">音量</string>
+    <string name="alian_volume_mute">ミュート</string>
+    <string name="alian_volume_low">低音量</string>
+    <string name="alian_volume_normal">標準音量</string>
+    <string name="alian_volume_high">高音量</string>
+    <string name="alian_prompt_settings">プロンプト設定</string>
+    <string name="alian_voice_call_prompt">音声通話プロンプト</string>
+    <string name="alian_voice_call_prompt_desc">音声通話時のシステムプロンプトを設定し、AIの役割と動作を定義します。</string>
+    <string name="alian_voice_call_prompt_hint">音声通話のシステムプロンプトを入力...</string>
+    <string name="alian_video_call_prompt">ビデオ通話プロンプト</string>
+    <string name="alian_video_call_prompt_desc">ビデオ通話時のシステムプロンプトを設定し、AIの役割と動作を定義します。</string>
+    <string name="alian_video_call_prompt_hint">ビデオ通話のシステムプロンプトを入力...</string>
+    <string name="alian_not_set">未設定</string>
+    <string name="alian_stop">停止</string>
+    <string name="alian_audition">試聴</string>
+    <string name="alian_save">保存</string>
+
+    <!-- Voice Selection Screen -->
+    <string name="voice_selection_title">音色選択</string>
+    <string name="voice_selection_all">すべて</string>
+    <string name="voice_selection_stop">停止</string>
+    <string name="voice_selection_audition">試聴</string>
+
+    <!-- Common Dialog -->
+    <string name="dialog_unit_ms">%1$d ms</string>
+    <string name="dialog_current_value">現在の値: %1$d %2$s</string>
+</resources>
