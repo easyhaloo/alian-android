@@ -99,9 +99,9 @@ class AccessibilityInputProvider(
         val hasNonAscii = text.any { it.code > 127 }
         
         if (hasNonAscii) {
-            // 中文等使用剪贴板方式
+            // 中文等使用剪贴板方式（首次调用，需要清空输入框）
             Log.d(TAG, "type: using clipboard method for non-ASCII text")
-            typeViaClipboard(text)
+            typeViaClipboard(text, clearBeforePaste = true)
         } else {
             // 纯英文数字尝试使用无障碍输入
             Log.d(TAG, "type: using accessibility method for ASCII text")
@@ -170,85 +170,118 @@ class AccessibilityInputProvider(
         val rootNode = service.rootNode
         if (rootNode == null) {
             Log.w(TAG, "typeViaAccessibility: Cannot get root node")
-            typeViaClipboard(text)
+            // typeViaClipboard(text, clearBeforePaste = true)
             return
         }
 
         // 查找可编辑的元素
         val editableNodes = service.findAllEditable()
-        if (editableNodes.isNotEmpty()) {
-            // 使用第一个可编辑元素
-            val node = editableNodes[0]
-
-            // 记录操作前的文本
-            val beforeText = node.text?.toString() ?: ""
-            Log.d(TAG, "typeViaAccessibility: 操作前文本: '$beforeText'")
-
-            // 先聚焦元素
-            service.focusNode(node)
-            Thread.sleep(100)
-
-            // 清空现有文本
-            // 方法1: 尝试使用 ACTION_SET_TEXT 清空
-            val clearResult = service.setText(node, "")
-            Log.d(TAG, "typeViaAccessibility: 清空文本结果: $clearResult")
-            Thread.sleep(100)
-
-            // 如果清空失败，尝试选中文本再删除
-            if (!clearResult && beforeText.isNotEmpty()) {
-                Log.d(TAG, "typeViaAccessibility: 清空失败，尝试选中文本删除")
-                // 尝试选中文本
-                val selectionArgs = Bundle().apply {
-                    putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, 0)
-                    putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, beforeText.length)
-                }
-                val selectionResult = node.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, selectionArgs)
-                Log.d(TAG, "typeViaAccessibility: 选中文本结果: $selectionResult")
-                Thread.sleep(50)
-                // 删除选中的文本 - 使用空格替换或直接重新设置
-                // 注意：Android Accessibility API 没有 ACTION_DELETE，需要通过其他方式
-                // 这里我们直接重新设置空文本，因为前面的 setText 失败可能是暂时的
-                Thread.sleep(100)
-            }
-
-            // 设置新文本
-            val setResult = service.setText(node, text)
-            Log.d(TAG, "typeViaAccessibility: 设置文本 '$text', 结果: $setResult")
-
-            // 等待设置完成
-            Thread.sleep(200)
-
-            // 验证文本是否真正设置成功
-            val afterText = node.text?.toString() ?: ""
-            Log.d(TAG, "typeViaAccessibility: 操作后文本: '$afterText'")
-
-            val verified = afterText.contains(text)
-            if (verified) {
-                Log.d(TAG, "typeViaAccessibility: ✓ 文本验证成功")
-                return
-            } else {
-                Log.w(TAG, "typeViaAccessibility: ✗ 文本验证失败! 期望包含: '$text', 实际: '$afterText'")
-            }
+        if (editableNodes.isEmpty()) {
+            Log.w(TAG, "typeViaAccessibility: No editable node found")
+            // typeViaClipboard(text, clearBeforePaste = true)
+            return
         }
 
-        // 如果找不到可编辑元素或设置失败，降级到剪贴板方式
-        Log.w(TAG, "typeViaAccessibility: Cannot find editable node or setText failed, fallback to clipboard")
-        typeViaClipboard(text)
+        // 使用第一个可编辑元素
+        val node = editableNodes[0]
+
+        // 记录操作前的文本
+        val beforeText = node.text?.toString() ?: ""
+        Log.d(TAG, "typeViaAccessibility: 操作前文本: '$beforeText'")
+
+        // 先聚焦元素
+        service.focusNode(node)
+        Thread.sleep(100)
+
+        // 【关键】直接设置目标文本（setText 内部会处理清空和设置）
+        val setResult = service.setText(node, text)
+        Log.d(TAG, "typeViaAccessibility: 设置文本 '$text', 结果: $setResult")
+
+        // 等待设置完成
+        Thread.sleep(200)
+
+        // 验证文本是否设置成功
+        val afterText = node.text?.toString() ?: ""
+        Log.d(TAG, "typeViaAccessibility: 操作后文本: '$afterText'")
+
+        // 如果目标文本已存在于输入框中，认为成功
+        val verified = afterText.contains(text) || afterText == text
+        if (verified) {
+            Log.d(TAG, "typeViaAccessibility: ✓ 文本验证成功")
+        } else {
+            Log.w(TAG, "typeViaAccessibility: ✗ 文本验证失败! 期望: '$text', 实际: '$afterText'")
+        }
+        
+        // 不再降级到剪贴板方式，避免剪贴板污染问题
+        // Log.w(TAG, "typeViaAccessibility: setText failed, fallback to clipboard")
+        // typeViaClipboard(text, clearBeforePaste = true)
     }
     
     /**
      * 通过剪贴板方式输入文本
+     * 
+     * @param text 要输入的文本
+     * @param clearBeforePaste 粘贴前是否需要清空输入框（从 typeViaAccessibility 降级时可能已有内容）
      */
-    private fun typeViaClipboard(text: String) {
-        Log.d(TAG, "typeViaClipboard: text=$text")
+    private fun typeViaClipboard(text: String, clearBeforePaste: Boolean = true) {
+        Log.d(TAG, "typeViaClipboard: text=$text, clearBeforePaste=$clearBeforePaste")
 
         if (clipboardManager != null) {
             try {
-                // 使用 CountDownLatch 等待剪贴板设置完成
+                // 查找可编辑的输入框
+                val service = accessibilityService
+                if (service == null) {
+                    Log.e(TAG, "typeViaClipboard: AccessibilityService not available")
+                    return
+                }
+
+                val editableNodes = service.findAllEditable()
+                if (editableNodes.isEmpty()) {
+                    Log.w(TAG, "typeViaClipboard: No editable node found")
+                    return
+                }
+
+                val node = editableNodes[0]
+
+                // 记录操作前的文本
+                val beforeText = node.text?.toString() ?: ""
+                Log.d(TAG, "typeViaClipboard: 操作前文本: '$beforeText'")
+
+                // 先聚焦到输入框
+                service.focusNode(node)
+                Thread.sleep(100)
+
+                // 只有在需要时才清空输入框
+                if (clearBeforePaste && beforeText.isNotEmpty()) {
+                    Log.d(TAG, "typeViaClipboard: 清空现有文本: '$beforeText'")
+                    
+                    // 方法1: 尝试使用 ACTION_SET_TEXT 清空
+                    val clearResult = service.setText(node, "")
+                    Log.d(TAG, "typeViaClipboard: ACTION_SET_TEXT 清空结果: $clearResult")
+                    Thread.sleep(100)
+
+                    // 方法2: 如果清空失败，尝试全选后删除
+                    if (!clearResult) {
+                        Log.d(TAG, "typeViaClipboard: 尝试全选后删除")
+                        val selectionArgs = Bundle().apply {
+                            putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, 0)
+                            putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, beforeText.length)
+                        }
+                        node.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, selectionArgs)
+                        Thread.sleep(50)
+                    }
+
+                    // 验证是否清空成功
+                    val afterClearText = node.text?.toString() ?: ""
+                    if (afterClearText.isNotEmpty()) {
+                        Log.w(TAG, "typeViaClipboard: 清空后仍有文本: '$afterClearText'")
+                    }
+                }
+
+                // 设置剪贴板内容
                 val latch = CountDownLatch(1)
                 var clipboardSet = false
 
-                // 必须在主线程操作剪贴板
                 mainHandler.post {
                     try {
                         val clip = ClipData.newPlainText("baozi_input", text)
@@ -262,74 +295,40 @@ class AccessibilityInputProvider(
                     }
                 }
 
-                // 等待剪贴板设置完成 (最多等 1 秒)
+                // 等待剪贴板设置完成
                 val success = latch.await(1, TimeUnit.SECONDS)
-                if (!success) {
-                    Log.e(TAG, "typeViaClipboard: Clipboard timeout")
+                if (!success || !clipboardSet) {
+                    Log.e(TAG, "typeViaClipboard: Clipboard set failed or timeout")
                     return
                 }
 
-                if (!clipboardSet) {
-                    Log.e(TAG, "typeViaClipboard: Clipboard set failed")
-                    return
-                }
-
-                // 稍等一下确保剪贴板生效
                 Thread.sleep(200)
 
-                // 发送粘贴按键
-                val service = accessibilityService
-                if (service != null) {
-                    // 查找可编辑的输入框
-                    val editableNodes = service.findAllEditable()
-                    if (editableNodes.isNotEmpty()) {
-                        // 使用第一个可编辑元素
-                        val node = editableNodes[0]
+                // 执行粘贴
+                val pasteResult = node.performAction(AccessibilityNodeInfo.ACTION_PASTE)
+                Log.d(TAG, "typeViaClipboard: ACTION_PASTE 结果: $pasteResult")
+                Thread.sleep(200)
 
-                        // 记录粘贴前的文本
-                        val beforeText = node.text?.toString() ?: ""
-                        Log.d(TAG, "typeViaClipboard: 粘贴前文本: '$beforeText'")
-
-                        // 先聚焦到输入框
-                        val focusResult = service.focusNode(node)
-                        Log.d(TAG, "typeViaClipboard: Focus action sent, result: $focusResult")
-
-                        // 稍等一下确保聚焦完成
-                        Thread.sleep(100)
-
-                        // 方法1: 尝试使用 ACTION_PASTE
-                        val pasteResult = node.performAction(AccessibilityNodeInfo.ACTION_PASTE)
-                        Log.d(TAG, "typeViaClipboard: ACTION_PASTE 结果: $pasteResult")
-                        Thread.sleep(200)
-
-                        // 验证粘贴结果
-                        val afterText1 = node.text?.toString() ?: ""
-                        val verified1 = afterText1.contains(text)
-
-                        if (verified1) {
-                            Log.d(TAG, "typeViaClipboard: ✓ ACTION_PASTE 验证成功")
-                            return
-                        }
-
-                        Log.w(TAG, "typeViaClipboard: ✗ ACTION_PASTE 验证失败! 期望包含: '$text', 实际: '$afterText1'")
-
-                        // 方法2: 如果 ACTION_PASTE 失败，使用全局 KEYCODE_PASTE
-                        Log.d(TAG, "typeViaClipboard: 尝试使用全局 KEYCODE_PASTE")
-                        val keyEventResult = service.dispatchKeyEvent(279) // KEYCODE_PASTE = 279
-                        Log.d(TAG, "typeViaClipboard: KEYCODE_PASTE 结果: $keyEventResult")
-                        Thread.sleep(300)
-
-                        // 再次验证
-                        val afterText2 = node.text?.toString() ?: ""
-                        val verified2 = afterText2.contains(text)
-
-                        if (verified2) {
-                            Log.d(TAG, "typeViaClipboard: ✓ KEYCODE_PASTE 验证成功")
-                        } else {
-                            Log.e(TAG, "typeViaClipboard: ✗ KEYCODE_PASTE 验证失败! 期望包含: '$text', 实际: '$afterText2'")
-                        }
+                // 验证：目标文本存在于输入框中即可
+                val afterText = node.text?.toString() ?: ""
+                val verified = afterText.contains(text) || afterText == text
+                
+                if (verified) {
+                    Log.d(TAG, "typeViaClipboard: ✓ 验证成功，输入文本: '$afterText'")
+                } else {
+                    Log.e(TAG, "typeViaClipboard: ✗ 验证失败! 期望: '$text', 实际: '$afterText'")
+                    
+                    // 如果验证失败，尝试使用 ACTION_SET_TEXT 直接设置
+                    Log.d(TAG, "typeViaClipboard: 尝试使用 ACTION_SET_TEXT 直接设置")
+                    val setResult = service.setText(node, text)
+                    Log.d(TAG, "typeViaClipboard: ACTION_SET_TEXT 结果: $setResult")
+                    Thread.sleep(100)
+                    
+                    val finalText = node.text?.toString() ?: ""
+                    if (finalText.contains(text) || finalText == text) {
+                        Log.d(TAG, "typeViaClipboard: ✓ ACTION_SET_TEXT 成功")
                     } else {
-                        Log.w(TAG, "typeViaClipboard: No editable node found for paste")
+                        Log.e(TAG, "typeViaClipboard: ✗ 最终验证失败: '$finalText'")
                     }
                 }
             } catch (e: Exception) {

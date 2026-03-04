@@ -109,7 +109,7 @@ data class AppSettings(
     val userAvatar: String = "",  // 用户头像路径
     val voiceCallSystemPrompt: String = "你叫艾莲，女性，一位温柔体贴的语音陪伴助手。你的声音柔和自然，语调亲切稳重，善于倾听和回应。你善于营造轻松愉快的对话氛围，既能提供有价值的帮助。请保持回应简洁明了，每次回复控制在1到5句话之间，避免冗长。",  // 语音通话系统提示词
     val videoCallSystemPrompt: String = "你叫艾莲，女性，一位全能的视频助手。你的声音柔和自然，语调亲切稳重。通过视频画面，你能够观察用户所在的环境，从而更好地理解用户的需求,并通过已有工具解答用户问题。请保持回应简洁明了，每次回复控制在1到5句话之间，避免冗长。",  // 视频通话系统提示词
-    val enableBatchExecution: Boolean = true,  // 是否启用批量执行模式（多步执行）
+    val enableBatchExecution: Boolean = false,  // 是否启用批量执行模式（多步执行）
     val enableImproveMode: Boolean = true,  // 是否启用 Improve 模式（优化版 Agent，减少 VLM 调用次数）
     val reactOnly: Boolean = true,  // ReactOnly 模式：Manager 只规划一次，后续全靠 Executor 执行
     val enableChatAgent: Boolean = true,  // 是否启用 ChatAgent 模式（语音打断和实时交互）

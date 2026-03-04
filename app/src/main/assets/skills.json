@@ -11,7 +11,7 @@
         "type": "string",
         "description": "想吃什么",
         "required": false,
-        "examples": ["汉堡", "猪脚饭", "麻辣烫", "炸鸡"]
+        "examples": ["汉堡", "水果披萨", "麻辣烫", "炸鸡"]
       }
     ],
     "related_apps": [

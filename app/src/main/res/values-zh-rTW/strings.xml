@@ -25,7 +25,7 @@
     <string name="preset_bilibili">刷B站</string>
     <string name="preset_bilibili_cmd">打開B站搜索艾蓮，找到第一個視頻點個讚</string>
     <string name="preset_takeout">點外賣</string>
-    <string name="preset_takeout_cmd">幫我在美團點一份豬腳飯</string>
+    <string name="preset_takeout_cmd">幫我在美團點一份水果披薩</string>
     <string name="preset_music">聽音樂</string>
     <string name="preset_music_cmd">打開網易雲音樂播放每日推薦</string>
     <string name="preset_message">發消息</string>

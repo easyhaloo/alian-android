@@ -573,6 +573,10 @@ class OverlayService : Service() {
             setShadowLayer(6f, 0f, 2f, Color.parseColor("#80000000"))
             typeface = Typeface.DEFAULT_BOLD
             letterSpacing = 0.02f
+            // 设置最大宽度，防止长文本挤压按钮
+            maxWidth = 560
+            ellipsize = android.text.TextUtils.TruncateAt.END
+            maxLines = 1
         }
         container.addView(textView)
 
@@ -948,8 +952,8 @@ class OverlayService : Service() {
         overlayView?.post {
             overlayView?.visibility = View.VISIBLE
 
-            // 限制消息长度，确保不超过一行的一半（约20个字符）
-            val maxDisplayLength = 20
+            // 限制消息长度，确保按钮有足够空间显示
+            val maxDisplayLength = 15
             val displayMessage = if (message.length > maxDisplayLength) {
                 "${message.take(maxDisplayLength)}..."
             } else {

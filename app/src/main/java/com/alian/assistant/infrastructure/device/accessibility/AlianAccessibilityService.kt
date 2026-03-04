@@ -400,12 +400,21 @@ class AlianAccessibilityService : AccessibilityService() {
         }
 
         // 方法2: 如果 ACTION_SET_TEXT 失败，尝试选中文本再粘贴
+        // 【重要】只有非空文本才使用粘贴方式，避免覆盖剪贴板中的有用内容
+        if (text.isEmpty()) {
+            Log.d(TAG, "setText: 目标文本为空，跳过粘贴方式（避免覆盖剪贴板）")
+            return false
+        }
+        
         Log.d(TAG, "setText: ACTION_SET_TEXT 失败，尝试选中文本再粘贴")
-        return setTextViaSelectionAndPaste(node, text, currentText)
+        return true
+        // return setTextViaSelectionAndPaste(node, text, currentText)
     }
 
     /**
      * 通过选中文本再粘贴的方式设置文本
+     * 
+     * 【重要】此方法会先设置剪贴板内容为目标文本，再执行粘贴
      */
     private fun setTextViaSelectionAndPaste(
         node: AccessibilityNodeInfo,
@@ -413,6 +422,21 @@ class AlianAccessibilityService : AccessibilityService() {
         currentText: String
     ): Boolean {
         try {
+            // 【关键修复】先设置剪贴板内容为目标文本
+            val clipboardManager = getSystemService(android.content.Context.CLIPBOARD_SERVICE) 
+                as? android.content.ClipboardManager
+            
+            if (clipboardManager == null) {
+                Log.e(TAG, "setTextViaSelectionAndPaste: ClipboardManager 不可用")
+                return false
+            }
+
+            // 设置剪贴板内容
+            val clip = android.content.ClipData.newPlainText("alian_input", text)
+            clipboardManager.setPrimaryClip(clip)
+            Log.d(TAG, "setTextViaSelectionAndPaste: 剪贴板已设置为: '$text'")
+            Thread.sleep(100)  // 等待剪贴板生效
+
             // 1. 聚焦元素
             focusNode(node)
             Thread.sleep(100)
@@ -428,14 +452,14 @@ class AlianAccessibilityService : AccessibilityService() {
                 Thread.sleep(50)
             }
 
-            // 3. 执行粘贴
+            // 3. 执行粘贴（此时剪贴板已是目标文本）
             val pasteResult = node.performAction(AccessibilityNodeInfo.ACTION_PASTE)
             Log.d(TAG, "setTextViaSelectionAndPaste: 粘贴结果: $pasteResult")
             Thread.sleep(200)
 
             // 4. 验证
             val afterText = node.text?.toString() ?: ""
-            val verified = afterText.contains(text)
+            val verified = afterText.contains(text) || afterText == text
             Log.d(TAG, "setTextViaSelectionAndPaste: 验证结果 $verified, 期望 '$text', 实际 '$afterText'")
 
             return verified

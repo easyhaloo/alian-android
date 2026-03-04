@@ -25,7 +25,7 @@
     <string name="preset_bilibili">Bilibiliを見る</string>
     <string name="preset_bilibili_cmd">Bilibiliを開いて艾莲を検索し、最初の動画にいいねして</string>
     <string name="preset_takeout">デリバリーを注文</string>
-    <string name="preset_takeout_cmd">Meituanで豚足飯を注文して</string>
+    <string name="preset_takeout_cmd">Meituanでフルーツピザを注文して</string>
     <string name="preset_music">音楽を聴く</string>
     <string name="preset_music_cmd">NetEaseクラウド音楽を開いてデイリーレコメンドを再生して</string>
     <string name="preset_message">メッセージを送信</string>

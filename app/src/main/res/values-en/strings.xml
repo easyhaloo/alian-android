@@ -25,7 +25,7 @@
     <string name="preset_bilibili">Watch Bilibili</string>
     <string name="preset_bilibili_cmd">I want to watch trending videos on Bilibili</string>
     <string name="preset_takeout">Order Takeout</string>
-    <string name="preset_takeout_cmd">Order a pork trotter rice on Meituan</string>
+    <string name="preset_takeout_cmd">Order a fruit pizza on Meituan</string>
     <string name="preset_music">Listen to Music</string>
     <string name="preset_music_cmd">Open NetEase Cloud Music and play daily recommendations</string>
     <string name="preset_message">Send Message</string>

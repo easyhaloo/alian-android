@@ -25,7 +25,7 @@
     <string name="preset_bilibili">빌리빌리 시청</string>
     <string name="preset_bilibili_cmd">빌리빌리 열어서艾莲 검색하고 첫 번째 동영상에 좋아요 눌러 줘</string>
     <string name="preset_takeout">배달 주문</string>
-    <string name="preset_takeout_cmd">메이퇀에서 족발밥 주문해 줘</string>
+    <string name="preset_takeout_cmd">메이퇀에서 과일 피자 주문해 줘</string>
     <string name="preset_music">음악 듣기</string>
     <string name="preset_music_cmd">네이버 클라우드 뮤직 열어서 일일 추천 재생해 줘</string>
     <string name="preset_message">메시지 보내기</string>

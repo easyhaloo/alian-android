@@ -25,7 +25,7 @@
     <string name="preset_bilibili">刷B站</string>
     <string name="preset_bilibili_cmd">打开B站搜索艾莲，找到第一个视频点个赞</string>
     <string name="preset_takeout">点外卖</string>
-    <string name="preset_takeout_cmd">帮我在美团点一份猪脚饭</string>
+    <string name="preset_takeout_cmd">帮我在美团点一份水果披萨</string>
     <string name="preset_music">听音乐</string>
     <string name="preset_music_cmd">打开网易云音乐播放每日推荐</string>
     <string name="preset_message">发消息</string>

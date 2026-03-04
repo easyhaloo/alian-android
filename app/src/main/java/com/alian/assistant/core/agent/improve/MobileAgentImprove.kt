@@ -1518,7 +1518,7 @@ Limitations:
             operation()
         } finally {
             if (shouldHideOverlay) {
-                delay(50) // 等待操作完成
+                delay(800) // 等待操作完成后再显示悬浮窗，避免遮挡导致点击无效
                 OverlayService.setVisible(true)
                 log("恢复悬浮窗显示")
             }
