@@ -40,6 +40,14 @@ import com.alian.assistant.core.alian.backend.PlanStartedData
 import com.alian.assistant.core.alian.backend.PlanFinishedData
 import com.alian.assistant.core.alian.backend.PhaseStartedData
 import com.alian.assistant.core.alian.backend.PhaseFinishedData
+// 移动端任务数据模型导入
+import com.alian.assistant.core.alian.backend.MobileTaskCreatedData
+import com.alian.assistant.core.alian.backend.MobileTaskUpdatedData
+import com.alian.assistant.core.alian.backend.MobileTaskResolvedData
+import com.alian.assistant.core.alian.backend.RemoteMobileTask
+import com.alian.assistant.core.alian.backend.MobileTaskStatus
+import com.alian.assistant.core.alian.backend.MobileTaskPhase
+import com.alian.assistant.core.alian.backend.UIMobileTaskEvent
 import com.alian.assistant.core.alian.backend.UIDeepThinkingChunkEvent
 import com.alian.assistant.core.alian.backend.UIDoneEvent
 import com.alian.assistant.core.alian.backend.UIMessageChunkEvent
@@ -132,6 +140,15 @@ data class PlanItem(
 }
 
 /**
+ * 移动端任务项
+ */
+data class MobileTaskItem(
+    val task: RemoteMobileTask
+) : UnifiedChatItem() {
+    override val timestamp: Long = task.timestamp
+}
+
+/**
  * Alian 对话状态
  */
 sealed class AlianChatState {
@@ -184,6 +201,10 @@ class AlianViewModel(private val context: Context) : ViewModel() {
     // 工具调用列表
     private val _toolCalls = mutableStateListOf<UIToolCall>()
     val toolCalls: SnapshotStateList<UIToolCall> = _toolCalls
+
+    // 远端移动端任务列表
+    private val _remoteMobileTasks = mutableStateListOf<RemoteMobileTask>()
+    val remoteMobileTasks: SnapshotStateList<RemoteMobileTask> = _remoteMobileTasks
 
     // 当前消息的附件收集器
     private val _currentAttachments = mutableStateListOf<Attachment>()
@@ -1027,6 +1048,62 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                     }
                 }
             }
+            is UIMobileTaskEvent -> {
+                // 移动端任务事件
+                Log.d("AlianViewModel", "收到移动端任务事件: taskId=${event.taskId}, action=${event.action}")
+                System.out.flush()
+
+                when (event.action) {
+                    "created" -> {
+                        // 任务创建
+                        val task = RemoteMobileTask(
+                            taskId = event.taskId,
+                            eventId = event.eventId,
+                            timestamp = normalizeTimestamp(event.timestamp),
+                            title = event.title ?: "移动端任务",
+                            instruction = event.instruction ?: "",
+                            phase = MobileTaskPhase.CREATED,
+                            status = MobileTaskStatus.PENDING,
+                            metadata = event.metadata
+                        )
+                        upsertRemoteMobileTask(task)
+                        Log.d("AlianViewModel", "创建移动端任务: taskId=${task.taskId}, title=${task.title}")
+                    }
+                    "updated" -> {
+                        // 任务更新
+                        val existingTask = _remoteMobileTasks.find { it.taskId == event.taskId }
+                        if (existingTask != null) {
+                            val updatedTask = existingTask.copy(
+                                phase = event.phase?.let { parseMobileTaskPhase(it) } ?: existingTask.phase,
+                                status = event.status?.let { parseMobileTaskStatus(it) } ?: existingTask.status,
+                                progress = event.progress ?: existingTask.progress,
+                                statusMessage = event.message ?: existingTask.statusMessage,
+                                metadata = event.metadata ?: existingTask.metadata
+                            )
+                            upsertRemoteMobileTask(updatedTask)
+                            Log.d("AlianViewModel", "更新移动端任务: taskId=${event.taskId}, phase=${updatedTask.phase}, status=${updatedTask.status}")
+                        } else {
+                            Log.w("AlianViewModel", "收到更新事件但任务不存在: taskId=${event.taskId}")
+                        }
+                    }
+                    "resolved" -> {
+                        // 任务解决
+                        val existingTask = _remoteMobileTasks.find { it.taskId == event.taskId }
+                        if (existingTask != null) {
+                            val updatedTask = existingTask.copy(
+                                status = MobileTaskStatus.RESOLVED,
+                                resultSummary = event.resultSummary,
+                                resolvedAt = event.timestamp,
+                                resolvedBy = event.resolvedBy
+                            )
+                            upsertRemoteMobileTask(updatedTask)
+                            Log.d("AlianViewModel", "移动端任务已解决: taskId=${event.taskId}, status=${event.status}")
+                        } else {
+                            Log.w("AlianViewModel", "收到解决事件但任务不存在: taskId=${event.taskId}")
+                        }
+                    }
+                }
+            }
             else -> {
                 // 其他事件类型不处理消息更新
             }
@@ -1060,6 +1137,157 @@ class AlianViewModel(private val context: Context) : ViewModel() {
         _toolCalls.clear()
         _currentAttachments.clear()
         Log.d("AlianViewModel", "清除工具调用和附件收集器")
+    }
+
+    // ========================================
+    // 移动端任务管理方法
+    // ========================================
+
+    /**
+     * 插入或更新远端移动端任务
+     * 使用 taskId 作为唯一键进行幂等合并
+     */
+    fun upsertRemoteMobileTask(task: RemoteMobileTask) {
+        val existingIndex = _remoteMobileTasks.indexOfFirst { it.taskId == task.taskId }
+        
+        if (existingIndex >= 0) {
+            // 更新现有任务
+            _remoteMobileTasks[existingIndex] = task
+            Log.d("AlianViewModel", "更新移动端任务: taskId=${task.taskId}, status=${task.status}")
+        } else {
+            // 添加新任务
+            _remoteMobileTasks.add(task)
+            // 添加到统一时间线
+            _unifiedChatTimeline.add(MobileTaskItem(task))
+            _unifiedChatTimeline.sortBy { it.timestamp }
+            Log.d("AlianViewModel", "添加移动端任务: taskId=${task.taskId}, title=${task.title}")
+        }
+
+        // 同步更新时间线中的 MobileTaskItem
+        syncMobileTaskItemInTimeline(task)
+    }
+
+    /**
+     * 标记远端任务状态
+     */
+    fun markRemoteTaskStatus(taskId: String, status: MobileTaskStatus, message: String? = null) {
+        val task = _remoteMobileTasks.find { it.taskId == taskId }
+        if (task != null) {
+            val updatedTask = task.copy(
+                status = status,
+                statusMessage = message ?: task.statusMessage
+            )
+            upsertRemoteMobileTask(updatedTask)
+            Log.d("AlianViewModel", "标记任务状态: taskId=$taskId, status=$status")
+        } else {
+            Log.w("AlianViewModel", "未找到任务: taskId=$taskId")
+        }
+    }
+
+    /**
+     * 同步 MobileTaskItem 到统一时间线
+     */
+    private fun syncMobileTaskItemInTimeline(task: RemoteMobileTask) {
+        val existingIndex = _unifiedChatTimeline.indexOfFirst { 
+            it is MobileTaskItem && it.task.taskId == task.taskId 
+        }
+        
+        if (existingIndex >= 0) {
+            _unifiedChatTimeline[existingIndex] = MobileTaskItem(task)
+            Log.d("AlianViewModel", "同步 MobileTaskItem 到时间线: taskId=${task.taskId}")
+        }
+    }
+
+    /**
+     * 加载待执行的移动端任务（用于会话恢复）
+     */
+    suspend fun loadPendingRemoteMobileTasks(sessionId: String) {
+        if (!useBackend) {
+            Log.d("AlianViewModel", "非 Backend 模式，跳过加载待执行任务")
+            return
+        }
+
+        try {
+            val backendClient = getBackendClient()
+            if (backendClient == null) {
+                Log.w("AlianViewModel", "BackendClient 未初始化")
+                return
+            }
+
+            val result = backendClient.getPendingMobileTasks(sessionId)
+            if (result.isSuccess) {
+                val tasks = result.getOrNull() ?: emptyList()
+                Log.d("AlianViewModel", "加载到 ${tasks.size} 个待执行任务")
+                
+                for (taskData in tasks) {
+                    val task = RemoteMobileTask(
+                        taskId = taskData.task_id,
+                        eventId = taskData.task_id, // 使用 taskId 作为 eventId
+                        timestamp = taskData.created_at,
+                        title = taskData.title,
+                        instruction = taskData.instruction,
+                        phase = parseMobileTaskPhase(taskData.phase),
+                        status = parseMobileTaskStatus(taskData.status),
+                        priority = taskData.priority,
+                        timeoutSeconds = taskData.timeout_seconds,
+                        metadata = taskData.metadata
+                    )
+                    // 幂等合并
+                    upsertRemoteMobileTask(task)
+                }
+            } else {
+                Log.e("AlianViewModel", "加载待执行任务失败: ${result.exceptionOrNull()?.message}")
+            }
+        } catch (e: Exception) {
+            Log.e("AlianViewModel", "加载待执行任务异常", e)
+        }
+    }
+
+    /**
+     * 根据 taskId 获取任务
+     */
+    fun getRemoteMobileTask(taskId: String): RemoteMobileTask? {
+        return _remoteMobileTasks.find { it.taskId == taskId }
+    }
+
+    /**
+     * 清除所有移动端任务
+     */
+    fun clearRemoteMobileTasks() {
+        _remoteMobileTasks.clear()
+        _unifiedChatTimeline.removeAll { it is MobileTaskItem }
+        Log.d("AlianViewModel", "清除所有移动端任务")
+    }
+
+    /**
+     * 解析任务阶段字符串
+     */
+    private fun parseMobileTaskPhase(phase: String): MobileTaskPhase {
+        return when (phase.lowercase()) {
+            "created" -> MobileTaskPhase.CREATED
+            "confirmed" -> MobileTaskPhase.CONFIRMED
+            "executing" -> MobileTaskPhase.EXECUTING
+            "completed" -> MobileTaskPhase.COMPLETED
+            "failed" -> MobileTaskPhase.FAILED
+            else -> MobileTaskPhase.CREATED
+        }
+    }
+
+    /**
+     * 解析任务状态字符串
+     */
+    private fun parseMobileTaskStatus(status: String): MobileTaskStatus {
+        return when (status.lowercase()) {
+            "pending" -> MobileTaskStatus.PENDING
+            "confirmed" -> MobileTaskStatus.CONFIRMED
+            "executing" -> MobileTaskStatus.EXECUTING
+            "succeeded", "success" -> MobileTaskStatus.SUCCEEDED
+            "failed" -> MobileTaskStatus.FAILED
+            "cancelled", "canceled" -> MobileTaskStatus.CANCELLED
+            "timeout" -> MobileTaskStatus.TIMEOUT
+            "resolved" -> MobileTaskStatus.RESOLVED
+            else -> MobileTaskStatus.PENDING
+        }
     }
 
     /**
@@ -2244,6 +2472,76 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                         )
                     } catch (e: Exception) {
                         Log.e("AlianViewModel", "解析阶段完成事件失败", e)
+                    }
+                }
+                // ==================== 移动端任务事件处理 ====================
+                "mobile_task_created" -> {
+                    // 处理移动端任务创建事件
+                    try {
+                        val dataString = event.data.toJsonString()
+                        val taskData = json.decodeFromString<MobileTaskCreatedData>(dataString)
+                        Log.d("AlianViewModel", "处理移动端任务创建事件: taskId=${taskData.task_id}, title=${taskData.title}")
+
+                        addUIEvent(
+                            UIMobileTaskEvent(
+                                eventId = taskData.id,
+                                timestamp = normalizeTimestamp(taskData.timestamp),
+                                taskId = taskData.task_id,
+                                action = "created",
+                                title = taskData.title,
+                                instruction = taskData.instruction,
+                                phase = taskData.phase,
+                                metadata = taskData.metadata
+                            )
+                        )
+                    } catch (e: Exception) {
+                        Log.e("AlianViewModel", "解析移动端任务创建事件失败", e)
+                    }
+                }
+                "mobile_task_updated" -> {
+                    // 处理移动端任务更新事件
+                    try {
+                        val dataString = event.data.toJsonString()
+                        val taskData = json.decodeFromString<MobileTaskUpdatedData>(dataString)
+                        Log.d("AlianViewModel", "处理移动端任务更新事件: taskId=${taskData.task_id}, phase=${taskData.phase}")
+
+                        addUIEvent(
+                            UIMobileTaskEvent(
+                                eventId = taskData.id,
+                                timestamp = normalizeTimestamp(taskData.timestamp),
+                                taskId = taskData.task_id,
+                                action = "updated",
+                                phase = taskData.phase,
+                                status = taskData.status,
+                                progress = taskData.progress,
+                                message = taskData.message,
+                                metadata = taskData.metadata
+                            )
+                        )
+                    } catch (e: Exception) {
+                        Log.e("AlianViewModel", "解析移动端任务更新事件失败", e)
+                    }
+                }
+                "mobile_task_resolved" -> {
+                    // 处理移动端任务解决事件
+                    try {
+                        val dataString = event.data.toJsonString()
+                        val taskData = json.decodeFromString<MobileTaskResolvedData>(dataString)
+                        Log.d("AlianViewModel", "处理移动端任务解决事件: taskId=${taskData.task_id}, status=${taskData.status}")
+
+                        addUIEvent(
+                            UIMobileTaskEvent(
+                                eventId = taskData.id,
+                                timestamp = normalizeTimestamp(taskData.timestamp),
+                                taskId = taskData.task_id,
+                                action = "resolved",
+                                status = taskData.status,
+                                resultSummary = taskData.result_summary,
+                                resolvedBy = taskData.resolved_by
+                            )
+                        )
+                    } catch (e: Exception) {
+                        Log.e("AlianViewModel", "解析移动端任务解决事件失败", e)
                     }
                 }
                 // =======================================================

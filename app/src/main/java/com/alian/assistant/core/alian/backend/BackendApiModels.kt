@@ -297,7 +297,12 @@ enum class SSEEventType {
     PLAN_STARTED,         // 计划开始（新接口）
     PLAN_FINISHED,        // 计划完成（新接口）
     PHASE_STARTED,        // 阶段开始（新接口）
-    PHASE_FINISHED        // 阶段完成（新接口）
+    PHASE_FINISHED,       // 阶段完成（新接口）
+
+    // 移动端任务事件类型
+    MOBILE_TASK_CREATED,   // 移动端任务创建
+    MOBILE_TASK_UPDATED,   // 移动端任务更新
+    MOBILE_TASK_RESOLVED   // 移动端任务解决
 }
 
 /**
@@ -582,6 +587,25 @@ data class UIDoneEvent(
 data class UIWaitEvent(
     override val eventId: String,
     override val timestamp: Long
+) : UIEvent()
+
+/**
+ * UI移动端任务事件
+ */
+data class UIMobileTaskEvent(
+    override val eventId: String,
+    override val timestamp: Long,
+    val taskId: String,
+    val action: String,  // "created" | "updated" | "resolved"
+    val title: String? = null,
+    val instruction: String? = null,
+    val phase: String? = null,
+    val status: String? = null,
+    val progress: Int? = null,
+    val message: String? = null,
+    val resultSummary: String? = null,
+    val resolvedBy: String? = null,
+    val metadata: Map<String, JsonElement>? = null
 ) : UIEvent()
 
 /**

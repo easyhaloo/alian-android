@@ -120,6 +120,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var executionRepository: ExecutionRepository
     private lateinit var authManager: AuthManager
     private lateinit var agentRunner: AgentRunner
+    private lateinit var remoteMobileTaskCoordinator: com.alian.assistant.core.coordinator.RemoteMobileTaskCoordinator
 
     private val mobileAgent = mutableStateOf<Agent?>(null)
     private var shizukuAvailable = mutableStateOf(false)
@@ -595,6 +596,14 @@ class MainActivity : ComponentActivity() {
                 showMediaProjectionPermissionDialog = true
                 pendingInstruction = instruction
             }
+        )
+
+        // 初始化远端移动任务协调器
+        remoteMobileTaskCoordinator = com.alian.assistant.core.coordinator.RemoteMobileTaskCoordinator(
+            context = this,
+            agentRunnerProvider = { agentRunner },
+            executionRepository = executionRepository,
+            scope = lifecycleScope
         )
 
         // 加载执行记录
@@ -1804,5 +1813,33 @@ class MainActivity : ComponentActivity() {
             ttsEnabled = ttsEnabled,
             ttsVoice = ttsVoice
         )
+    }
+
+    /**
+     * 执行远端移动任务
+     * @param taskId 任务ID
+     * @param instruction 任务指令
+     * @param settings 设置信息
+     * @param onResult 执行结果回调
+     */
+    fun executeRemoteMobileTask(
+        taskId: String,
+        instruction: String,
+        settings: com.alian.assistant.data.SettingsManager.Settings,
+        onResult: (com.alian.assistant.core.alian.backend.MobileTaskCompleteRequest) -> Unit
+    ) {
+        remoteMobileTaskCoordinator.executeTask(
+            taskId = taskId,
+            instruction = instruction,
+            settings = settings,
+            onResult = onResult
+        )
+    }
+
+    /**
+     * 获取远端移动任务协调器
+     */
+    fun getRemoteMobileTaskCoordinator(): com.alian.assistant.core.coordinator.RemoteMobileTaskCoordinator {
+        return remoteMobileTaskCoordinator
     }
 }

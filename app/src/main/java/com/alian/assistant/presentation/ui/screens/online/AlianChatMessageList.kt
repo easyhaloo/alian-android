@@ -63,6 +63,7 @@ import com.alian.assistant.presentation.viewmodel.AlianChatState
 import com.alian.assistant.presentation.viewmodel.AlianViewModel
 import com.alian.assistant.presentation.viewmodel.DeepThinkingItem
 import com.alian.assistant.presentation.viewmodel.MessageItem
+import com.alian.assistant.presentation.viewmodel.MobileTaskItem
 import com.alian.assistant.presentation.viewmodel.PlanItem
 import com.alian.assistant.presentation.viewmodel.SessionLoadingState
 import java.io.File
@@ -145,6 +146,7 @@ fun AlianChatMessageList(
                 is MessageItem -> "msg_${item.message.id}"
                 is DeepThinkingItem -> "thinking_${item.section.eventId}_$index"
                 is PlanItem -> "plan_${item.planEvent.eventId}_$index"
+                is MobileTaskItem -> "mobile_task_${item.task.taskId}_$index"
             }
         }) { index, item ->
             // 当吸顶时跳过PlanItem
@@ -245,6 +247,34 @@ fun AlianChatMessageList(
                             steps = item.planEvent.steps,
                             modifier = Modifier.fillMaxWidth(),
                             toolCalls = viewModel.toolCalls
+                        )
+                    }
+                }
+
+                is MobileTaskItem -> {
+                    var isVisible by remember { mutableStateOf(false) }
+                    LaunchedEffect(item.task.taskId) {
+                        isVisible = true
+                    }
+
+                    AnimatedVisibility(
+                        visible = isVisible,
+                        enter = slideInVertically(
+                            initialOffsetY = { 30 },
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioMediumBouncy,
+                                stiffness = Spring.StiffnessLow
+                            )
+                        ) + fadeIn(
+                            animationSpec = tween(durationMillis = 300)
+                        )
+                    ) {
+                        MobileTaskCard(
+                            task = item.task,
+                            modifier = Modifier.fillMaxWidth(),
+                            onConfirmClick = { /* 桥接到 Activity 执行 */ },
+                            onRetryClick = { /* 重新执行 */ },
+                            onViewDetailsClick = { /* 查看本地执行记录 */ }
                         )
                     }
                 }
