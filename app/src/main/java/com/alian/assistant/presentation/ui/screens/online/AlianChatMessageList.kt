@@ -70,7 +70,7 @@ import java.io.File
 
 /**
  * Alian 聊天消息列表 - 统一的消息列表渲染组件
- * 
+ *
  * @param viewModel AlianViewModel
  * @param listState 列表状态
  * @param shouldPinPlanCard 是否吸顶 PlanCard
@@ -79,6 +79,7 @@ import java.io.File
  * @param onPlayClick 播放点击回调
  * @param onStopClick 停止点击回调
  * @param onLinkClick 链接点击回调（url, fileName, fileId）
+ * @param onConfirmMobileTask 确认移动端任务点击回调
  * @param userAvatar 用户头像
  * @param assistantAvatar 艾莲头像
  */
@@ -94,6 +95,7 @@ fun AlianChatMessageList(
     onPlayClick: (String) -> Unit,
     onStopClick: () -> Unit,
     onLinkClick: (String, String, String?) -> Unit,
+    onConfirmMobileTask: (String) -> Unit = {},
     userAvatar: String?,
     assistantAvatar: String?
 ) {
@@ -272,8 +274,8 @@ fun AlianChatMessageList(
                         MobileTaskCard(
                             task = item.task,
                             modifier = Modifier.fillMaxWidth(),
-                            onConfirmClick = { /* 桥接到 Activity 执行 */ },
-                            onRetryClick = { /* 重新执行 */ },
+                            onConfirmClick = { onConfirmMobileTask(item.task.taskId) },
+                            onRetryClick = { onConfirmMobileTask(item.task.taskId) },
                             onViewDetailsClick = { /* 查看本地执行记录 */ }
                         )
                     }
@@ -377,7 +379,7 @@ val currentToolName = viewModel.currentToolName.value
                             val currentStepName = viewModel.currentStepName.value
 
                             // 调试日志
-                            Log.d("AlianChatMessageList", "加载气泡渲染 - currentToolName: $currentToolName, currentStepName: $currentStepName, isProcessing: ${viewModel.isProcessing.value}")
+//                            Log.d("AlianChatMessageList", "加载气泡渲染 - currentToolName: $currentToolName, currentStepName: $currentStepName, isProcessing: ${viewModel.isProcessing.value}")
 
                             // 根据当前状态显示不同的文本
                             val displayText = when {
@@ -487,6 +489,7 @@ fun AlianChatContent(
     onPlayClick: (String) -> Unit,
     onStopClick: () -> Unit,
     onLinkClick: (String, String, String?) -> Unit,
+    onConfirmMobileTask: (String) -> Unit = {},
     userAvatar: String?,
     assistantAvatar: String?
 ) {
@@ -591,6 +594,7 @@ fun AlianChatContent(
                                 onPlayClick = onPlayClick,
                                 onStopClick = onStopClick,
                                 onLinkClick = onLinkClick,
+                                onConfirmMobileTask = onConfirmMobileTask,
                                 userAvatar = userAvatar,
                                 assistantAvatar = assistantAvatar
                             )
@@ -647,6 +651,7 @@ fun AlianChatContent(
                             onPlayClick = onPlayClick,
                             onStopClick = onStopClick,
                             onLinkClick = onLinkClick,
+                            onConfirmMobileTask = onConfirmMobileTask,
                             userAvatar = userAvatar,
                             assistantAvatar = assistantAvatar
                         )

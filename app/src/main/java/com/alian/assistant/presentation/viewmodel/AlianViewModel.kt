@@ -249,7 +249,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
     var apiKey: String = ""
     var baseUrl: String = ""
     var model: String = ""
-    var backendBaseUrl: String = "http://39.98.113.244:5173/api/v1"
+    var backendBaseUrl: String = "http://192.168.10.103:5173/api/v1"
 
     // 登录凭据
     private val _email = mutableStateOf("xlb1130@vip.qq.com")
@@ -365,11 +365,14 @@ class AlianViewModel(private val context: Context) : ViewModel() {
      * 更新AlianClient配置
      */
     private fun updateAlianClient() {
+        // 保存当前的 sessionId，避免重建客户端时丢失
+        val existingSessionId = alianClient?.getCurrentSessionId()
+
         alianClient = if (useBackend) {
             AlianClient(
                 context = context,
                 useBackend = true,
-                baseUrl = backendBaseUrl.ifBlank { "http://39.98.113.244:5173/api/v1" }
+                baseUrl = backendBaseUrl.ifBlank { "http://192.168.10.103:5173/api/v1" }
             )
         } else {
             AlianClient(
@@ -378,7 +381,14 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                 model = model.ifBlank { "qwen-plus" }
             )
         }
-        Log.d("AlianViewModel", "AlianClient已更新: useBackend=$useBackend")
+
+        // 恢复之前的 sessionId
+        if (existingSessionId != null) {
+            alianClient?.setCurrentSessionId(existingSessionId)
+            Log.d("AlianViewModel", "AlianClient已更新，恢复sessionId: $existingSessionId")
+        } else {
+            Log.d("AlianViewModel", "AlianClient已更新: useBackend=$useBackend")
+        }
     }
 
     /**
@@ -1055,7 +1065,9 @@ class AlianViewModel(private val context: Context) : ViewModel() {
 
                 when (event.action) {
                     "created" -> {
-                        // 任务创建
+                        // 任务创建 - 使用 AlianClient 的当前会话ID（因为它可能在发送消息时自动创建了新会话）
+                        val currentSession = alianClient?.getCurrentSessionId() ?: _currentSessionIdUi.value
+                        Log.d("AlianViewModel", "创建移动端任务: AlianClient sessionId=${alianClient?.getCurrentSessionId()}, UI sessionId=$_currentSessionIdUi.value, 使用=$currentSession")
                         val task = RemoteMobileTask(
                             taskId = event.taskId,
                             eventId = event.eventId,
@@ -1064,10 +1076,11 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                             instruction = event.instruction ?: "",
                             phase = MobileTaskPhase.CREATED,
                             status = MobileTaskStatus.PENDING,
-                            metadata = event.metadata
+                            metadata = event.metadata,
+                            sessionId = currentSession
                         )
                         upsertRemoteMobileTask(task)
-                        Log.d("AlianViewModel", "创建移动端任务: taskId=${task.taskId}, title=${task.title}")
+                        Log.d("AlianViewModel", "创建移动端任务完成: taskId=${task.taskId}, sessionId=${task.sessionId}")
                     }
                     "updated" -> {
                         // 任务更新
@@ -1181,6 +1194,78 @@ class AlianViewModel(private val context: Context) : ViewModel() {
             Log.d("AlianViewModel", "标记任务状态: taskId=$taskId, status=$status")
         } else {
             Log.w("AlianViewModel", "未找到任务: taskId=$taskId")
+        }
+    }
+
+    /**
+     * 确认并执行移动端任务
+     * 使用 RemoteMobileTaskCoordinator 执行完整流程（确认 + 执行 + 上报）
+     */
+    fun confirmAndExecuteMobileTask(taskId: String) {
+        Log.d("AlianViewModel", "confirmAndExecuteMobileTask called: taskId=$taskId")
+        Log.d("AlianViewModel", "当前任务列表数量: ${_remoteMobileTasks.size}")
+        _remoteMobileTasks.forEach {
+            Log.d("AlianViewModel", "  任务: taskId=${it.taskId}, sessionId=${it.sessionId}, status=${it.status}")
+        }
+
+        val task = _remoteMobileTasks.find { it.taskId == taskId }
+        if (task == null) {
+            Log.w("AlianViewModel", "确认任务失败: 未找到任务 taskId=$taskId")
+            return
+        }
+
+        Log.d("AlianViewModel", "找到任务: taskId=${task.taskId}, task.sessionId=${task.sessionId}, _currentSessionIdUi=${_currentSessionIdUi.value}")
+
+        if (task.status != MobileTaskStatus.PENDING && task.status != MobileTaskStatus.FAILED) {
+            Log.w("AlianViewModel", "确认任务失败: 任务状态不正确 ${task.status}")
+            return
+        }
+
+        // 优先使用任务中保存的sessionId，如果没有则使用当前UI会话ID
+        val sessionId = task.sessionId ?: _currentSessionIdUi.value
+        Log.d("AlianViewModel", "使用的sessionId: $sessionId (task.sessionId=${task.sessionId}, _currentSessionIdUi=${_currentSessionIdUi.value})")
+
+        if (sessionId == null) {
+            Log.w("AlianViewModel", "确认任务失败: 没有会话ID (task.sessionId=${task.sessionId}, _currentSessionIdUi=${_currentSessionIdUi.value})")
+            return
+        }
+
+        Log.d("AlianViewModel", "确认并执行任务: taskId=$taskId, sessionId=$sessionId")
+
+        // 使用 RemoteMobileTaskCoordinator 执行完整流程
+        viewModelScope.launch {
+            try {
+                val backendClient = alianClient?.getBackendClient()
+                if (backendClient == null) {
+                    Log.w("AlianViewModel", "BackendClient 不可用，无法执行任务")
+                    return@launch
+                }
+
+                // 获取 MainActivity 的 coordinator
+                val mainActivity = context as? com.alian.assistant.MainActivity
+                if (mainActivity == null) {
+                    Log.e("AlianViewModel", "无法获取 MainActivity 实例")
+                    return@launch
+                }
+
+                val coordinator = mainActivity.getRemoteMobileTaskCoordinator()
+
+                // 使用 coordinator 执行完整流程（确认 + 执行 + 上报）
+                coordinator.confirmAndExecute(
+                    task = task,
+                    backendClient = backendClient,
+                    sessionId = sessionId,
+                    onStatusChange = { updatedTask ->
+                        upsertRemoteMobileTask(updatedTask)
+                        Log.d("AlianViewModel", "任务状态更新: taskId=${updatedTask.taskId}, status=${updatedTask.status}, phase=${updatedTask.phase}")
+                    }
+                )
+
+                Log.d("AlianViewModel", "任务执行流程完成: taskId=$taskId")
+
+            } catch (e: Exception) {
+                Log.e("AlianViewModel", "执行任务异常", e)
+            }
         }
     }
 
@@ -1484,6 +1569,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
      * 登录
      */
     suspend fun login(): Result<String> {
+        Log.d("AlianViewModel", "✅ login() called from lifecycleScope")
         Log.d("AlianViewModel", "开始登录流程")
         Log.d("AlianViewModel", "useBackend: $useBackend")
         Log.d("AlianViewModel", "email: $email")
@@ -2159,10 +2245,10 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                     try {
                         val dataString = event.data.toJsonString()
                         val stepData = json.decodeFromString<StepData>(dataString)
-                        Log.d("AlianViewModel", "处理步骤事件: id=${stepData.id}, status=${stepData.status}")
+                        Log.d("AlianViewModel", "处理步骤事件: id=${stepData.event_id}, status=${stepData.status}")
 
                         val uiStep = UIStep(
-                            id = stepData.id,
+                            id = stepData.event_id,
                             description = stepData.description,
                             status = stepData.status
                         )
@@ -2186,7 +2272,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
 
                         val uiSteps = planData.steps.map { step ->
                             UIStep(
-                                id = step.id,
+                                id = step.event_id,
                                 description = step.description,
                                 status = step.status
                             )
@@ -2387,7 +2473,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
 
                         val uiSteps = planData.plan.phases.mapIndexed { index, phase ->
                             UIStep(
-                                id = phase.id,
+                                id = phase.id.toString(),
                                 description = phase.title,
                                 status = phase.status
                             )
@@ -2412,7 +2498,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
 
                         val uiSteps = planData.plan.phases.mapIndexed { index, phase ->
                             UIStep(
-                                id = phase.id,
+                                id = phase.id.toString(),
                                 description = phase.title,
                                 status = phase.status
                             )
@@ -2442,7 +2528,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                                 eventId = phaseData.id,
                                 timestamp = normalizeTimestamp(phaseData.timestamp),
                                 step = UIStep(
-                                    id = phaseData.phase_id,
+                                    id = phaseData.phase_id.toString(),
                                     description = phaseData.title,
                                     status = "running"
                                 )
@@ -2464,7 +2550,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                                 eventId = phaseData.id,
                                 timestamp = normalizeTimestamp(phaseData.timestamp),
                                 step = UIStep(
-                                    id = phaseData.phase_id,
+                                    id = phaseData.phase_id.toString(),
                                     description = phaseData.title,
                                     status = "completed"
                                 )
@@ -2645,6 +2731,7 @@ class AlianViewModel(private val context: Context) : ViewModel() {
                 is MessageItem -> Log.d("AlianViewModel", "时间线项: Message, timestamp=${item.timestamp}, isUser=${item.message.isUser}, content=${item.message.content.take(20)}...")
                 is DeepThinkingItem -> Log.d("AlianViewModel", "时间线项: DeepThinking, timestamp=${item.timestamp}, title=${item.section.title}")
                 is PlanItem -> Log.d("AlianViewModel", "时间线项: Plan, timestamp=${item.planEvent.timestamp}, steps=${item.planEvent.steps.size}")
+                is MobileTaskItem -> Log.d("AlianViewModel", "时间线项: MobileTask, timestamp=${item.timestamp}, taskId=${item.task.taskId}")
             }
         }
 

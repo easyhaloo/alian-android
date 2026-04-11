@@ -102,7 +102,8 @@ data class RemoteMobileTask(
     var localExecutionRecordId: String? = null,  // 本地执行记录 ID
     var metadata: Map<String, JsonElement>? = null,
     var resolvedAt: Long? = null,       // 解决时间
-    var resolvedBy: String? = null      // 解决者
+    var resolvedBy: String? = null,     // 解决者
+    val sessionId: String? = null       // 关联的会话ID
 ) {
     /**
      * 是否可以执行

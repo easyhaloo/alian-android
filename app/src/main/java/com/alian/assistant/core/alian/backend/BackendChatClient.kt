@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit
  */
 class BackendChatClient(
     private val context: Context,
-    private val baseUrl: String = "http://39.98.113.244:5173/api/v1"
+    private val baseUrl: String = "http://192.168.10.103:5173/api/v1"
 ) {
     private val authManager = AuthManager.getInstance(context)
     private val json = Json {
@@ -368,15 +368,31 @@ class BackendChatClient(
      */
     suspend fun createSession(): Result<String> = withContext(Dispatchers.IO) {
         try {
+            // 创建包含 mobile runtime 的请求体
+            val requestBody = CreateSessionRequest(
+                runtime = SessionRuntimeRequest(
+                    source = "mobile",
+                    platform = "android",
+                    enabled_tools = listOf("mobile_execute")
+                )
+            )
+            val requestJson = json.encodeToString(CreateSessionRequest.serializer(), requestBody)
+
+            val requestUrl = "$baseUrl/sessions"
+            Log.d("BackendChatClient", "【创建会话】请求URL: $requestUrl")
+            Log.d("BackendChatClient", "【创建会话】请求体: $requestJson")
+
             val request = Request.Builder()
-                .url("$baseUrl/sessions")
-                .put("".toRequestBody(mediaType))
+                .url(requestUrl)
+                .put(requestJson.toRequestBody(mediaType))
                 .build()
 
             val response = client.newCall(request).execute()
+            Log.d("BackendChatClient", "【创建会话】响应码: ${response.code}")
 
             if (!response.isSuccessful) {
                 val errorBody = response.body?.string() ?: "Unknown error"
+                Log.e("BackendChatClient", "【创建会话】请求失败: ${response.code} - $errorBody")
                 return@withContext Result.failure(
                     Exception("Create session failed: ${response.code} - $errorBody")
                 )
@@ -385,16 +401,21 @@ class BackendChatClient(
             val responseBody = response.body?.string()
                 ?: return@withContext Result.failure(Exception("Empty response body"))
 
+            Log.d("BackendChatClient", "【创建会话】响应体: $responseBody")
+
             val sessionResponse = json.decodeFromString<CreateSessionResponse>(responseBody)
 
             if (sessionResponse.code != 0 || sessionResponse.data == null) {
+                Log.e("BackendChatClient", "【创建会话】业务错误: code=${sessionResponse.code}, msg=${sessionResponse.msg}")
                 return@withContext Result.failure(
                     Exception(sessionResponse.msg)
                 )
             }
 
+            Log.d("BackendChatClient", "【创建会话】成功: session_id=${sessionResponse.data.session_id}")
             Result.success(sessionResponse.data.session_id)
         } catch (e: Exception) {
+            Log.e("BackendChatClient", "【创建会话】异常", e)
             Result.failure(e)
         }
     }
@@ -642,13 +663,20 @@ class BackendChatClient(
                     var currentEventId: String? = null
                     var currentData = StringBuilder()
 
-                    while (!source.exhausted()) {
-                        // 读取一行，OkHttp 会自动处理缓冲
+                    // SSE 是长连接，使用无限循环 + readUtf8Line() 的阻塞行为
+                    // readUtf8Line() 会在有数据时返回，流关闭时返回 null
+                    while (true) {
+                        // 读取一行，OkHttp 会自动处理缓冲，无数据时会阻塞等待
                         val line = source.readUtf8Line()
-                        
-                        if (line != null) {
-                            Log.d("BackendChatClient", "收到SSE行: $line")
-                            System.out.flush()
+
+                        if (line == null) {
+                            // 流已关闭，退出循环
+                            Log.d("BackendChatClient", "SSE流已关闭")
+                            break
+                        }
+
+                        Log.d("BackendChatClient", "收到SSE行: $line")
+                        System.out.flush()
 
                             when {
                                 line.startsWith("event:") -> {
@@ -713,9 +741,6 @@ class BackendChatClient(
                                     }
                                 }
                             }
-                        } else {
-                            break
-                        }
                     }
 
                     Log.d("BackendChatClient", "SSE流读取完成")
@@ -851,7 +876,7 @@ class BackendChatClient(
                             // 转换为UI事件
                             val uiSteps = planData.steps.map { step ->
                                 UIStep(
-                                    id = step.id,
+                                    id = step.event_id,
                                     description = step.description,
                                     status = step.status
                                 )
@@ -874,7 +899,7 @@ class BackendChatClient(
                             val stepData = json.decodeFromString<StepData>(event.data)
                             // 转换为UI事件
                             val uiStep = UIStep(
-                                id = stepData.id,
+                                id = stepData.event_id,
                                 description = stepData.description,
                                 status = stepData.status
                             )
@@ -1196,7 +1221,7 @@ class BackendChatClient(
                             // 转换为UI事件
                             val uiSteps = planData.plan.phases.mapIndexed { index, phase ->
                                 UIStep(
-                                    id = phase.id,
+                                    id = phase.id.toString(),
                                     description = phase.title,
                                     status = phase.status
                                 )
@@ -1222,7 +1247,7 @@ class BackendChatClient(
                             // 更新计划状态
                             val uiSteps = planData.plan.phases.mapIndexed { index, phase ->
                                 UIStep(
-                                    id = phase.id,
+                                    id = phase.id.toString(),
                                     description = phase.title,
                                     status = phase.status
                                 )
@@ -1295,7 +1320,7 @@ class BackendChatClient(
                                     eventId = phaseData.id,
                                     timestamp = phaseData.timestamp,
                                     step = UIStep(
-                                        id = phaseData.phase_id,
+                                        id = phaseData.phase_id.toString(),
                                         description = phaseData.title,
                                         status = "running"
                                     )
@@ -1318,7 +1343,7 @@ class BackendChatClient(
                                     eventId = phaseData.id,
                                     timestamp = phaseData.timestamp,
                                     step = UIStep(
-                                        id = phaseData.phase_id,
+                                        id = phaseData.phase_id.toString(),
                                         description = phaseData.title,
                                         status = "completed"
                                     )

@@ -457,7 +457,7 @@ class MainActivity : ComponentActivity() {
                     AlianClient(
                         context = this@MainActivity,
                         useBackend = true,
-                        baseUrl = settings.backendBaseUrl.ifBlank { "http://39.98.113.244:5173/api/v1" }
+                        baseUrl = settings.backendBaseUrl.ifBlank { "http://192.168.10.103:5173/api/v1" }
                     )
                 } else {
                     null
@@ -600,11 +600,12 @@ class MainActivity : ComponentActivity() {
 
         // 初始化远端移动任务协调器
         remoteMobileTaskCoordinator = com.alian.assistant.core.coordinator.RemoteMobileTaskCoordinator(
-            context = this,
-            agentRunnerProvider = { agentRunner },
-            executionRepository = executionRepository,
-            scope = lifecycleScope
+            scope = lifecycleScope,
+            executionRepository = executionRepository
         )
+
+        // 设置执行桥接 - 使用 MobileAgent 执行任务
+        setupRemoteTaskExecutionBridge()
 
         // 加载执行记录
         lifecycleScope.launch {
@@ -1162,6 +1163,22 @@ class MainActivity : ComponentActivity() {
                                 showLoginScreen = showAlianLoginScreen,
                                 onLoginBack = {
                                     showAlianLoginScreen = false
+                                },
+                                onLogin = {
+                                    Log.d("MainActivity", "onLogin callback invoked, launching coroutine")
+                                    lifecycleScope.launch {
+                                        try {
+                                            Log.d("MainActivity", "Calling viewModel.login()")
+                                            val result = alianViewModel.login()
+                                            if (result.isFailure) {
+                                                Log.e("MainActivity", "Login failed: ${result.exceptionOrNull()?.message}")
+                                            } else {
+                                                Log.d("MainActivity", "Login succeeded")
+                                            }
+                                        } catch (e: Exception) {
+                                            Log.e("MainActivity", "Login threw exception", e)
+                                        }
+                                    }
                                 },
                                 forceShowLocal = forceShowLocal,
                                 onForceShowLocalChanged = { forceShowLocal = it },
@@ -1816,6 +1833,81 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
+     * 设置远端任务执行桥接
+     * 使用 MobileAgent 执行远端下发的移动端任务
+     */
+    private fun setupRemoteTaskExecutionBridge() {
+        remoteMobileTaskCoordinator.setExecutionBridge(
+            object : com.alian.assistant.core.coordinator.RemoteMobileTaskExecutionBridge {
+                override suspend fun executeRemoteTask(
+                    task: com.alian.assistant.core.alian.backend.RemoteMobileTask,
+                    onProgress: (Int, String) -> Unit,
+                    onComplete: (com.alian.assistant.core.coordinator.RemoteTaskExecutionResult) -> Unit
+                ) {
+                    Log.d(TAG, "开始执行远端任务: ${task.taskId}")
+                    Log.d(TAG, "任务指令: ${task.instruction}")
+
+                    // 获取或创建 MobileAgent
+                    val agent = mobileAgent.value
+                    if (agent == null) {
+                        Log.e(TAG, "MobileAgent 未初始化")
+                        onComplete(
+                            com.alian.assistant.core.coordinator.RemoteTaskExecutionResult(
+                                success = false,
+                                status = "failed",
+                                summary = "MobileAgent 未初始化，请检查 Shizuku 权限",
+                                durationMs = 0
+                            )
+                        )
+                        return
+                    }
+
+                    // 执行任务
+                    val startTime = System.currentTimeMillis()
+                    try {
+                        // 使用 MobileAgent 执行指令
+                        val result = agent.runInstruction(task.instruction)
+                        val durationMs = System.currentTimeMillis() - startTime
+
+                        Log.d(TAG, "任务执行完成，结果: $result")
+                        onComplete(
+                            com.alian.assistant.core.coordinator.RemoteTaskExecutionResult(
+                                success = result.success,
+                                status = if (result.success) "succeeded" else "failed",
+                                summary = result.message ?: "任务执行完成",
+                                durationMs = durationMs
+                            )
+                        )
+                    } catch (e: Exception) {
+                        val durationMs = System.currentTimeMillis() - startTime
+                        Log.e(TAG, "任务执行失败", e)
+                        onComplete(
+                            com.alian.assistant.core.coordinator.RemoteTaskExecutionResult(
+                                success = false,
+                                status = "failed",
+                                summary = "任务执行失败: ${e.message}",
+                                durationMs = durationMs
+                            )
+                        )
+                    }
+                }
+
+                override fun cancelCurrentTask() {
+                    Log.d(TAG, "取消当前远端任务")
+                    mobileAgent.value?.stop()
+                }
+
+                override fun canExecuteTask(): Boolean {
+                    val canExecute = shizukuAvailable.value && mobileAgent.value != null
+                    Log.d(TAG, "检查是否可以执行任务: $canExecute (shizuku=${shizukuAvailable.value}, agent=${mobileAgent.value != null})")
+                    return canExecute
+                }
+            }
+        )
+        Log.d(TAG, "远端任务执行桥接已设置")
+    }
+
+    /**
      * 执行远端移动任务
      * @param taskId 任务ID
      * @param instruction 任务指令
@@ -1825,15 +1917,11 @@ class MainActivity : ComponentActivity() {
     fun executeRemoteMobileTask(
         taskId: String,
         instruction: String,
-        settings: com.alian.assistant.data.SettingsManager.Settings,
+        settings: com.alian.assistant.data.AppSettings,
         onResult: (com.alian.assistant.core.alian.backend.MobileTaskCompleteRequest) -> Unit
     ) {
-        remoteMobileTaskCoordinator.executeTask(
-            taskId = taskId,
-            instruction = instruction,
-            settings = settings,
-            onResult = onResult
-        )
+        // 使用 RemoteMobileTaskCoordinator 执行确认和执行流程
+        // 注意：此方法由 ViewModel 调用，实际需要配合任务状态回调
     }
 
     /**
